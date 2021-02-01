@@ -4,7 +4,7 @@ void SetConsoleWindow(int iWidth, int iHeight)
 {
 	char buf[256];
 	int width = (iWidth * 2) + 1;
-	int height = iHeight + 3;
+	int height = iHeight + 1;
 	sprintf(buf, "mode con: lines=%d cols=%d", height, width);
 	system(buf);
 }
@@ -248,9 +248,22 @@ void GameManager::StartBattle(int MonsterSelection)
 		}
 	}
 }
-void GameManager::DispDetailList(string str)
-{	
+void GameManager::DispDetailinfo(string str)
+{
+	//선별 작업
+	for (int i = 0;i < m_vWeaponList.size();i++)
+	{
+		if (str == m_vWeaponList[i].GetWeaponType())
+		{
 
+		}
+	}
+
+	//Disp
+	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
+	m_gmMapDraw.DrawMidText(m_gmCharacter[PLAYER]->GetName() + " Gold : " + to_string(m_gmCharacter[PLAYER]->GetGold()),WIDTH, 2);
+	m_gmMapDraw.DrawMidText(str + " Shop", WIDTH, 4);
+	getch();
 }
 void GameManager::DispWeaponList(int weaponSelection)
 {
@@ -259,27 +272,27 @@ void GameManager::DispWeaponList(int weaponSelection)
 	{
 	case WEAPON_TYPE_DAGGER:
 		strType = "Dagger";
-		DispDetailList(strType);
+		DispDetailinfo(strType);
 		break;
 	case WEAPON_TYPE_GUN:
 		strType = "Gun";
-		DispDetailList(strType);
+		DispDetailinfo(strType);
 		break;
 	case WEAPON_TYPE_SWORD:
 		strType = "Sword";
-		DispDetailList(strType);
+		DispDetailinfo(strType);
 		break;
 	case WEAPON_TYPE_WAND:
 		strType = "Wand";
-		DispDetailList(strType);
+		DispDetailinfo(strType);
 		break;
 	case WEAPON_TYPE_BOW:
 		strType = "Bow";
-		DispDetailList(strType);
+		DispDetailinfo(strType);
 		break;
 	case WEAPON_TYPE_HAMMER:
 		strType = "Hammer";
-		DispDetailList(strType);
+		DispDetailinfo(strType);
 		break;
 	}
 }
@@ -306,7 +319,6 @@ void GameManager::DispShop()
 		break;
 	case WEAPON_TYPE_GUN:
 		DispWeaponList(iShopSelection);
-
 		break;
 	case WEAPON_TYPE_SWORD:
 		DispWeaponList(iShopSelection);
@@ -412,6 +424,20 @@ void GameManager::StartGame()
 
 void GameManager::LoadWeapon()
 {
+	ifstream fWeaponLoad;
+	WEAPON stTempWeaponList;
+	fWeaponLoad.open("WeaponList.txt");
+	while (!fWeaponLoad.eof())
+	{
+		Weapon tmpWeapon;
+		fWeaponLoad >> stTempWeaponList.m_strWType;
+		fWeaponLoad >> stTempWeaponList.m_strWName;
+		fWeaponLoad >> stTempWeaponList.m_iWAttack;
+		fWeaponLoad >> stTempWeaponList.m_iWCost;
+		tmpWeapon.LoadWeapon(stTempWeaponList);
+		m_vWeaponList.push_back(tmpWeapon);
+	}
+	fWeaponLoad.close();
 
 }
 
@@ -427,7 +453,6 @@ void GameManager::RunGame()
 	srand((unsigned)time(NULL));
 	//Load Weapon Info
 	LoadWeapon();
-
 	while (1)
 	{
 		int iSelect;
@@ -444,6 +469,7 @@ void GameManager::RunGame()
 		case LOBY_MENU_LOAD:
 			break;
 		case LOBY_MENU_EXIT:
+			//Weapon 정보  Clear할 것
 			return;
 		}
 	}

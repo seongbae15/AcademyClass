@@ -83,7 +83,7 @@ public:
 	void DispLevelUp();
 	void DispShop();
 	void DispWeaponList(int weaponSelection);
-	void DispDetailList(string str);
+	void DispDetailinfo(string str);
 	void DispSave();
 };
 
