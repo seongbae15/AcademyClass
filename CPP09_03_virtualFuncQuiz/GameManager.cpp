@@ -250,29 +250,7 @@ void GameManager::StartBattle(int MonsterSelection)
 }
 void GameManager::DispDetailList(string str)
 {	
-	int iEnterCusorX = (WIDTH - 8) / 2;
-	int iEnterCusorY = HEIGHT * 0.3f + 2;
-	int iSelector;
-	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
-	m_gmMapDraw.DrawMidText("보유 Gold : " + to_string(m_gmCharacter[PLAYER]->GetGold()), WIDTH, 2);
-	m_gmMapDraw.DrawMidText(str + "Shop", WIDTH, 4);
-	vector<Weapon> tmpWeaponList;
-	for (int i = 0; i < NUMBER_WEAPON; i++)
-	{
-		if (m_vWeaponList[i].GetWeaponType() == str)
-		{
-			tmpWeaponList.push_back(m_vWeaponList[i]);
-		}
-	}
-	int j = 0;
-	for (j; j < 5; j++)
-	{
-		tmpWeaponList[j].ShowWeapon(WIDTH,HEIGHT*0.2f + 3*j);
-	}
-	m_gmMapDraw.DrawMidText("이전 페이지", WIDTH, HEIGHT * 0.2f + 3 * j++);
-	m_gmMapDraw.DrawMidText("다음 페이지", WIDTH, HEIGHT * 0.2f + 3 * j++);
-	m_gmMapDraw.DrawMidText("나가기", WIDTH, HEIGHT * 0.2f + 3 * j);
-	iSelector = m_gmMapDraw.MenuSelectCursor(8, 3, iEnterCusorX, iEnterCusorY);
+
 }
 void GameManager::DispWeaponList(int weaponSelection)
 {
@@ -434,23 +412,7 @@ void GameManager::StartGame()
 
 void GameManager::LoadWeapon()
 {
-	ifstream fWeaponLoad;
-	fWeaponLoad.open("WeaponList.txt");
-	if (fWeaponLoad.is_open())
-	{
-		for (int i = 0;i<NUMBER_WEAPON;i++)
-		{
-			Weapon tmpW;
-			WEAPON eTmpInfo;
-			fWeaponLoad >> eTmpInfo.m_strWType;
-			fWeaponLoad >> eTmpInfo.m_strWName;
-			fWeaponLoad >> eTmpInfo.m_iWAttack;
-			fWeaponLoad >> eTmpInfo.m_iWCost;
-			tmpW.LoadWeapon(eTmpInfo);
-			m_vWeaponList.push_back(tmpW);
-		}
-	}
-	fWeaponLoad.close();
+
 }
 
 void GameManager::RunGame()
