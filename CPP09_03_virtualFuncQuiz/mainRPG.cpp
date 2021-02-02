@@ -57,13 +57,16 @@
 			o >> Player 공격력 = 기본 공격력 + 무기 공격력
 			o >> Win or Game Over(상태 적용 : 체력 0이 될때)
 			o >> 골드 증가
-		> 무기 상점
-			>> 화면 구성
-			>> 불러오기
-			>> 무기 구매 시, 골드 차감
-			>> 페이지 이동(이전, 다음)
-		> Save 기능
+		o > 무기 상점
+			o >> 화면 구성
+			o >> 불러오기
+			o >> 무기 구매 시, 골드 차감
+			o >> 페이지 이동(이전, 다음)
+		o > Save 기능
 		> Load 기능
+
+		> 코드 정리
+			>> Game Set(New Game, Load 합치기 : 모드로 구분)
 */
 #include "GameManager.h"
 #include <iostream>

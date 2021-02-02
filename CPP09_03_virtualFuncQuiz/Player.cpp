@@ -64,7 +64,7 @@ void Player::ShowInfo(int Col)
 	//Weapon Info표시
 	if (m_bWeaponState == true)
 	{
-		m_ChMapDraw.DrawMidText("무기타입 : " + m_stPlayerWeapon.m_strWType + " 무기이릅 : " + m_stPlayerWeapon.m_strWName + "공격력 : " + to_string(m_stPlayerWeapon.m_iWAttack),WIDTH, HEIGHT * 0.1f + 3 + Col + 1);
+		m_ChMapDraw.DrawMidText("무기타입 : " + m_stPlayerWeapon.m_strWType + " 무기이름 : " + m_stPlayerWeapon.m_strWName + " 공격력 : " + to_string(m_stPlayerWeapon.m_iWAttack),WIDTH, HEIGHT * 0.1f + 4 + Col);
 	}
 	ORIGINAL
 }

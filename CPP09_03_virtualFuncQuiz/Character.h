@@ -39,6 +39,8 @@ class Character
 protected:
 	CharacterInfo m_stChInfo;
 	MapDraw m_ChMapDraw;
+	WEAPON m_stPlayerWeapon;
+	bool m_bWeaponState;
 public:
 	Character();
 	virtual void SetInfo(string str, int index) = 0;
@@ -51,6 +53,7 @@ public:
 	void GetReward(int RGetExp, int RGold);
 	void LevelUp(int AddAttack, int AddVital, int AddExp);
 	virtual void BuyWeapon(WEAPON WeaponInfo) = 0;
+	void LoadInfo(string str);
 	inline string GetName()
 	{
 		return m_stChInfo.m_strName;
@@ -74,6 +77,22 @@ public:
 	inline int GetExp()
 	{
 		return m_stChInfo.m_iExp;
+	}
+	inline int GetVital()
+	{
+		return m_stChInfo.m_iVital;
+	}
+	inline int GetLevel()
+	{
+		return m_stChInfo.m_iLevel;
+	}
+	inline bool GetWeaponState()
+	{
+		return m_bWeaponState;
+	}
+	inline WEAPON GetWeapon()
+	{
+		return m_stPlayerWeapon;
 	}
 
 	virtual ~Character();

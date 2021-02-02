@@ -274,7 +274,7 @@ void GameManager::DispDetailinfo(string str)
 		m_gmMapDraw.DrawMidText("이전 페이지", WIDTH, HEIGHT * 0.2f + 3 * j++);
 		m_gmMapDraw.DrawMidText("다음 페이지", WIDTH, HEIGHT * 0.2f + 3 * j++);
 		m_gmMapDraw.DrawMidText("나가기", WIDTH, HEIGHT * 0.2f + 3 * j++);
-		m_gmMapDraw.DrawMidText(to_string(iPage) + "Page", WIDTH, HEIGHT);
+		m_gmMapDraw.DrawMidText(to_string(iPage + 1) + "Page", WIDTH, HEIGHT-2);
 		iSelector = m_gmMapDraw.MenuSelectCursor(iDispCount + 3,3,WIDTH -26, HEIGHT * 0.2f);
 		if (iSelector <= iDispCount)
 		{
@@ -305,29 +305,24 @@ void GameManager::DispWeaponList(int weaponSelection)
 	{
 	case WEAPON_TYPE_DAGGER:
 		strType = "Dagger";
-		DispDetailinfo(strType);
 		break;
 	case WEAPON_TYPE_GUN:
 		strType = "Gun";
-		DispDetailinfo(strType);
 		break;
 	case WEAPON_TYPE_SWORD:
 		strType = "Sword";
-		DispDetailinfo(strType);
 		break;
 	case WEAPON_TYPE_WAND:
 		strType = "Wand";
-		DispDetailinfo(strType);
 		break;
 	case WEAPON_TYPE_BOW:
 		strType = "Bow";
-		DispDetailinfo(strType);
 		break;
 	case WEAPON_TYPE_HAMMER:
 		strType = "Hammer";
-		DispDetailinfo(strType);
 		break;
 	}
+	DispDetailinfo(strType);
 }
 
 void GameManager::DispShop()
@@ -350,20 +345,10 @@ void GameManager::DispShop()
 		switch ((WEAPON_TYPE)iShopSelection)
 		{
 		case WEAPON_TYPE_DAGGER:
-			DispWeaponList(iShopSelection);
-			break;
 		case WEAPON_TYPE_GUN:
-			DispWeaponList(iShopSelection);
-			break;
 		case WEAPON_TYPE_SWORD:
-			DispWeaponList(iShopSelection);
-			break;
 		case WEAPON_TYPE_WAND:
-			DispWeaponList(iShopSelection);
-			break;
 		case WEAPON_TYPE_BOW:
-			DispWeaponList(iShopSelection);
-			break;
 		case WEAPON_TYPE_HAMMER:
 			DispWeaponList(iShopSelection);
 			break;
@@ -394,28 +379,69 @@ void GameManager::EnterDungeon()
 	}
 }
 
-void GameManager::DispSave()
+void GameManager::SavePlayerInfo(int selector)
 {
-	int iEnterCusorX = (WIDTH - 8) / 2;
-	int iEnterCusorY = HEIGHT * 0.3f + 2;
-	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
-	for (int i = 0; i < NUMBER_SAVE_SLOT; i++)
+	ofstream fSaveFile;
+	string strFileName = "SavePlayer" + to_string(selector) + ".txt";
+	bool bTmp;
+	fSaveFile.open(strFileName);
+	if(fSaveFile.is_open())
 	{
-		m_gmMapDraw.DrawMidText(to_string(i) + "번 슬롯 : <파일 여부 : >", WIDTH, HEIGHT * 0.3f);
+		fSaveFile << m_gmCharacter[PLAYER]->GetName() << " ";
+		fSaveFile << m_gmCharacter[PLAYER]->GetAttack() << " ";
+		fSaveFile << m_gmCharacter[PLAYER]->GetVital() << " ";
+		fSaveFile << m_gmCharacter[PLAYER]->GetExp() << " ";
+		fSaveFile << m_gmCharacter[PLAYER]->GetGetExp() << " ";
+		fSaveFile << m_gmCharacter[PLAYER]->GetLevel() << " ";
+		fSaveFile << m_gmCharacter[PLAYER]->GetGold() << " ";
+		fSaveFile << m_gmCharacter[PLAYER]->GetCurExp() << " ";
+		fSaveFile << m_gmCharacter[PLAYER]->GetCurVital() << endl;
+		bTmp = m_gmCharacter[PLAYER]->GetWeaponState();
+		fSaveFile << bTmp << " ";
+		if (bTmp == true)
+		{
+			WEAPON stTmp = m_gmCharacter[PLAYER]->GetWeapon();
+			fSaveFile << stTmp.m_strWType << " ";
+			fSaveFile << stTmp.m_strWName << " ";
+			fSaveFile << stTmp.m_iWAttack << " ";
+			fSaveFile << stTmp.m_iWCost;
+		}
 	}
-	m_gmMapDraw.DrawMidText("♧ ♣ S H O P ♣ ♧", WIDTH, HEIGHT * 0.3f);
-	m_gmMapDraw.DrawMidText("Dagger  ", WIDTH, HEIGHT * 0.3f + 2);
-	m_gmMapDraw.DrawMidText("Gun     ", WIDTH, HEIGHT * 0.3f + 4);
-	m_gmMapDraw.DrawMidText("Sword   ", WIDTH, HEIGHT * 0.3f + 6);
-	m_gmMapDraw.DrawMidText("Wand    ", WIDTH, HEIGHT * 0.3f + 8);
-	m_gmMapDraw.DrawMidText("Bow     ", WIDTH, HEIGHT * 0.3f + 10);
-	m_gmMapDraw.DrawMidText("Hammer  ", WIDTH, HEIGHT * 0.3f + 12);
-	m_gmMapDraw.DrawMidText("돌아가기", WIDTH, HEIGHT * 0.3f + 12);
+	fSaveFile.close();
+}
+
+int GameManager::DispSaveSlot()
+{
+	int iCusorX = (WIDTH - 16) / 2;
+	int iCusorY = HEIGHT * 0.1f + 2;
+	int iSelector;
+	string strFileCheck;
+	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
+	GREEN
+	int i;
+	for (i = 1; i <= NUMBER_SAVE_SLOT; i++)
+	{
+		ifstream tmpLoadFile;
+		string strTmp = "SavePlayer" + to_string(i) + ".txt";
+		tmpLoadFile.open(strTmp);
+		if (tmpLoadFile.is_open())
+		{
+			strFileCheck = "O";
+			tmpLoadFile.close();
+		}
+		else
+			strFileCheck = "X";
+		m_gmMapDraw.TextDraw(to_string(i) + "번 슬롯 : <파일 여부 : " + strFileCheck + ">", WIDTH - 12,HEIGHT*0.1f+2*i);
+	}
+	m_gmMapDraw.TextDraw(to_string(i) + "번. 돌아가기", WIDTH - 12,HEIGHT*0.1f+2*i);
+	iSelector = m_gmMapDraw.MenuSelectCursor(NUMBER_SAVE_SLOT + 1, 2, iCusorX, iCusorY);
+	return iSelector;
 }
 
 void GameManager::StartGame()
 {
 	int iSelect;
+	int iSlotSelector;
 	int iMainMenuCount = 6;
 	int iMainMenuAddCol = 2;
 	int iMenuCusorX = (WIDTH - 10) / 2;
@@ -443,7 +469,16 @@ void GameManager::StartGame()
 			DispShop();
 			break;
 		case PLAY_MENU_SAVE:
-			DispSave();
+			iSlotSelector = DispSaveSlot();
+			if (iSlotSelector <= NUMBER_SAVE_SLOT)
+			{
+				m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
+				SavePlayerInfo(iSlotSelector);
+				m_gmMapDraw.DrawMidText("Save 완료", WIDTH, HEIGHT * 0.5f);
+				getch();
+			}
+			else
+				return;
 			break;
 		case PLAY_MENU_EXIT:
 			for (int i = 0; i < MAX_CHARACTER; i++)
@@ -474,6 +509,61 @@ void GameManager::LoadWeapon()
 	fWeaponLoad.close();
 }
 
+void GameManager::LoadPlayerInfo(int selector)
+{
+	ifstream fLoadFile;
+	string strFileName = "SavePlayer" + to_string(selector) + ".txt";
+	fLoadFile.open(strFileName);
+	if (fLoadFile.is_open())
+	{
+		CharacterInfo stTmpInfo;
+		fLoadFile >> stTmpInfo.m_strName;
+		fLoadFile >> stTmpInfo.m_iAttack;
+		fLoadFile >> stTmpInfo.m_iVital;
+		fLoadFile >> stTmpInfo.m_iExp;
+		fLoadFile >> stTmpInfo.m_iGetExp;
+		fLoadFile >> stTmpInfo.m_iLevel;
+		fLoadFile >> stTmpInfo.m_iGold;
+		fLoadFile >> stTmpInfo.m_iCurExp;
+		fLoadFile >> stTmpInfo.m_iCurVital;
+
+		//무기정보 임시 구조체 만들기
+		
+		//구조체를 변수에 셋팅
+
+
+		while (!fLoadFile.eof())
+		{
+			string strTmp;
+			Player tmpPlayer;
+			fLoadFile >> strTmp;;
+			tmpPlayer.LoadInfo(strTmp);
+		}
+
+		m_gmCharacter[PLAYER] = new Player;
+
+		m_gmMapDraw.DrawMidText("Load 완료", WIDTH, HEIGHT * 0.5f);
+		fLoadFile.close();
+	}
+	else
+		m_gmMapDraw.DrawMidText("해당 파일이 없습니다.", WIDTH, HEIGHT * 0.5f);
+	getch();
+
+}
+
+void GameManager::DispLoad()
+{
+	int iSlotSelector;
+	iSlotSelector = DispSaveSlot();
+	if (iSlotSelector <= NUMBER_SAVE_SLOT)
+	{
+		m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
+		LoadPlayerInfo(iSlotSelector);
+		m_gmMapDraw.DrawMidText("Load 완료", WIDTH, HEIGHT * 0.5f);
+		getch();
+	}
+}
+
 void GameManager::RunGame()
 {
 	int iLobyMenuCount = 3;
@@ -500,9 +590,11 @@ void GameManager::RunGame()
 			StartGame();
 			break;
 		case LOBY_MENU_LOAD:
+			DispLoad();
 			break;
 		case LOBY_MENU_EXIT:
-			//Weapon 정보  Clear할 것
+			//Clear Weapon List
+			m_vWeaponList.clear();
 			return;
 		}
 	}

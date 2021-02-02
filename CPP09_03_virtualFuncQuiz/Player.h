@@ -7,8 +7,8 @@ class Player:public Character
 private:
 	int m_iWeaponAttack;
 	int m_iTotalAttack;
-	WEAPON m_stPlayerWeapon;
-	bool m_bWeaponState;
+	//WEAPON m_stPlayerWeapon;
+	//bool m_bWeaponState;
 public:
 	Player();
 	~Player();
