@@ -59,5 +59,5 @@ void Character::LevelUp(int AddAttack, int AddVital, int AddExp)
 		m_stChInfo.m_iVital += AddVital;
 		m_stChInfo.m_iCurVital = m_stChInfo.m_iVital;
 	}
-
 }
+

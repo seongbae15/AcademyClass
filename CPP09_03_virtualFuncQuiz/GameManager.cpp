@@ -57,8 +57,6 @@ void GameManager::NewGameSet()
 	}
 	fPlayerLoad.close();
 	fMonsterLoad.close();
-
-
 }
 
 void GameManager::DispPlayMenu()
@@ -89,8 +87,6 @@ void GameManager::DispInfo(int selection)
 	}
 	getch();
 }
-
-
 
 void GameManager::DispEntrance()
 {
@@ -171,7 +167,6 @@ void GameManager:: CheckGameEnd(int MonsterNumber)
 
 void GameManager::DispLevelUp()
 {
-	
 	PURPLE
 	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
 	m_gmMapDraw.DrawMidText(m_gmCharacter[PLAYER]->GetName() + "레벨업", WIDTH, HEIGHT*0.4f);
@@ -208,7 +203,6 @@ void GameManager::StartBattle(int MonsterSelection)
 			//Display Monster's RPS(Random)
 			int iMonsterRPS = rand() % 3 + '1';
 			m_gmCharacter[MonsterSelection]->ThrowRPS(iMonsterRPS,MONSTER);
-			
 			//Win, Draw, Lose
 			int iWDL = WinLoseDraw(iPlayerRPS, iMonsterRPS);
 			switch ((WINDRAWLOSE)iWDL)
@@ -250,20 +244,59 @@ void GameManager::StartBattle(int MonsterSelection)
 }
 void GameManager::DispDetailinfo(string str)
 {
-	//선별 작업
+	int iDispCount;
+	int iSelector;
+	int iPage=0;
+	vector<Weapon> tmpWeaponList;
 	for (int i = 0;i < m_vWeaponList.size();i++)
 	{
 		if (str == m_vWeaponList[i].GetWeaponType())
+			tmpWeaponList.push_back(m_vWeaponList[i]);
+	}
+	while (1)
+	{
+		int j;
+		if (tmpWeaponList.size() >= 5)
 		{
-
+			if(iPage == 0)
+				iDispCount = 5;
+			else
+				iDispCount = tmpWeaponList.size() - 5 * iPage;
 		}
+		else
+			iDispCount = tmpWeaponList.size();
+		//Disp
+		m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
+		m_gmMapDraw.DrawMidText(m_gmCharacter[PLAYER]->GetName() + " Gold : " + to_string(m_gmCharacter[PLAYER]->GetGold()), WIDTH, 2);
+		m_gmMapDraw.DrawMidText(str + " Shop", WIDTH, 4);
+		for (j=0; j < iDispCount; j++)
+			tmpWeaponList[j+iPage*5].ShowWeapon(WIDTH,HEIGHT*0.2f + 3*j);
+		m_gmMapDraw.DrawMidText("이전 페이지", WIDTH, HEIGHT * 0.2f + 3 * j++);
+		m_gmMapDraw.DrawMidText("다음 페이지", WIDTH, HEIGHT * 0.2f + 3 * j++);
+		m_gmMapDraw.DrawMidText("나가기", WIDTH, HEIGHT * 0.2f + 3 * j++);
+		m_gmMapDraw.DrawMidText(to_string(iPage) + "Page", WIDTH, HEIGHT);
+		iSelector = m_gmMapDraw.MenuSelectCursor(iDispCount + 3,3,WIDTH -26, HEIGHT * 0.2f);
+		if (iSelector <= iDispCount)
+		{
+			//Buy Item
+			m_gmCharacter[PLAYER]->BuyWeapon(tmpWeaponList[iSelector - 1 + iPage * 5].getWeaponInfo());
+		}
+		else if (iSelector == iDispCount + 1)
+		{
+			//Previous Page
+			if (iPage != 0)
+				iPage--;
+		}
+		else if (iSelector == iDispCount + 2)
+		{
+			//Next Page
+			if (iPage != (tmpWeaponList.size() - 1) / 5)
+				iPage++;
+		}
+		else
+			break;
 	}
 
-	//Disp
-	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
-	m_gmMapDraw.DrawMidText(m_gmCharacter[PLAYER]->GetName() + " Gold : " + to_string(m_gmCharacter[PLAYER]->GetGold()),WIDTH, 2);
-	m_gmMapDraw.DrawMidText(str + " Shop", WIDTH, 4);
-	getch();
 }
 void GameManager::DispWeaponList(int weaponSelection)
 {
@@ -299,41 +332,44 @@ void GameManager::DispWeaponList(int weaponSelection)
 
 void GameManager::DispShop()
 {
-	int iShopSelection;
-	int iEnterCusorX = (WIDTH - 8) / 2;
-	int iEnterCusorY = HEIGHT * 0.3f + 2;
-	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
-	m_gmMapDraw.DrawMidText("♧ ♣ S H O P ♣ ♧",WIDTH,HEIGHT*0.3f);
-	m_gmMapDraw.DrawMidText("Dagger  ", WIDTH, HEIGHT * 0.3f + 2);
-	m_gmMapDraw.DrawMidText("Gun     ", WIDTH, HEIGHT * 0.3f + 4);
-	m_gmMapDraw.DrawMidText("Sword   ", WIDTH, HEIGHT * 0.3f + 6);
-	m_gmMapDraw.DrawMidText("Wand    ", WIDTH, HEIGHT * 0.3f + 8);
-	m_gmMapDraw.DrawMidText("Bow     ", WIDTH, HEIGHT * 0.3f + 10);
-	m_gmMapDraw.DrawMidText("Hammer  ", WIDTH, HEIGHT * 0.3f + 12);
-	m_gmMapDraw.DrawMidText("돌아가기", WIDTH, HEIGHT * 0.3f + 12);
-	iShopSelection = m_gmMapDraw.MenuSelectCursor(NUMBER_WEAPON_TYPE + 1, 2, iEnterCusorX, iEnterCusorY);
-	switch ((WEAPON_TYPE)iShopSelection)
+	while (1)
 	{
-	case WEAPON_TYPE_DAGGER:
-		DispWeaponList(iShopSelection);
-		break;
-	case WEAPON_TYPE_GUN:
-		DispWeaponList(iShopSelection);
-		break;
-	case WEAPON_TYPE_SWORD:
-		DispWeaponList(iShopSelection);
-		break;
-	case WEAPON_TYPE_WAND:
-		DispWeaponList(iShopSelection);
-		break;
-	case WEAPON_TYPE_BOW:
-		DispWeaponList(iShopSelection);
-		break;
-	case WEAPON_TYPE_HAMMER:
-		DispWeaponList(iShopSelection);
-		break;
-	case WEAPON_TYPE_END:
-		return;
+		int iShopSelection;
+		int iEnterCusorX = (WIDTH - 8) / 2;
+		int iEnterCusorY = HEIGHT * 0.3f + 2;
+		m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
+		m_gmMapDraw.DrawMidText("♧ ♣ S H O P ♣ ♧", WIDTH, HEIGHT * 0.3f);
+		m_gmMapDraw.DrawMidText("Dagger  ", WIDTH, HEIGHT * 0.3f + 2);
+		m_gmMapDraw.DrawMidText("Gun     ", WIDTH, HEIGHT * 0.3f + 4);
+		m_gmMapDraw.DrawMidText("Sword   ", WIDTH, HEIGHT * 0.3f + 6);
+		m_gmMapDraw.DrawMidText("Wand    ", WIDTH, HEIGHT * 0.3f + 8);
+		m_gmMapDraw.DrawMidText("Bow     ", WIDTH, HEIGHT * 0.3f + 10);
+		m_gmMapDraw.DrawMidText("Hammer  ", WIDTH, HEIGHT * 0.3f + 12);
+		m_gmMapDraw.DrawMidText("돌아가기", WIDTH, HEIGHT * 0.3f + 14);
+		iShopSelection = m_gmMapDraw.MenuSelectCursor(NUMBER_WEAPON_TYPE + 1, 2, iEnterCusorX, iEnterCusorY);
+		switch ((WEAPON_TYPE)iShopSelection)
+		{
+		case WEAPON_TYPE_DAGGER:
+			DispWeaponList(iShopSelection);
+			break;
+		case WEAPON_TYPE_GUN:
+			DispWeaponList(iShopSelection);
+			break;
+		case WEAPON_TYPE_SWORD:
+			DispWeaponList(iShopSelection);
+			break;
+		case WEAPON_TYPE_WAND:
+			DispWeaponList(iShopSelection);
+			break;
+		case WEAPON_TYPE_BOW:
+			DispWeaponList(iShopSelection);
+			break;
+		case WEAPON_TYPE_HAMMER:
+			DispWeaponList(iShopSelection);
+			break;
+		case WEAPON_TYPE_END:
+			return;
+		}
 	}
 }
 
@@ -356,7 +392,6 @@ void GameManager::EnterDungeon()
 	case 7:
 		return;
 	}
-
 }
 
 void GameManager::DispSave()
@@ -411,7 +446,6 @@ void GameManager::StartGame()
 			DispSave();
 			break;
 		case PLAY_MENU_EXIT:
-			//Make delete function***
 			for (int i = 0; i < MAX_CHARACTER; i++)
 			{
 				if (m_gmCharacter[i] != NULL)
@@ -438,7 +472,6 @@ void GameManager::LoadWeapon()
 		m_vWeaponList.push_back(tmpWeapon);
 	}
 	fWeaponLoad.close();
-
 }
 
 void GameManager::RunGame()

@@ -1,8 +1,7 @@
 #pragma once
 #include "Lib.h"
 #include "MapDraw.h"
-
-
+#include "Weapon.h"
 
 enum INFO_LIST
 {
@@ -51,7 +50,7 @@ public:
 	void Respawn();
 	void GetReward(int RGetExp, int RGold);
 	void LevelUp(int AddAttack, int AddVital, int AddExp);
-
+	virtual void BuyWeapon(WEAPON WeaponInfo) = 0;
 	inline string GetName()
 	{
 		return m_stChInfo.m_strName;

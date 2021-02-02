@@ -41,6 +41,7 @@ void Player::SetInfo(string str, int index)
 	m_stChInfo.m_iCurVital = m_stChInfo.m_iVital;
 	m_iWeaponAttack = 0;
 	m_iTotalAttack = m_iWeaponAttack + m_stChInfo.m_iAttack;
+	m_bWeaponState = false;
 }
 
 void Player::ShowInfo(int Col)
@@ -61,5 +62,27 @@ void Player::ShowInfo(int Col)
 	m_ChMapDraw.TextDraw("Gold = ", iPosX1, HEIGHT * 0.1f + 3 + Col);
 	cout << m_stChInfo.m_iGold;
 	//Weapon Info표시
+	if (m_bWeaponState == true)
+	{
+		m_ChMapDraw.DrawMidText("무기타입 : " + m_stPlayerWeapon.m_strWType + " 무기이릅 : " + m_stPlayerWeapon.m_strWName + "공격력 : " + to_string(m_stPlayerWeapon.m_iWAttack),WIDTH, HEIGHT * 0.1f + 3 + Col + 1);
+	}
 	ORIGINAL
+}
+
+void Player::BuyWeapon(WEAPON WeaponInfo)
+{
+	if (WeaponInfo.m_iWCost < m_stPlayerWeapon.m_iWCost)
+	{
+		m_ChMapDraw.BoxErase(WIDTH, HEIGHT);
+		m_ChMapDraw.DrawMidText("Gold 가 부족합니다.",WIDTH, HEIGHT*0.5f);
+	}
+	else
+	{
+		m_stChInfo.m_iGold -= WeaponInfo.m_iWCost;
+		m_stPlayerWeapon = WeaponInfo;
+		m_bWeaponState = true;
+		m_iWeaponAttack = WeaponInfo.m_iWAttack;
+		m_iTotalAttack = m_iWeaponAttack + m_stChInfo.m_iAttack;
+	}
+
 }

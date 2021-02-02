@@ -35,5 +35,9 @@ public:
 	{
 		return m_stWInfo.m_strWType;
 	}
+	inline WEAPON getWeaponInfo()
+	{
+		return m_stWInfo;
+	}
 };
 

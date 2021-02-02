@@ -57,3 +57,8 @@ void Monster::ShowInfo(int Col)
 	m_ChMapDraw.TextDraw("Gold = ", iPosX1, HEIGHT * 0.1f + 3 + Col);
 	cout << m_stChInfo.m_iGold;
 }
+
+void Monster::BuyWeapon(WEAPON WeaponInfo)
+{
+
+}
