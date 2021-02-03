@@ -72,7 +72,16 @@ void Monster::InstallWeapon(WEAPON WeaponInfo)
 
 }
 
-void Monster::LoadCharacterInfo(CharacterInfo stCharacter)
+void Monster::LoadCharacterInfo(CharacterInfo stCharacter,int iMode)
 {
-
+	m_stChInfo = stCharacter;
+	switch (iMode)
+	{
+	case NEW:
+		m_stChInfo.m_iCurExp = 0;
+		m_stChInfo.m_iCurVital = m_stChInfo.m_iVital;
+		break;
+	case LOAD:
+		break;
+	}
 }

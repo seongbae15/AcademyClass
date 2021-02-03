@@ -23,39 +23,40 @@ void GameManager::DispLoby()
 void GameManager::NewGameSet()
 {
 	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
-
+	CharacterInfo stTmpInfo;
 	ifstream fPlayerLoad;
 	fPlayerLoad.open("DefaultPlayer.txt");
+	//Set Player
+	m_gmCharacter[PLAYER] = new Player;
+	YELLOW
+	m_gmMapDraw.DrawMidText("Player 이름 입력 : ", WIDTH, HEIGHT * 0.5f);
+	ORIGINAL
+	cin >> stTmpInfo.m_strName;
+	fPlayerLoad >> stTmpInfo.m_iAttack;
+	fPlayerLoad >> stTmpInfo.m_iVital;
+	fPlayerLoad >> stTmpInfo.m_iExp;
+	fPlayerLoad >> stTmpInfo.m_iGetExp;
+	fPlayerLoad >> stTmpInfo.m_iLevel;
+	fPlayerLoad >> stTmpInfo.m_iGold;
+	m_gmCharacter[PLAYER]->LoadCharacterInfo(stTmpInfo, NEW);
+	fPlayerLoad.close();
+
+	//Set Monster
 	ifstream fMonsterLoad;
 	fMonsterLoad.open("DefaultMonster.txt");
 	fMonsterLoad >> m_iMonsterCount;
-	for (int i = 0;i<MAX_CHARACTER;i++)
+	for (int i = 1;i<=m_iMonsterCount;i++)
 	{
-		if (i == PLAYER)
-		{
-			m_gmCharacter[i] = new Player;
-			YELLOW
-			m_gmMapDraw.DrawMidText("Player 이름 입력 : ", WIDTH, HEIGHT * 0.5f);
-			ORIGINAL
-		}
-		else
-			m_gmCharacter[i] = new Monster;
-		for (int j = 0; j < NUMBER_INFO; j++)
-		{
-			string strTemp;
-			if (i == PLAYER)
-			{
-				if (j == (int)INFO_LIST_NAME)
-					cin >> strTemp;
-				else
-					fPlayerLoad >> strTemp;
-			}
-			else
-				fMonsterLoad >> strTemp;
-			m_gmCharacter[i]->SetInfo(strTemp, j);
-		}
+		m_gmCharacter[i] = new Monster;
+		fMonsterLoad >> stTmpInfo.m_strName;
+		fMonsterLoad >> stTmpInfo.m_iAttack;
+		fMonsterLoad >> stTmpInfo.m_iVital;
+		fMonsterLoad >> stTmpInfo.m_iExp;
+		fMonsterLoad >> stTmpInfo.m_iGetExp;
+		fMonsterLoad >> stTmpInfo.m_iLevel;
+		fMonsterLoad >> stTmpInfo.m_iGold;
+		m_gmCharacter[i]->LoadCharacterInfo(stTmpInfo, NEW);
 	}
-	fPlayerLoad.close();
 	fMonsterLoad.close();
 }
 
@@ -379,7 +380,7 @@ void GameManager::EnterDungeon()
 	}
 }
 
-void GameManager::SavePlayerInfo(int selector)
+void GameManager::SaveSlotInfo(int selector)
 {
 	ofstream fSaveFile;
 	string strFileName = "SavePlayer" + to_string(selector) + ".txt";
@@ -473,7 +474,7 @@ void GameManager::StartGame()
 			if (iSlotSelector <= NUMBER_SAVE_SLOT)
 			{
 				m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
-				SavePlayerInfo(iSlotSelector);
+				SaveSlotInfo(iSlotSelector);
 				m_gmMapDraw.DrawMidText("Save 완료", WIDTH, HEIGHT * 0.5f);
 				getch();
 			}
@@ -509,7 +510,7 @@ void GameManager::LoadWeapon()
 	fWeaponLoad.close();
 }
 
-void GameManager::LoadPlayerInfo(int selector)
+void GameManager::LoadSlotInfo(int selector)
 {
 	ifstream fLoadFile;
 	bool bTmp;
@@ -530,7 +531,7 @@ void GameManager::LoadPlayerInfo(int selector)
 		fLoadFile >> stTmpInfo.m_iCurVital;
 
 		//Player Setting
-		m_gmCharacter[PLAYER]->LoadCharacterInfo(stTmpInfo);
+		m_gmCharacter[PLAYER]->LoadCharacterInfo(stTmpInfo,LOAD);
 		
 		fLoadFile >> bTmp;
 		if (bTmp)
@@ -576,7 +577,7 @@ void GameManager::DispLoad()
 	if (iSlotSelector <= NUMBER_SAVE_SLOT)
 	{
 		m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
-		LoadPlayerInfo(iSlotSelector);
+		LoadSlotInfo(iSlotSelector);
 		m_gmMapDraw.DrawMidText("Load 완료", WIDTH, HEIGHT * 0.5f);
 		getch();
 	}
@@ -584,10 +585,10 @@ void GameManager::DispLoad()
 
 void GameManager::RunGame()
 {
-	int iLobyMenuCount = 3;
-	int iLobyCursorX = (WIDTH-8)/2;
-	int iLobyCursorY = HEIGHT*0.4f;
-	int iLobyAddCol = 3;
+	int iCusorCount = 3;
+	int iCursorX = (WIDTH-8)/2;
+	int iCursorY = HEIGHT*0.4f;
+	int iAddCol = 3;
 	//Set Console Window
 	SetConsoleWindow(WIDTH, HEIGHT);
 	//To make random RPS of Monster
@@ -598,7 +599,7 @@ void GameManager::RunGame()
 	{
 		int iSelect;
 		DispLoby();
-		iSelect = m_gmMapDraw.MenuSelectCursor(iLobyMenuCount, iLobyAddCol, iLobyCursorX, iLobyCursorY);
+		iSelect = m_gmMapDraw.MenuSelectCursor(iCusorCount, iAddCol, iCursorX, iCursorY);
 		switch ((LOBY_MENU)iSelect)
 		{
 		case LOBY_MENU_NEW:

@@ -6,6 +6,10 @@
 #include<fstream>
 #include<time.h>
 
+#define NEW 0
+#define LOAD 1
+#define SAVE 2
+
 using namespace std;
 
 //////////////////////////////////////////////////////

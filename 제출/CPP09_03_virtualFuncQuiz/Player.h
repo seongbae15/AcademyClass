@@ -18,7 +18,7 @@ public:
 	void BuyWeapon(WEAPON WeaponInfo);
 	void InstallWeapon();
 	void InstallWeapon(WEAPON WeaponInfo);
-	void LoadCharacterInfo(CharacterInfo stCharacter);
+	void LoadCharacterInfo(CharacterInfo stCharacter,int iMode);
 	inline int GetAttack()
 	{
 		return m_iTotalAttack;

@@ -85,8 +85,8 @@ public:
 	void DispWeaponList(int weaponSelection);
 	void DispDetailinfo(string str);
 	int DispSaveSlot();
-	void SavePlayerInfo(int selector);
+	void SaveSlotInfo(int selector);
 	void DispLoad();
-	void LoadPlayerInfo(int selector);
+	void LoadSlotInfo(int selector);
 };
 

@@ -55,7 +55,7 @@ public:
 	virtual void BuyWeapon(WEAPON WeaponInfo) = 0;
 	virtual void InstallWeapon() = 0;
 	virtual void InstallWeapon(WEAPON WeaponInfo) = 0;
-	virtual void LoadCharacterInfo(CharacterInfo stCharacter) = 0;
+	virtual void LoadCharacterInfo(CharacterInfo stCharacter, int iMode) = 0;
 	inline string GetName()
 	{
 		return m_stChInfo.m_strName;

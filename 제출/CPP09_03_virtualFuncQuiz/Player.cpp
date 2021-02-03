@@ -99,8 +99,19 @@ void Player::BuyWeapon(WEAPON WeaponInfo)
 
 }
 
-void Player::LoadCharacterInfo(CharacterInfo stCharacter)
+void Player::LoadCharacterInfo(CharacterInfo stCharacter, int iMode)
 {
 	m_stChInfo = stCharacter;
-
+	switch (iMode)
+	{
+	case NEW:
+		m_stChInfo.m_iCurExp = 0;
+		m_stChInfo.m_iCurVital = m_stChInfo.m_iVital;
+		m_iWeaponAttack = 0;
+		m_iTotalAttack = m_iWeaponAttack + m_stChInfo.m_iAttack;
+		m_bWeaponState = false;
+		break;
+	case LOAD:
+		break;
+	}
 }
