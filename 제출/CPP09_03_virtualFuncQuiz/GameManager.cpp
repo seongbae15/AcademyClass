@@ -512,10 +512,12 @@ void GameManager::LoadWeapon()
 void GameManager::LoadPlayerInfo(int selector)
 {
 	ifstream fLoadFile;
+	bool bTmp;
 	string strFileName = "SavePlayer" + to_string(selector) + ".txt";
 	fLoadFile.open(strFileName);
 	if (fLoadFile.is_open())
 	{
+		m_gmCharacter[PLAYER] = new Player;
 		CharacterInfo stTmpInfo;
 		fLoadFile >> stTmpInfo.m_strName;
 		fLoadFile >> stTmpInfo.m_iAttack;
@@ -527,23 +529,39 @@ void GameManager::LoadPlayerInfo(int selector)
 		fLoadFile >> stTmpInfo.m_iCurExp;
 		fLoadFile >> stTmpInfo.m_iCurVital;
 
-		//무기정보 임시 구조체 만들기
+		//Player Setting
+		m_gmCharacter[PLAYER]->LoadCharacterInfo(stTmpInfo);
 		
-		//구조체를 변수에 셋팅
-
-
-		while (!fLoadFile.eof())
+		fLoadFile >> bTmp;
+		if (bTmp)
 		{
-			string strTmp;
-			Player tmpPlayer;
-			fLoadFile >> strTmp;;
-			tmpPlayer.LoadInfo(strTmp);
+			WEAPON stTmpWinfo;
+			fLoadFile >> stTmpWinfo.m_strWType;
+			fLoadFile >> stTmpWinfo.m_strWName;
+			fLoadFile >> stTmpWinfo.m_iWAttack;
+			fLoadFile >> stTmpWinfo.m_iWCost;
+			m_gmCharacter[PLAYER]->InstallWeapon(stTmpWinfo);
 		}
-
-		m_gmCharacter[PLAYER] = new Player;
-
+		else
+			m_gmCharacter[PLAYER]->InstallWeapon();
 		m_gmMapDraw.DrawMidText("Load 완료", WIDTH, HEIGHT * 0.5f);
 		fLoadFile.close();
+
+		//Monster Set
+		ifstream fMonsterLoad;
+		fMonsterLoad.open("DefaultMonster.txt");
+		fMonsterLoad >> m_iMonsterCount;
+		for (int i = 1; i < MAX_CHARACTER; i++)
+		{
+			m_gmCharacter[i] = new Monster;
+			for (int j = 0; j < NUMBER_INFO; j++)
+			{
+				string strTemp;
+				fMonsterLoad >> strTemp;
+				m_gmCharacter[i]->SetInfo(strTemp, j);
+			}
+		}
+		fMonsterLoad.close();
 	}
 	else
 		m_gmMapDraw.DrawMidText("해당 파일이 없습니다.", WIDTH, HEIGHT * 0.5f);
@@ -591,6 +609,7 @@ void GameManager::RunGame()
 			break;
 		case LOBY_MENU_LOAD:
 			DispLoad();
+			StartGame();
 			break;
 		case LOBY_MENU_EXIT:
 			//Clear Weapon List

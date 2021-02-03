@@ -16,6 +16,9 @@ public:
 	void ShowInfo(int Col);
 	void SetInfo(string str, int index);
 	void BuyWeapon(WEAPON WeaponInfo);
+	void InstallWeapon();
+	void InstallWeapon(WEAPON WeaponInfo);
+	void LoadCharacterInfo(CharacterInfo stCharacter);
 	inline int GetAttack()
 	{
 		return m_iTotalAttack;

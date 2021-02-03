@@ -62,3 +62,17 @@ void Monster::BuyWeapon(WEAPON WeaponInfo)
 {
 
 }
+void Monster::InstallWeapon()
+{
+
+}
+
+void Monster::InstallWeapon(WEAPON WeaponInfo)
+{
+
+}
+
+void Monster::LoadCharacterInfo(CharacterInfo stCharacter)
+{
+
+}

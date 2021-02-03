@@ -53,7 +53,9 @@ public:
 	void GetReward(int RGetExp, int RGold);
 	void LevelUp(int AddAttack, int AddVital, int AddExp);
 	virtual void BuyWeapon(WEAPON WeaponInfo) = 0;
-	void LoadInfo(string str);
+	virtual void InstallWeapon() = 0;
+	virtual void InstallWeapon(WEAPON WeaponInfo) = 0;
+	virtual void LoadCharacterInfo(CharacterInfo stCharacter) = 0;
 	inline string GetName()
 	{
 		return m_stChInfo.m_strName;

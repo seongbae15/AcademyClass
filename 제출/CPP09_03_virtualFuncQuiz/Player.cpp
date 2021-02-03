@@ -69,6 +69,21 @@ void Player::ShowInfo(int Col)
 	ORIGINAL
 }
 
+void Player::InstallWeapon()
+{
+	m_bWeaponState = false;
+	m_iWeaponAttack = 0;
+	m_iTotalAttack = m_iWeaponAttack + m_stChInfo.m_iAttack;
+}
+
+void Player::InstallWeapon(WEAPON WeaponInfo)
+{
+	m_bWeaponState = true;
+	m_stPlayerWeapon = WeaponInfo;
+	m_iWeaponAttack = WeaponInfo.m_iWAttack;
+	m_iTotalAttack = m_iWeaponAttack + m_stChInfo.m_iAttack;
+}
+
 void Player::BuyWeapon(WEAPON WeaponInfo)
 {
 	if (WeaponInfo.m_iWCost < m_stPlayerWeapon.m_iWCost)
@@ -79,10 +94,13 @@ void Player::BuyWeapon(WEAPON WeaponInfo)
 	else
 	{
 		m_stChInfo.m_iGold -= WeaponInfo.m_iWCost;
-		m_stPlayerWeapon = WeaponInfo;
-		m_bWeaponState = true;
-		m_iWeaponAttack = WeaponInfo.m_iWAttack;
-		m_iTotalAttack = m_iWeaponAttack + m_stChInfo.m_iAttack;
+		InstallWeapon(WeaponInfo);
 	}
+
+}
+
+void Player::LoadCharacterInfo(CharacterInfo stCharacter)
+{
+	m_stChInfo = stCharacter;
 
 }
