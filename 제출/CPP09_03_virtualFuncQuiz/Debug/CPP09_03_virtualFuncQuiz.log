@@ -36,39 +36,35 @@ C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameM
 C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(191,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
 C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(199,49): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(200,77): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(208,91): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(206,16): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(235,2): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(251,4): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(261,19): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(283,58): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(284,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(285,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(286,61): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(288,79): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(344,15): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(346,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(347,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(348,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(237,2): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(253,4): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(263,19): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(285,58): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(286,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(287,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(288,61): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(290,79): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(346,15): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(348,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(349,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(350,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(351,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(352,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(353,64): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(375,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(426,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(444,116): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(446,81): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(458,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(490,58): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(491,5): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(556,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(562,75): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(574,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(575,3): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(592,15): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  mainRPG.cpp
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\MapDraw.h(19,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\MapDraw.h(19,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\mainRPG.cpp(5,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
-  코드를 생성하고 있습니다...
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(353,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(354,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(355,64): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(377,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(428,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(446,116): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(448,81): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(460,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(492,58): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(493,5): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(558,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(564,75): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(576,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(577,3): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\GameManager.cpp(594,15): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   CPP09_03_virtualFuncQuiz.vcxproj -> C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\Debug\CPP09_03_virtualFuncQuiz.exe

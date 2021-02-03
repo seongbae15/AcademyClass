@@ -204,6 +204,7 @@ void GameManager::StartBattle(int MonsterSelection)
 	{
 		int iPlayerRPS;
 		iPlayerRPS = getch();
+		m_gmMapDraw.DrawMidText("                                              ",WIDTH, HEIGHT * 0.4f + 2);
 		if (iPlayerRPS >= '1' && iPlayerRPS <= '3')
 		{
 			//Display Player's RPS

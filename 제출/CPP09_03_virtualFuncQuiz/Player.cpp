@@ -48,6 +48,33 @@ void Player::InstallWeapon(WEAPON WeaponInfo)
 	m_iTotalAttack = m_iWeaponAttack + m_stChInfo.m_iAttack;
 }
 
+void Player::Damage(int attack)
+{
+	if (m_bWeaponState == true)
+	{
+		int iCriRate = rand() % 100 + 1;
+		m_stPlayerWeapon.m_strWType;
+		if (m_stPlayerWeapon.m_strWType == "Dagger" && iCriRate <= 60)
+		{
+			attack *= 2;
+			m_ChMapDraw.DrawMidText("Critical Shot!! <Damage :" + to_string(attack) + ">", WIDTH, HEIGHT * 0.4f + 2);
+		}
+		else if ((m_stPlayerWeapon.m_strWType == "Gun" || m_stPlayerWeapon.m_strWType == "Bow")&& iCriRate <= 50)
+		{
+			attack *= 2;
+			m_ChMapDraw.DrawMidText("Head Shot!! <Damage :" + to_string(attack) + ">", WIDTH, HEIGHT * 0.4f + 2);
+		}
+		else if (m_stPlayerWeapon.m_strWType == "Sword" && iCriRate <= 30)
+		{
+			attack *= 2;
+			m_ChMapDraw.DrawMidText("°Ë±â!! <Damage :" + to_string(attack) + ">", WIDTH, HEIGHT * 0.4f + 2);
+		}
+	}
+	m_stChInfo.m_iCurVital -= attack;
+	if (m_stChInfo.m_iCurVital <= 0)
+		m_stChInfo.m_iCurVital = 0;
+}
+
 void Player::BuyWeapon(WEAPON WeaponInfo)
 {
 	if (WeaponInfo.m_iWCost < m_stPlayerWeapon.m_iWCost)

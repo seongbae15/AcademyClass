@@ -24,16 +24,6 @@ void Character::ThrowRPS(int selection, int type)
 	}
 	m_ChMapDraw.DrawMidText(strTmpRPS, WIDTH, HEIGHT * 0.4f + type);
 }
-
-void Character::Damage(int attack)
-{
-	m_stChInfo.m_iCurVital -= attack;
-	if (m_stChInfo.m_iCurVital <= 0)
-	{
-		m_stChInfo.m_iCurVital = 0;
-	}
-}
-
 void Character::Respawn()
 {
 	m_stChInfo.m_iCurVital = m_stChInfo.m_iVital;

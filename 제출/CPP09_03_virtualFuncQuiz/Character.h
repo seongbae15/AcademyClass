@@ -35,7 +35,7 @@ public:
 	virtual void ShowInfo(int Col = 9) = 0;
 	virtual inline int GetAttack() = 0;
 	void ThrowRPS(int selection, int type = 0);
-	void Damage(int attack);
+	virtual void Damage(int attack) = 0;
 	void Respawn();
 	void GetReward(int RGetExp, int RGold);
 	void LevelUp(int AddAttack, int AddVital, int AddExp);

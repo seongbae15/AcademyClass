@@ -7,6 +7,7 @@ public:
 	~Monster();
 	//void LoadInfo(string str, int index);
 	void ShowInfo(int Col);
+	void Damage(int attack);
 	void BuyWeapon(WEAPON WeaponInfo);
 	void InstallWeapon();
 	void InstallWeapon(WEAPON WeaponInfo);

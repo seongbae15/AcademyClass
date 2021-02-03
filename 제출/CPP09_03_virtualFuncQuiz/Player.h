@@ -7,13 +7,11 @@ class Player:public Character
 private:
 	int m_iWeaponAttack;
 	int m_iTotalAttack;
-	//WEAPON m_stPlayerWeapon;
-	//bool m_bWeaponState;
 public:
 	Player();
 	~Player();
-	//void LoadInfo(string str, int index);
 	void ShowInfo(int Col);
+	void Damage(int attack);
 	void BuyWeapon(WEAPON WeaponInfo);
 	void InstallWeapon();
 	void InstallWeapon(WEAPON WeaponInfo);
