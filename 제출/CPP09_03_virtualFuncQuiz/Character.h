@@ -3,17 +3,6 @@
 #include "MapDraw.h"
 #include "Weapon.h"
 
-enum INFO_LIST
-{
-	INFO_LIST_NAME=0,
-	INFO_LIST_ATTACK,
-	INFO_LIST_VITAL,
-	INFO_LIST_EXP,
-	INFO_LIST_GETEXP,
-	INFO_LIST_LEVEL,
-	INFO_LIST_GOLD
-};
-
 enum RPS
 {
 	RPS_SCISSORS = 49,
@@ -43,8 +32,6 @@ protected:
 	bool m_bWeaponState;
 public:
 	Character();
-	virtual void SetInfo(string str, int index) = 0;
-	//virtual void LoadInfo(string str, int index) = 0;
 	virtual void ShowInfo(int Col = 9) = 0;
 	virtual inline int GetAttack() = 0;
 	void ThrowRPS(int selection, int type = 0);

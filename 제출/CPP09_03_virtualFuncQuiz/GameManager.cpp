@@ -20,6 +20,27 @@ void GameManager::DispLoby()
 	m_gmMapDraw.DrawMidText("Game Exit", WIDTH, HEIGHT * 0.6f);
 }
 
+void GameManager::SetMonster()
+{
+	CharacterInfo stTmpInfo;
+	ifstream fMonsterLoad;
+	fMonsterLoad.open("DefaultMonster.txt");
+	fMonsterLoad >> m_iMonsterCount;
+	for (int i = 1;i <= m_iMonsterCount;i++)
+	{
+		m_gmCharacter[i] = new Monster;
+		fMonsterLoad >> stTmpInfo.m_strName;
+		fMonsterLoad >> stTmpInfo.m_iAttack;
+		fMonsterLoad >> stTmpInfo.m_iVital;
+		fMonsterLoad >> stTmpInfo.m_iExp;
+		fMonsterLoad >> stTmpInfo.m_iGetExp;
+		fMonsterLoad >> stTmpInfo.m_iLevel;
+		fMonsterLoad >> stTmpInfo.m_iGold;
+		m_gmCharacter[i]->LoadCharacterInfo(stTmpInfo, NEW);
+	}
+	fMonsterLoad.close();
+}
+
 void GameManager::NewGameSet()
 {
 	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
@@ -42,22 +63,7 @@ void GameManager::NewGameSet()
 	fPlayerLoad.close();
 
 	//Set Monster
-	ifstream fMonsterLoad;
-	fMonsterLoad.open("DefaultMonster.txt");
-	fMonsterLoad >> m_iMonsterCount;
-	for (int i = 1;i<=m_iMonsterCount;i++)
-	{
-		m_gmCharacter[i] = new Monster;
-		fMonsterLoad >> stTmpInfo.m_strName;
-		fMonsterLoad >> stTmpInfo.m_iAttack;
-		fMonsterLoad >> stTmpInfo.m_iVital;
-		fMonsterLoad >> stTmpInfo.m_iExp;
-		fMonsterLoad >> stTmpInfo.m_iGetExp;
-		fMonsterLoad >> stTmpInfo.m_iLevel;
-		fMonsterLoad >> stTmpInfo.m_iGold;
-		m_gmCharacter[i]->LoadCharacterInfo(stTmpInfo, NEW);
-	}
-	fMonsterLoad.close();
+	SetMonster();
 }
 
 void GameManager::DispPlayMenu()
@@ -80,7 +86,7 @@ void GameManager::DispInfo(int selection)
 	else
 	{
 		int AddCol = 0;
-		for (int j = 1; j < MAX_CHARACTER; j++)
+		for (int j = 1; j < m_iMonsterCount+1; j++)
 		{
 			m_gmCharacter[j]->ShowInfo(AddCol);
 			AddCol += 4;
@@ -94,7 +100,7 @@ void GameManager::DispEntrance()
 	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
 	m_gmMapDraw.DrawMidText("====== 던전 입구 ======", WIDTH, HEIGHT * 0.2f);
 	int i;
-	for (i = 1; i <= MAX_MONSTER; i++)
+	for (i = 1; i <= m_iMonsterCount; i++)
 	{
 		string strTemp;
 		strTemp = to_string(i) + " 층 던전 : [" + m_gmCharacter[i]->GetName() + "]";
@@ -179,6 +185,7 @@ void GameManager::DispLevelUp()
 void GameManager::StartBattle(int MonsterSelection)
 {
 	m_eSTATE = STATE_ING;
+
 	string strTemp;
 	string strVS = " vs ";
 	for (int i = 0; i < 2*(WIDTH-2) - strVS.size(); i++)
@@ -211,16 +218,18 @@ void GameManager::StartBattle(int MonsterSelection)
 			case WLD_WIN:
 				m_gmCharacter[MonsterSelection]->Damage(m_gmCharacter[PLAYER]->GetAttack());
 				m_gmCharacter[MonsterSelection]->ShowInfo(20);
+				//Check Win or Game Over
+				CheckGameEnd(MonsterSelection);
 				break;
 			case WLD_DRAW:
 				break;
 			case WLD_LOSE:	
 				m_gmCharacter[PLAYER]->Damage(m_gmCharacter[MonsterSelection]->GetAttack());
 				m_gmCharacter[PLAYER]->ShowInfo(0);
+				//Check Win or Game Over
+				CheckGameEnd(MonsterSelection);
 				break;
 			}
-			//Check Win or Game Over
-			CheckGameEnd(MonsterSelection);
 		}
 	}
 	getch();
@@ -228,11 +237,11 @@ void GameManager::StartBattle(int MonsterSelection)
 		return;
 	else if (m_eSTATE == STATE_WIN)
 	{
-		//몬스터 체력 초기화
+		//Reset Vital of Monster
 		m_gmCharacter[MonsterSelection]->Respawn();
-		//골드 + 경험치 획득
+		//Get Gold & Exp
 		m_gmCharacter[PLAYER]->GetReward(m_gmCharacter[MonsterSelection]->GetGetExp(), m_gmCharacter[MonsterSelection]->GetGold());
-		//LEVEL업
+		//Level Up
 		if (m_gmCharacter[PLAYER]->GetCurExp() >= m_gmCharacter[PLAYER]->GetExp())
 		{
 			m_iAddAttack = rand() % 5 + 1;
@@ -330,9 +339,9 @@ void GameManager::DispShop()
 {
 	while (1)
 	{
-		int iShopSelection;
-		int iEnterCusorX = (WIDTH - 8) / 2;
-		int iEnterCusorY = HEIGHT * 0.3f + 2;
+		int iSelector;
+		int iCusorX = (WIDTH - 8) / 2;
+		int iCusorY = HEIGHT * 0.3f + 2;
 		m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
 		m_gmMapDraw.DrawMidText("♧ ♣ S H O P ♣ ♧", WIDTH, HEIGHT * 0.3f);
 		m_gmMapDraw.DrawMidText("Dagger  ", WIDTH, HEIGHT * 0.3f + 2);
@@ -342,8 +351,8 @@ void GameManager::DispShop()
 		m_gmMapDraw.DrawMidText("Bow     ", WIDTH, HEIGHT * 0.3f + 10);
 		m_gmMapDraw.DrawMidText("Hammer  ", WIDTH, HEIGHT * 0.3f + 12);
 		m_gmMapDraw.DrawMidText("돌아가기", WIDTH, HEIGHT * 0.3f + 14);
-		iShopSelection = m_gmMapDraw.MenuSelectCursor(NUMBER_WEAPON_TYPE + 1, 2, iEnterCusorX, iEnterCusorY);
-		switch ((WEAPON_TYPE)iShopSelection)
+		iSelector = m_gmMapDraw.MenuSelectCursor(NUMBER_WEAPON_TYPE + 1, 2, iCusorX, iCusorY);
+		switch ((WEAPON_TYPE)iSelector)
 		{
 		case WEAPON_TYPE_DAGGER:
 		case WEAPON_TYPE_GUN:
@@ -351,7 +360,7 @@ void GameManager::DispShop()
 		case WEAPON_TYPE_WAND:
 		case WEAPON_TYPE_BOW:
 		case WEAPON_TYPE_HAMMER:
-			DispWeaponList(iShopSelection);
+			DispWeaponList(iSelector);
 			break;
 		case WEAPON_TYPE_END:
 			return;
@@ -361,12 +370,12 @@ void GameManager::DispShop()
 
 void GameManager::EnterDungeon()
 {
-	int iMonsterSelect;
-	int iEnterCusorX = (WIDTH - 14) / 2;
-	int iEnterCusorY = HEIGHT * 0.2f + 5;
+	int iSelector;
+	int iCusorX = (WIDTH - 14) / 2;
+	int iCusorY = HEIGHT * 0.2f + 5;
 	DispEntrance();
-	iMonsterSelect = m_gmMapDraw.MenuSelectCursor(MAX_MONSTER+1, 2, iEnterCusorX, iEnterCusorY);
-	switch (iMonsterSelect)
+	iSelector = m_gmMapDraw.MenuSelectCursor(m_iMonsterCount+1, 2, iCusorX, iCusorY);
+	switch (iSelector)
 	{
 	case 1:
 	case 2:
@@ -374,7 +383,7 @@ void GameManager::EnterDungeon()
 	case 4:
 	case 5:
 	case 6:
-		StartBattle(iMonsterSelect);
+		StartBattle(iSelector);
 	case 7:
 		return;
 	}
@@ -441,30 +450,33 @@ int GameManager::DispSaveSlot()
 
 void GameManager::StartGame()
 {
-	int iSelect;
+	int iSelector;
 	int iSlotSelector;
-	int iMainMenuCount = 6;
-	int iMainMenuAddCol = 2;
-	int iMenuCusorX = (WIDTH - 10) / 2;
-	int iMenuCusorY = HEIGHT * 0.3f + 2;
+	int iCusorCount = 6;
+	int iAddCol = 2;
+	int iCusorX = (WIDTH - 10) / 2;
+	int iCusorY = HEIGHT * 0.3f + 2;
 	while (1)
 	{
 		//Display Play Menu
 		DispPlayMenu();
-		iSelect = m_gmMapDraw.MenuSelectCursor(iMainMenuCount, iMainMenuAddCol, iMenuCusorX, iMenuCusorY);
-		switch ((PLAY_MENU)iSelect)
+		iSelector = m_gmMapDraw.MenuSelectCursor(iCusorCount, iAddCol, iCusorX, iCusorY);
+		switch ((PLAY_MENU)iSelector)
 		{
 		case PLAY_MENU_DUNGEON:
 			EnterDungeon();
 			if (m_eSTATE == STATE_OVER)
+			{
+				DeleteInfo();
 				return;
+			}
 			else
 				break;
 		case PLAY_MENU_PLAYER_INFO:
-			DispInfo(iSelect);
+			DispInfo(iSelector);
 			break;
 		case PLAY_MENU_MONSTER_INFO:
-			DispInfo(iSelect);
+			DispInfo(iSelector);
 			break;
 		case PLAY_MENU_WEAPONG_SHOP:
 			DispShop();
@@ -482,11 +494,7 @@ void GameManager::StartGame()
 				return;
 			break;
 		case PLAY_MENU_EXIT:
-			for (int i = 0; i < MAX_CHARACTER; i++)
-			{
-				if (m_gmCharacter[i] != NULL)
-					delete m_gmCharacter[i];
-			}
+			DeleteInfo();
 			return;
 		}
 	}
@@ -547,26 +555,11 @@ void GameManager::LoadSlotInfo(int selector)
 			m_gmCharacter[PLAYER]->InstallWeapon();
 		m_gmMapDraw.DrawMidText("Load 완료", WIDTH, HEIGHT * 0.5f);
 		fLoadFile.close();
-
 		//Monster Set
-		ifstream fMonsterLoad;
-		fMonsterLoad.open("DefaultMonster.txt");
-		fMonsterLoad >> m_iMonsterCount;
-		for (int i = 1; i < MAX_CHARACTER; i++)
-		{
-			m_gmCharacter[i] = new Monster;
-			for (int j = 0; j < NUMBER_INFO; j++)
-			{
-				string strTemp;
-				fMonsterLoad >> strTemp;
-				m_gmCharacter[i]->SetInfo(strTemp, j);
-			}
-		}
-		fMonsterLoad.close();
+		SetMonster();
 	}
 	else
 		m_gmMapDraw.DrawMidText("해당 파일이 없습니다.", WIDTH, HEIGHT * 0.5f);
-	getch();
 
 }
 
@@ -583,6 +576,15 @@ void GameManager::DispLoad()
 	}
 }
 
+void GameManager::DeleteInfo()
+{
+	for (int i = 0; i < m_iMonsterCount + 1; i++)
+	{
+		if (m_gmCharacter[i] != NULL)
+			delete m_gmCharacter[i];
+	}
+}
+
 void GameManager::RunGame()
 {
 	int iCusorCount = 3;
@@ -591,7 +593,6 @@ void GameManager::RunGame()
 	int iAddCol = 3;
 	//Set Console Window
 	SetConsoleWindow(WIDTH, HEIGHT);
-	//To make random RPS of Monster
 	srand((unsigned)time(NULL));
 	//Load Weapon Info
 	LoadWeapon();

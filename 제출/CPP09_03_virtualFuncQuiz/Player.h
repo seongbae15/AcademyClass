@@ -14,7 +14,6 @@ public:
 	~Player();
 	//void LoadInfo(string str, int index);
 	void ShowInfo(int Col);
-	void SetInfo(string str, int index);
 	void BuyWeapon(WEAPON WeaponInfo);
 	void InstallWeapon();
 	void InstallWeapon(WEAPON WeaponInfo);

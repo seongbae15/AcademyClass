@@ -7,12 +7,9 @@
 #include "Weapon.h"
 #include <vector>
 
-#define NUMBER_INFO 7
 #define MAX_CHARACTER 7
-#define MAX_MONSTER MAX_CHARACTER-1
 #define NUMBER_WEAPON_TYPE 6
 #define NUMBER_SAVE_SLOT 10
-#define NUMBER_WEAPON 30
 
 #define PLAYER 0
 #define MONSTER 6
@@ -71,6 +68,7 @@ public:
 	void LoadWeapon();
 	void DispLoby();
 	void NewGameSet();
+	void SetMonster();
 	void StartGame();
 	void DispPlayMenu();
 	void EnterDungeon();
@@ -88,5 +86,6 @@ public:
 	void SaveSlotInfo(int selector);
 	void DispLoad();
 	void LoadSlotInfo(int selector);
+	void DeleteInfo();
 };
 

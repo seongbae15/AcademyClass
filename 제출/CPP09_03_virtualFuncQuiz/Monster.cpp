@@ -7,39 +7,6 @@ Monster::~Monster()
 {
 }
 
-void Monster::SetInfo(string str, int index)
-{
-	if (index == 0)
-		m_stChInfo.m_strName = str;
-	else
-	{
-		int iTemp = stoi(str);
-		switch ((INFO_LIST)index)
-		{
-		case INFO_LIST_ATTACK:
-			m_stChInfo.m_iAttack = iTemp;
-			break;
-		case INFO_LIST_VITAL:
-			m_stChInfo.m_iVital = iTemp;
-			break;
-		case INFO_LIST_EXP:
-			m_stChInfo.m_iExp = iTemp;
-			break;
-		case INFO_LIST_GETEXP:
-			m_stChInfo.m_iGetExp = iTemp;
-			break;
-		case INFO_LIST_LEVEL:
-			m_stChInfo.m_iLevel = iTemp;
-			break;
-		case INFO_LIST_GOLD:
-			m_stChInfo.m_iGold = iTemp;
-			break;
-		}
-	}
-	m_stChInfo.m_iCurExp = 0;
-	m_stChInfo.m_iCurVital = m_stChInfo.m_iVital;
-}
-
 void Monster::ShowInfo(int Col)
 {
 	int iPosX1 = WIDTH - 15;
@@ -72,16 +39,10 @@ void Monster::InstallWeapon(WEAPON WeaponInfo)
 
 }
 
-void Monster::LoadCharacterInfo(CharacterInfo stCharacter,int iMode)
+void Monster::LoadCharacterInfo(CharacterInfo stCharacter, int iMode)
 {
 	m_stChInfo = stCharacter;
-	switch (iMode)
-	{
-	case NEW:
-		m_stChInfo.m_iCurExp = 0;
-		m_stChInfo.m_iCurVital = m_stChInfo.m_iVital;
-		break;
-	case LOAD:
-		break;
-	}
+	m_stChInfo.m_iCurExp = 0;
+	m_stChInfo.m_iCurVital = m_stChInfo.m_iVital;
 }
+

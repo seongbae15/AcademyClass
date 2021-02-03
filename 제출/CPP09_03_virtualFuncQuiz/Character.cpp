@@ -22,7 +22,6 @@ void Character::ThrowRPS(int selection, int type)
 		strTmpRPS = "º¸";
 		break;
 	}
-	//Disp Selection
 	m_ChMapDraw.DrawMidText(strTmpRPS, WIDTH, HEIGHT * 0.4f + type);
 }
 
