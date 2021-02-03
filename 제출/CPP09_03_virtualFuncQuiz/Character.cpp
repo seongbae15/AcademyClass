@@ -13,13 +13,13 @@ void Character::ThrowRPS(int selection, int type)
 	switch ((RPS)selection)
 	{
 	case RPS_SCISSORS:
-		strTmpRPS = "가위";
+		strTmpRPS = " 가위 ";
 		break;
 	case RPS_ROCK:
-		strTmpRPS = "바위";
+		strTmpRPS = " 바위 ";
 		break;
 	case RPS_PAPER:
-		strTmpRPS = "보";
+		strTmpRPS = "  보  ";
 		break;
 	}
 	m_ChMapDraw.DrawMidText(strTmpRPS, WIDTH, HEIGHT * 0.4f + type);
