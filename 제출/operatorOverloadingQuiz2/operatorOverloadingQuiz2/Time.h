@@ -12,5 +12,6 @@ public:
 	Time();
 	Time(int Hour, int Min);
 	~Time();
+
 };
 
