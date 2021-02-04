@@ -564,7 +564,7 @@ void GameManager::LoadSlotInfo(int selector)
 
 }
 
-void GameManager::DispLoad()
+bool GameManager::DispLoad()
 {
 	int iSlotSelector;
 	iSlotSelector = DispSaveSlot();
@@ -574,7 +574,10 @@ void GameManager::DispLoad()
 		LoadSlotInfo(iSlotSelector);
 		m_gmMapDraw.DrawMidText("Load ¿Ï·á", WIDTH, HEIGHT * 0.5f);
 		getch();
+		return true;
 	}
+	else
+		return false;
 }
 
 void GameManager::DeleteInfo()
@@ -592,6 +595,7 @@ void GameManager::RunGame()
 	int iCursorX = (WIDTH-8)/2;
 	int iCursorY = HEIGHT*0.4f;
 	int iAddCol = 3;
+	bool bLoadState = false;
 	//Set Console Window
 	SetConsoleWindow(WIDTH, HEIGHT);
 	srand((unsigned)time(NULL));
@@ -611,8 +615,9 @@ void GameManager::RunGame()
 			StartGame();
 			break;
 		case LOBY_MENU_LOAD:
-			DispLoad();
-			StartGame();
+			bLoadState = DispLoad();
+			if(bLoadState)
+				StartGame();
 			break;
 		case LOBY_MENU_EXIT:
 			//Clear Weapon List

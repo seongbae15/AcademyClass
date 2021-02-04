@@ -84,7 +84,7 @@ public:
 	void DispDetailinfo(string str);
 	int DispSaveSlot();
 	void SaveSlotInfo(int selector);
-	void DispLoad();
+	bool DispLoad();
 	void LoadSlotInfo(int selector);
 	void DeleteInfo();
 };
