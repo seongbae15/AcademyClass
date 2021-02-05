@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#define MINUTE 60
 using namespace std;
 class Time
 {
