@@ -1,0 +1,6 @@
+﻿  DrawManager.cpp
+C:\Users\A-03\Documents\spark\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(25,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(25,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.cpp(25,8): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\A-03\Documents\spark\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.cpp(90,11): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  VeniceGameQuiz.vcxproj -> C:\Users\A-03\Documents\spark\AcademyClass\제출\VeniceGameQuiz\Debug\VeniceGameQuiz.exe
