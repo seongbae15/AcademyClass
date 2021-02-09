@@ -1,6 +1,10 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <vector>
+#include <list>
+
 #include "Lib.h"
 #include "DrawManager.h"
 
@@ -16,6 +20,8 @@ private:
 	int m_iLife;
 	int m_iScore;
 	string m_strName;
+	vector<string> m_vStory;
+	list<string> m_listStoryText;
 	DrawManager m_pDrawManager;
 public:
 	Play();
@@ -23,5 +29,7 @@ public:
 	void SetConsoleWindow(int width, int height);
 	void DispLoby();
 	void DispPlayerInfo();
+	void StartGame();
+	void DispStory();
 };
 

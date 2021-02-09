@@ -17,7 +17,8 @@
 #define PLUM SetConsoleTextAttribute( col,0x000d );
 #define YELLOW SetConsoleTextAttribute( col,0x000e );
 #define BG_GRAY_TEXT_RED SetConsoleTextAttribute( col,0x008c );
-#define BG_GRATY_TEXT_BLUE_GREEN SetConsoleTextAttribute( col,0x0083 );
+#define BG_GRAY_TEXT_BLUE_GREEN SetConsoleTextAttribute( col,0x0083 );
+#define BG_GRAY_TEXT_PURPLE SetConsoleTextAttribute( col,0x0085 );
 //////////////////////////////////////////////////////
 #define MAP_WIDTH 65
 #define MAP_HEIGHT 35
