@@ -31,8 +31,7 @@ void DrawManager::DrawMidText(string str, int x, int y)
 void DrawManager::EraseMidText(string str, int x, int y)
 {
 	string strErase;
-	int iMax = 50;
-	for (int i = 0;i<iMax;i++)
+	for (int i = 0;i<str.size();i++)
 	{
 		strErase += " ";
 	}

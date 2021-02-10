@@ -35,6 +35,37 @@ void Play::DispPlayerInfo()
 	m_pDrawManager.TextDraw("Name : ? ? ?", 2 * (MAP_WIDTH - 9), MAP_HEIGHT + 1);
 	ORIGINAL
 }
+void Play::DispLineText(int posX, int posY, int TextLine, int Mode)
+{
+	int iCol = 0;
+	for (auto iter = m_listStoryText.begin(); iCol < TextLine; iter++, iCol++)
+	{
+		if(Mode == TEXT_MODE_DRAW)
+			m_pDrawManager.DrawMidText(*iter, posX, posY + iCol);
+		else if(Mode == TEXT_MODE_ERASE)
+			m_pDrawManager.EraseMidText(*iter, posX, posY + iCol);
+	}
+	
+}
+
+void Play::EraseAllLineText(int posX, int posY, int TextLine)
+{
+	int iCol = 0;
+	for (auto iter = m_listStoryText.begin(); iCol < TextLine; iter++, iCol++)
+	{
+		m_pDrawManager.EraseMidText(*iter, posX, posY + iCol);
+	}
+}
+
+void Play::ScrollText(int posX, int posY)
+{
+	//Erase
+	DispLineText(posX, posY, TEXT_LINE_COUNT, TEXT_MODE_ERASE);
+	//Pop first line Text
+	m_listStoryText.pop_front();
+	//Draw
+	DispLineText(posX, posY, TEXT_LINE_COUNT);
+}
 
 void Play::DispStory()
 {
@@ -50,70 +81,85 @@ void Play::DispStory()
 	}
 	fStoryLoad.close();
 
-	int iTextLineLimit = 10;
 	int StroyTextFirstLine = 8;
+	int iLineCount = 0;
+	int iOldTextTime = clock();
 	while (1)
 	{
-		int iCol = 0;
-		//First, Disp each text line.
-		for (auto iter = m_listStoryText.begin();iter != m_listStoryText.end();iter++)
+		int iCurTextTime = clock();
+		if (kbhit())
 		{
-			m_pDrawManager.DrawMidText(*iter, MAP_WIDTH, StroyTextFirstLine + iCol++);
-			if (iCol == iTextLineLimit)
+			char chKeyIn = getch();
+			if (chKeyIn == KEY_SKIP_s || chKeyIn == KEY_SKIP_S)
+			{
+				//Erase all text line
+				EraseAllLineText(MAP_WIDTH, StroyTextFirstLine, TEXT_LINE_COUNT);
 				break;
-			Sleep(1000);
+			}
 		}
-		//Scroll 
-		if (iCol == iTextLineLimit)
+		if (iCurTextTime - iOldTextTime >= TEXT_DELAY)
 		{
-			auto iter = m_listStoryText.begin();
-			m_pDrawManager.EraseMidText(*iter, MAP_WIDTH, StroyTextFirstLine);
-			m_listStoryText.pop_front();
+			if (iLineCount < TEXT_LINE_COUNT)
+			{
+				auto iter = m_listStoryText.begin();
+				for (int i = 0; i < iLineCount; i++)
+					iter++;
+				m_pDrawManager.DrawMidText(*iter, MAP_WIDTH, StroyTextFirstLine + iLineCount);
+				iLineCount++;
+			}
+			else
+			{
+				//Scroll text
+				ScrollText(MAP_WIDTH, StroyTextFirstLine);
+				//Escape
+				if (m_listStoryText.size() == TEXT_LINE_COUNT)
+				{
+					//Erase all text line
+					EraseAllLineText(MAP_WIDTH, StroyTextFirstLine, TEXT_LINE_COUNT);
+					break;
+				}
+			}
+			iOldTextTime = iCurTextTime;
 		}
-		if (m_listStoryText.size() == iTextLineLimit)
-			break;
 	}
+}
+void Play::InputName()
+{
+	m_pDrawManager.DrawMidText("이름 입력",MAP_WIDTH, MAP_HEIGHT*0.4f+2);
+	//이름 조건
+	m_pDrawManager.EraseMidText("Skip : S", MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
+	string strTempName;
+	while (1)
+	{
+		m_pDrawManager.gotoxy(MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
+		strTempName += getch();
+		if (strTempName.size() >= MAX_NAME_LEN)
+		{
+			m_pDrawManager.DrawMidText("10글자 초과!!", MAP_WIDTH, MAP_HEIGHT * 0.4f + 3);
+			m_pDrawManager.DrawMidText(strTempName, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
+		}
+		else
+		{
+			m_pDrawManager.EraseMidText("10글자 초과!!", MAP_WIDTH, MAP_HEIGHT * 0.4f + 3);
+			m_pDrawManager.DrawMidText(strTempName, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
+		}
 
-
-
-
-
-	//Disp Story & Scroll Text
-	//10줄표시, 1sec당 한줄 표시
-	
-	//for (int i = 0;i < m_vStory.size();)
-	//{
-	//	if (i < iTextLineLimit)
-	//	{
-	//		m_pDrawManager.DrawMidText(m_vStory[i], MAP_WIDTH, 8 + i);
-	//		i++;
-	//	}
-	//	else
-	//	{
-	//		m_pDrawManager.EraseMidText(m_vStory[0], MAP_WIDTH, 8);
-	//		
-	//		for (int j = 0;j < iTextLineLimit;j++)
-	//		{
-	//			m_pDrawManager.DrawMidText(m_vStory[j], MAP_WIDTH, 8 + j);
-	//		}
-	//	}
-	//	Sleep(1000);
-	//}
-	
+	}
+	m_pDrawManager.DrawMidText(strTempName, MAP_WIDTH, MAP_HEIGHT * 0.8f + 2);
 }
 
 void Play::StartGame()
 {
 	BG_GRAY_TEXT_PURPLE
+	int iNameBoxWidth = 19;
+	int NameBoxHeight = 5;
 	m_pDrawManager.BoxErase(MAP_WIDTH, MAP_HEIGHT);
-	m_pDrawManager.BoxDraw(MAP_WIDTH, 24, 19, 5);
-	m_pDrawManager.DrawMidText("Skip : S", MAP_WIDTH, 26);
+	m_pDrawManager.BoxDraw(MAP_WIDTH, MAP_HEIGHT*0.8f-4, iNameBoxWidth, NameBoxHeight);
+	m_pDrawManager.DrawMidText("Skip : S", MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
 	//Display Stroy
 	DispStory();
-	//Skip
-
 	//Input name
-
+	InputName();
 
 	ORIGINAL
 	getch();
