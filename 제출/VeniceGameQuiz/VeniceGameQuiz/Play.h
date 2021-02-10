@@ -5,9 +5,11 @@
 #include <vector>
 #include <list>
 #include <time.h>
+#include <stdlib.h>
 
 #include "Lib.h"
 #include "DrawManager.h"
+#include "Word.h"
 
 #define LOBY_MENU_CNT 3
 #define LOBY_ADD_COL 3
@@ -20,20 +22,27 @@
 #define TEXT_MODE_ERASE 1
 #define KEY_SKIP_s 115
 #define KEY_SKIP_S 83
-
+#define KEY_BS 8
+#define KEY_ENTER 13
 #define MAX_NAME_LEN 10
+
+#define TIME_MOVING 1000
 
 using namespace std;
 
 class Play
 {
 private:
+	bool m_bGameState;
 	int m_iLife;
 	int m_iScore;
+	int m_iStage;
 	string m_strName;
-	vector<string> m_vStory;
 	list<string> m_listStoryText;
 	DrawManager m_pDrawManager;
+	vector<Word> m_vWordClass;
+	int m_iWordCount;
+
 public:
 	Play();
 	void GameOn();
@@ -46,5 +55,7 @@ public:
 	void EraseAllLineText(int posX, int posY, int TextLine);
 	void ScrollText(int posX, int posY);
 	void InputName();
+	void InGame();
+	void LoadWord();
 };
 

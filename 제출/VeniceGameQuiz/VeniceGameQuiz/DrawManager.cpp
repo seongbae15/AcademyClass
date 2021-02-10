@@ -47,6 +47,15 @@ void DrawManager::TextDraw(string str, int x, int y)
 	cout << str;
 }
 
+void DrawManager::TextErase(string str, int x, int y)
+{
+	string strBlank;
+	for (int i = 0;i < strBlank.size();i++)
+		strBlank += " ";
+	gotoxy(x, y);
+	cout << strBlank;
+}
+
 
 
 void DrawManager::BoxErase(int Width, int Height)

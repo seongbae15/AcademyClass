@@ -142,11 +142,13 @@
     <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="VeniceGameMain.cpp" />
+    <ClCompile Include="Word.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DrawManager.h" />
     <ClInclude Include="Lib.h" />
     <ClInclude Include="Play.h" />
+    <ClInclude Include="Word.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
