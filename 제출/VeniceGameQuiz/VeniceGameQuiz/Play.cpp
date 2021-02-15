@@ -41,6 +41,8 @@ void Play::DispPlayerInfo()
 	m_pDrawManager.TextDraw("Life : ", 1, MAP_HEIGHT + 1);
 	for (int i = 0;i < m_iLife;i++)
 		cout << "♥";
+	for (int j = m_iLife;j < INIT_LIFE;j++)
+		cout << "  ";
 	m_pDrawManager.DrawMidText("Score : ", MAP_WIDTH, MAP_HEIGHT + 1);
 	cout << m_iScore;
 	m_pDrawManager.TextDraw("Name : ", 2 * (MAP_WIDTH - 9), MAP_HEIGHT + 1);
@@ -57,17 +59,6 @@ void Play::DispLineText(int posX, int posY, int TextLine, int Mode)
 		else if(Mode == TEXT_MODE_ERASE)
 			m_pDrawManager.EraseMidText(*iter, posX, posY + iCol);
 	}
-	
-	
-}
-
-void Play::EraseAllLineText(int posX, int posY, int TextLine)
-{
-	int iCol = 0;
-	for (auto iter = m_listStoryText.begin(); iCol < TextLine; iter++, iCol++)
-	{
-		m_pDrawManager.EraseMidText(*iter, posX, posY + iCol);
-	}
 }
 
 void Play::ScrollText(int posX, int posY)
@@ -78,6 +69,15 @@ void Play::ScrollText(int posX, int posY)
 	m_listStoryText.pop_front();
 	//Draw
 	DispLineText(posX, posY, TEXT_LINE_COUNT);
+}
+
+//Template 사용?? : StoryText Class추가???
+void Play::TextScroll(string str, int posX, int posY)
+{
+	//Erase
+	
+	//Draw or Delete
+
 }
 
 void Play::DispStory()
@@ -92,11 +92,13 @@ void Play::DispStory()
 	{
 		getline(fStoryLoad,strStory);
 		m_listStoryText.push_back(strStory);
+		m_vStoryText.push_back(strStory);
 	}
 	fStoryLoad.close();
 
 	int StroyTextFirstLine = 8;
 	int iLineCount = 0;
+	int iLineCount1 = 0;
 	int iOldTextTime = clock();
 	while (1)
 	{
@@ -108,7 +110,6 @@ void Play::DispStory()
 			{
 				//Erase all text line
 				DispLineText(MAP_WIDTH, StroyTextFirstLine, TEXT_LINE_COUNT, TEXT_MODE_ERASE);
-				//EraseAllLineText(MAP_WIDTH, StroyTextFirstLine, TEXT_LINE_COUNT);
 				break;
 			}
 		}
@@ -119,7 +120,8 @@ void Play::DispStory()
 				auto iter = m_listStoryText.begin();
 				for (int i = 0; i < iLineCount; i++)
 					iter++;
-				m_pDrawManager.DrawMidText(*iter, MAP_WIDTH, StroyTextFirstLine + iLineCount);
+				m_pDrawManager.DrawMidText(*iter, MAP_WIDTH, StroyTextFirstLine + iLineCount);				
+				//m_pDrawManager.DrawMidText(m_vStoryText[iLineCount], MAP_WIDTH, StroyTextFirstLine + iLineCount);
 				iLineCount++;
 			}
 			else
@@ -132,13 +134,43 @@ void Play::DispStory()
 					Sleep(1000);
 					//Erase all text line
 					DispLineText(MAP_WIDTH, StroyTextFirstLine, TEXT_LINE_COUNT, TEXT_MODE_ERASE);
-					//EraseAllLineText(MAP_WIDTH, StroyTextFirstLine, TEXT_LINE_COUNT);
 					break;
 				}
 			}
 			iOldTextTime = iCurTextTime;
 		}
 	}
+}
+
+bool Play::KeyboardInput(string* str, int maxLen)
+{
+	gotoxy(MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
+	char chTemp = getch();
+	if ((*str).size() < maxLen
+		&& (chTemp >= 'a' && chTemp <= 'z') || (chTemp >= 'A' && chTemp <= 'Z'))
+		*str += chTemp;
+	else if (chTemp == KEY_BS && (*str).size() > 0)
+	{
+		m_pDrawManager.EraseMidText(*str, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
+		(*str).pop_back();
+	}
+	else if (chTemp == KEY_ENTER)
+	{
+		if(str->size()>0)
+			return true;
+	}
+	//Display Text
+	if ((*str).size() >= maxLen)
+	{
+		m_pDrawManager.DrawMidText(to_string(maxLen) + "글자 초과!!", MAP_WIDTH, MAP_HEIGHT * 0.4f + 3);
+		m_pDrawManager.DrawMidText(*str, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
+	}
+	else
+	{
+		m_pDrawManager.EraseMidText(to_string(maxLen) + "글자 초과!!", MAP_WIDTH, MAP_HEIGHT * 0.4f + 3);
+		m_pDrawManager.DrawMidText(*str, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
+	}
+	return false;
 }
 void Play::InputName(int Mode)
 {
@@ -150,33 +182,13 @@ void Play::InputName(int Mode)
 		string strTempName;
 		while (1)
 		{
-			m_pDrawManager.gotoxy(MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
-			char chTemp = getch();
-			if (strTempName.size() < MAX_NAME_LEN
-				&& (chTemp >= 'a' && chTemp <= 'z') || (chTemp >= 'A' && chTemp <= 'Z'))
-				strTempName += chTemp;
-			else if (chTemp == KEY_BS && strTempName.size() > 0)
-			{
-				m_pDrawManager.EraseMidText(strTempName, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
-				strTempName.pop_back();
-			}
-			else if (chTemp == KEY_ENTER)
+			bool bKeyEnter = KeyboardInput(&strTempName, MAX_NAME_LEN);
+			if (bKeyEnter == true)
 			{
 				for (int i = strTempName.size(); i < MAX_NAME_LEN; i++)
 					strTempName += " ";
 				m_strName = strTempName;
 				break;
-			}
-			//Display Text
-			if (strTempName.size() >= MAX_NAME_LEN)
-			{
-				m_pDrawManager.DrawMidText("10글자 초과!!", MAP_WIDTH, MAP_HEIGHT * 0.4f + 3);
-				m_pDrawManager.DrawMidText(strTempName, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
-			}
-			else
-			{
-				m_pDrawManager.EraseMidText("10글자 초과!!", MAP_WIDTH, MAP_HEIGHT * 0.4f + 3);
-				m_pDrawManager.DrawMidText(strTempName, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
 			}
 		}
 	}
@@ -194,121 +206,150 @@ void Play::LoadWord()
 	string strTmpWord;
 	fLoadWord.open("Word.txt");
 	fLoadWord >> m_iWordCount;
-
 	while (fLoadWord.is_open()&&!fLoadWord.eof())
 	{
 		fLoadWord >> strTmpWord;
 		tmpWordClass.SetWord(strTmpWord);
 		m_vWordClass.push_back(tmpWordClass);
 	}
-
 	fLoadWord.close();
+}
+void Play::DispStage()
+{
+	//Display stage
+	string strStage = "★ " + to_string(m_iStage) + " Stage ★";
+	m_pDrawManager.DrawMidText(strStage, MAP_WIDTH, MAP_HEIGHT * 0.5f);
+	Sleep(1000);
+	m_pDrawManager.EraseMidText(strStage, MAP_WIDTH, MAP_HEIGHT * 0.5f);
+	Sleep(1000);
+}
+
+void Play::CreateWord()
+{
+	//Random word index
+	int iRindex = rand() % m_iWordCount;	//0~74
+	//Random position X	//
+	int iRposX = rand() % (MAP_WIDTH * 2 - (m_vWordClass[iRindex].GetWord().size()+3)) + 2;
+	m_vWordClass[iRindex].SetWordPos(iRposX, 1);
+	m_vPlayingWordClass.push_back(m_vWordClass[iRindex]);
+	//Draw
+	m_vPlayingWordClass.back().DrawWord();
+}
+void Play::MoveWord()
+{
+	//Erase
+	for (int i = 0; i < m_vPlayingWordClass.size(); i++)
+	{
+		bool bCheckWordPos1 = CheckWordBoxPos(i);
+		if (bCheckWordPos1 == true);
+		else
+			m_vPlayingWordClass[i].EraseWord();
+	}
+	//Move & Draw
+	for (int i = 0; i < m_vPlayingWordClass.size();)
+	{
+		m_vPlayingWordClass[i].UpadatePosY();
+		bool bCheckWordPos2 = CheckWordBoxPos(i);
+		if (bCheckWordPos2 == true)
+			i++;
+		else
+		{
+			int iCurPosY = m_vPlayingWordClass[i].GetWordPosY();
+			int iCurPosX = m_vPlayingWordClass[i].GetWordPosX();
+			string strCurWord = m_vPlayingWordClass[i].GetWord();
+			if (iCurPosY == MAP_HEIGHT - 1)
+			{
+				m_vPlayingWordClass.erase(m_vPlayingWordClass.begin() + i);
+				//Life Down
+				if (m_iLife > 0)
+					m_iLife--;
+				else
+					m_iLife = 0;
+			}
+			else
+			{
+				m_vPlayingWordClass[i].DrawWord();
+				i++;
+			}
+		}
+	}
+}
+bool Play::CheckWordBoxPos(int index)
+{
+	int iPosY = m_vPlayingWordClass[index].GetWordPosY();
+	int iPosX = m_vPlayingWordClass[index].GetWordPosX();
+	string strWord = m_vPlayingWordClass[index].GetWord();
+	if ((iPosY >= MAP_HEIGHT * 0.8f - 4 && iPosY <= MAP_HEIGHT * 0.8f)
+		&& ((iPosX >= MAP_WIDTH - KEY_IN_BOX_WIDTH && iPosX <= MAP_WIDTH + KEY_IN_BOX_WIDTH)
+			|| (iPosX + strWord.size() >= MAP_WIDTH - KEY_IN_BOX_WIDTH
+				&& iPosX + strWord.size() <= MAP_WIDTH + KEY_IN_BOX_WIDTH)))
+		return true;
+	else
+		return false;
+}
+bool Play::CheckWordFailed(string str)
+{
+	for (int i = 0;i < m_vPlayingWordClass.size();i++)
+	{
+		if (str == m_vPlayingWordClass[i].GetWord())
+		{
+			m_vPlayingWordClass[i].EraseWord();
+			m_vPlayingWordClass.erase(m_vPlayingWordClass.begin() + i);
+			return true;
+		}
+	}
+	return false;
 }
 
 void Play::InGame()
 {
 	int iNameBoxWidth = 19;
 	int NameBoxHeight = 5;
+	//Display PlayerInfo
 	DispPlayerInfo();
 	BG_GRAY_TEXT_PURPLE
 	//Display stage
-	string strStage = "★ " + to_string(m_iStage) + " Stage ★";
-	m_pDrawManager.DrawMidText(strStage, MAP_WIDTH, MAP_HEIGHT * 0.5f);
-	Sleep(2000);
-	m_pDrawManager.EraseMidText(strStage, MAP_WIDTH, MAP_HEIGHT * 0.5f);
-	Sleep(1000);
+	DispStage();
 	m_pDrawManager.BoxDraw(MAP_WIDTH, MAP_HEIGHT * 0.8f - 4, iNameBoxWidth, NameBoxHeight);
 	int iOldCreatTime = clock();
 	int iOldMoveTime = clock();
 	string strTempKeyIn;
 	while (1)
 	{
+		BG_GRAY_TEXT_PURPLE
 		//Manage Word
 		int iCurCreatTime = clock();
 		int iCurMoveTime = clock();
 		//Create word
 		if (iCurCreatTime - iOldCreatTime >= TIME_WORD_CREATE)
 		{
-			//Random word index
-			int iRindex = rand() % m_iWordCount;	//0~74
-			//Random position X
-			int iRposX = rand() % (MAP_WIDTH*2 - (m_vWordClass[iRindex].GetWord().size())) + 1;
-			m_vWordClass[iRindex].SetWordPos(iRposX, 1);
-			m_vPlayingWordClass.push_back(m_vWordClass[iRindex]);
-			//Draw
-			m_vPlayingWordClass.back().DrawWord();
+			CreateWord();
 			iOldCreatTime = iCurCreatTime;
 		}
 		//Move word
 		if (iCurMoveTime - iOldMoveTime >= TIME_WORD_MOVING)
 		{
-
-			//Erase
-			for (int i = 0; i < m_vPlayingWordClass.size(); i++)
-			{
-				int iLastPosY = m_vPlayingWordClass[i].GetWordPosY();
-				int iLastPosX = m_vPlayingWordClass[i].GetWordPosX();
-				string strLastWord = m_vPlayingWordClass[i].GetWord();
-				if ((iLastPosY >= MAP_HEIGHT * 0.8f - 4 && iLastPosY <= MAP_HEIGHT * 0.8f)
-					&& ((iLastPosX >= MAP_WIDTH - iNameBoxWidth && iLastPosX <= MAP_WIDTH + iNameBoxWidth)
-						|| (iLastPosX + strLastWord.size() >= MAP_WIDTH - iNameBoxWidth 
-							&& iLastPosX + strLastWord.size() <= MAP_WIDTH + iNameBoxWidth)));
-				else
-					m_vPlayingWordClass[i].EraseWord();
-			}
-			//Move & Draw
-			for (int i = 0; i < m_vPlayingWordClass.size();)
-			{
-				m_vPlayingWordClass[i].UpadatePosY();
-				int iCurPosY = m_vPlayingWordClass[i].GetWordPosY();
-				int iCurPosX = m_vPlayingWordClass[i].GetWordPosX();
-				string strCurWord = m_vPlayingWordClass[i].GetWord();
-				if (iCurPosY == MAP_HEIGHT - 1)
-					m_vPlayingWordClass.erase(m_vPlayingWordClass.begin() + i);
-				else if ((iCurPosY >= MAP_HEIGHT * 0.8f - 4 && iCurPosY <= MAP_HEIGHT * 0.8f)
-					&& ((iCurPosX >= MAP_WIDTH - iNameBoxWidth && iCurPosX <= MAP_WIDTH + iNameBoxWidth)
-						|| (iCurPosX + strCurWord.size() >= MAP_WIDTH - iNameBoxWidth && iCurPosX + strCurWord.size() <= MAP_WIDTH + iNameBoxWidth)))
-				{
-					i++;
-				}
-				else
-				{
-					m_vPlayingWordClass[i].DrawWord();
-					i++;
-				}
-			}
-			////Refresh Box
-			//m_pDrawManager.BoxDraw(MAP_WIDTH, MAP_HEIGHT * 0.8f - 4, iNameBoxWidth, NameBoxHeight);
+			MoveWord();
 			iOldMoveTime = iCurMoveTime;
 		}
 		//Input word
-		gotoxy(MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
-		char chTemp = getch();
-		
-		if (strTempKeyIn.size() < MAX_NAME_LEN
-			&& (chTemp >= 'a' && chTemp <= 'z') || (chTemp >= 'A' && chTemp <= 'Z'))
-			strTempKeyIn += chTemp;
-		else if (chTemp == KEY_BS && strTempKeyIn.size() > 0)
+		if (kbhit())
 		{
-			m_pDrawManager.EraseMidText(strTempKeyIn, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
-			strTempKeyIn.pop_back();
+			m_pDrawManager.EraseMidText("Failed Compare!!", MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
+			bool bKeyEnter = KeyboardInput(&strTempKeyIn, MAX_WORD_LEN);
+			if (bKeyEnter == true)
+			{
+				m_pDrawManager.EraseMidText(strTempKeyIn, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
+				//Word 맞추기
+				if (CheckWordFailed(strTempKeyIn))
+					m_iScore += SCORE_PLUS;
+				else
+					m_pDrawManager.DrawMidText("Failed Compare!!", MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
+				//입력 문자 초기화
+				strTempKeyIn = "\0";
+			}
 		}
-		else if (chTemp == KEY_ENTER)
-		{
-			m_strKeyInWord = strTempKeyIn;
-		}
-		//Display Text
-		if (strTempKeyIn.size() >= MAX_NAME_LEN)
-		{
-			m_pDrawManager.DrawMidText("10글자 초과!!", MAP_WIDTH, MAP_HEIGHT * 0.4f + 3);
-			m_pDrawManager.DrawMidText(strTempKeyIn, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
-		}
-		else
-		{
-			m_pDrawManager.EraseMidText("10글자 초과!!", MAP_WIDTH, MAP_HEIGHT * 0.4f + 3);
-			m_pDrawManager.DrawMidText(strTempKeyIn, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
-		}
-		//정답 찾기
+		DispPlayerInfo();
 	}
 }
 

@@ -26,8 +26,13 @@
 #define KEY_ENTER 13
 #define MAX_NAME_LEN 10
 
+#define KEY_IN_BOX_WIDTH 19
+#define KEY_IN_BOX_HEIGHT 5
+
 #define TIME_WORD_CREATE 1500
 #define TIME_WORD_MOVING 500
+#define MAX_WORD_LEN 20
+#define SCORE_PLUS 100
 
 using namespace std;
 
@@ -39,8 +44,8 @@ private:
 	int m_iScore;
 	int m_iStage;
 	string m_strName;
-	string m_strKeyInWord;
 	list<string> m_listStoryText;
+	vector<string> m_vStoryText;
 	DrawManager m_pDrawManager;
 	vector<Word> m_vWordClass;
 	vector<Word> m_vPlayingWordClass;
@@ -55,12 +60,19 @@ public:
 	void StartGame();
 	void DispStory();
 	void DispLineText(int posX, int posY, int TextLine, int Mode = TEXT_MODE_DRAW);
-	void EraseAllLineText(int posX, int posY, int TextLine);
 	void ScrollText(int posX, int posY);
-	void InputName(int Mode = TEXT_MODE_DRAW);
-	void InGame();
-	void LoadWord();
 
+	void TextScroll(string str, int posX, int posY);
+
+	void InputName(int Mode = TEXT_MODE_DRAW);
+	bool KeyboardInput(string* str, int maxLen);
+	void InGame();
+	void DispStage();
+	void LoadWord();
+	void CreateWord();
+	void MoveWord();
+	bool CheckWordBoxPos(int index);
+	bool CheckWordFailed(string str);
 	inline void gotoxy(int x, int y)
 	{
 		COORD Pos = { x, y };
