@@ -26,7 +26,8 @@
 #define KEY_ENTER 13
 #define MAX_NAME_LEN 10
 
-#define TIME_MOVING 1000
+#define TIME_WORD_CREATE 1500
+#define TIME_WORD_MOVING 500
 
 using namespace std;
 
@@ -38,24 +39,32 @@ private:
 	int m_iScore;
 	int m_iStage;
 	string m_strName;
+	string m_strKeyInWord;
 	list<string> m_listStoryText;
 	DrawManager m_pDrawManager;
 	vector<Word> m_vWordClass;
+	vector<Word> m_vPlayingWordClass;
 	int m_iWordCount;
 
 public:
 	Play();
 	void GameOn();
 	void SetConsoleWindow(int width, int height);
-	void DispLoby();
+	void DispLoby(int Mode = TEXT_MODE_DRAW);
 	void DispPlayerInfo();
 	void StartGame();
 	void DispStory();
 	void DispLineText(int posX, int posY, int TextLine, int Mode = TEXT_MODE_DRAW);
 	void EraseAllLineText(int posX, int posY, int TextLine);
 	void ScrollText(int posX, int posY);
-	void InputName();
+	void InputName(int Mode = TEXT_MODE_DRAW);
 	void InGame();
 	void LoadWord();
+
+	inline void gotoxy(int x, int y)
+	{
+		COORD Pos = { x, y };
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
+	}
 };
 

@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DrawManager.cpp" />
+    <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="VeniceGameMain.cpp" />
     <ClCompile Include="Word.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DrawManager.h" />
+    <ClInclude Include="Interface.h" />
     <ClInclude Include="Lib.h" />
     <ClInclude Include="Play.h" />
     <ClInclude Include="Word.h" />

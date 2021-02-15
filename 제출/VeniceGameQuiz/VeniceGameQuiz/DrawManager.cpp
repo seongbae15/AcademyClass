@@ -50,7 +50,7 @@ void DrawManager::TextDraw(string str, int x, int y)
 void DrawManager::TextErase(string str, int x, int y)
 {
 	string strBlank;
-	for (int i = 0;i < strBlank.size();i++)
+	for (int i = 0;i < str.size();i++)
 		strBlank += " ";
 	gotoxy(x, y);
 	cout << strBlank;
@@ -103,6 +103,7 @@ void DrawManager::BoxDraw(int Start_x, int Start_y, int Width, int Height)
 
 int DrawManager::MenuSelectCursor(int MenuLen, int AddCol, int x, int y)
 {
+	BG_GRAY_TEXT_RED
 	int Select = 1;
 	DrawPoint("¢¹", x, y);
 	while (1)
@@ -126,11 +127,13 @@ int DrawManager::MenuSelectCursor(int MenuLen, int AddCol, int x, int y)
 			}
 			break;
 		case ENTER:
+			ErasePoint(x, y);
+			ORIGINAL
 			return Select;
 		}
 		DrawPoint("¢¹", x, y);
 	}
-	
+	ORIGINAL
 }
 DrawManager::~DrawManager()
 {
