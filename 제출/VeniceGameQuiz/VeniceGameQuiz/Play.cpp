@@ -10,6 +10,8 @@ void Play:: PlayerInit()
 	m_iScore = INIT_SCORE;
 	m_strName = "? ? ?";
 	m_iStage = 1;
+	m_iWordMoveRate = TIME_WORD_MOVING;
+	m_iWordCreateRate = TIME_WORD_CREATE;
 }
 
 void Play::SetConsoleWindow(int MapWidth, int MapHeight)
@@ -44,15 +46,18 @@ void Play::DispLoby(int Mode)
 void Play::DispPlayerInfo()
 {
 	BG_GRAY_TEXT_RED
+	string strTemp;
 	m_pDrawManager.TextDraw("Life : ", 1, MAP_HEIGHT + 1);
 	for (int i = 0;i < m_iLife;i++)
 		cout << "¢¾";
 	for (int j = m_iLife;j < INIT_LIFE;j++)
 		cout << "  ";
 	m_pDrawManager.DrawMidText("Score : ", MAP_WIDTH, MAP_HEIGHT + 1);
-	cout << m_iScore;
+	cout << to_string(m_iScore) + "      ";
 	m_pDrawManager.TextDraw("Name : ", 2 * (MAP_WIDTH - 9), MAP_HEIGHT + 1);
-	cout << m_strName;
+	for (int i = m_strName.size(); i < MAX_NAME_LEN; i++)
+		strTemp += " ";
+	cout << m_strName + strTemp;
 	ORIGINAL
 }
 void Play::DispLineText(int posX, int posY, int TextLine, int Mode)
@@ -191,8 +196,6 @@ void Play::InputName(int Mode)
 			bool bKeyEnter = KeyboardInput(&strTempName, MAX_NAME_LEN);
 			if (bKeyEnter == true)
 			{
-				for (int i = strTempName.size(); i < MAX_NAME_LEN; i++)
-					strTempName += " ";
 				m_strName = strTempName;
 				break;
 			}
@@ -222,6 +225,8 @@ void Play::LoadWord()
 }
 void Play::DispStage()
 {
+	//Erase text in box
+	m_pDrawManager.BoxErase(MAP_WIDTH, MAP_HEIGHT);
 	//Display stage
 	string strStage = "¡Ú " + to_string(m_iStage) + " Stage ¡Ú";
 	m_pDrawManager.DrawMidText(strStage, MAP_WIDTH, MAP_HEIGHT * 0.5f);
@@ -308,6 +313,33 @@ bool Play::CheckWordFailed(string str)
 	return false;
 }
 
+void Play::StageUp()
+{
+	BG_GRAY_TEXT_ORIGINAL
+	m_iStage++;
+	m_iScore = 0;
+	//Clear word info
+	m_vPlayingWordClass.clear();
+	//Speed up
+	m_iWordMoveRate -= 100;
+	//increase to create word rate
+	m_iWordCreateRate -= 20;
+	DispStage();
+}
+
+void Play::SaveRank()
+{
+	ofstream fSaveRank;
+	fSaveRank.open("Rank.txt",ios::app);
+	if (fSaveRank.is_open())
+	{
+		fSaveRank << m_strName + " ";
+		fSaveRank << to_string(m_iStage) + " ";
+		fSaveRank << to_string(m_iScore) << endl;
+		fSaveRank.close();
+	}
+}
+
 void Play::InGame()
 {
 	int iNameBoxWidth = 19;
@@ -329,13 +361,13 @@ void Play::InGame()
 		int iCurCreatTime = clock();
 		int iCurMoveTime = clock();
 		//Create word
-		if (iCurCreatTime - iOldCreatTime >= TIME_WORD_CREATE)
+		if (iCurCreatTime - iOldCreatTime >= m_iWordCreateRate)
 		{
 			CreateWord();
 			iOldCreatTime = iCurCreatTime;
 		}
 		//Move word
-		if (iCurMoveTime - iOldMoveTime >= TIME_WORD_MOVING)
+		if (iCurMoveTime - iOldMoveTime >= m_iWordMoveRate)
 		{
 			MoveWord();
 			iOldMoveTime = iCurMoveTime;
@@ -350,7 +382,7 @@ void Play::InGame()
 				m_pDrawManager.EraseMidText(strTempKeyIn, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
 				//Word ¸ÂÃß±â
 				if (CheckWordFailed(strTempKeyIn))
-					m_iScore += SCORE_PLUS;
+					m_iScore += strTempKeyIn.size()* SCORE_RATE;
 				else
 				{
 					BG_GRAY_TEXT_RED
@@ -364,7 +396,9 @@ void Play::InGame()
 		//Check Stage Up
 		if (m_iScore >= 1000*m_iStage)
 		{
-			//
+			StageUp();
+			BG_GRAY_TEXT_PURPLE
+			m_pDrawManager.BoxDraw(MAP_WIDTH, MAP_HEIGHT * 0.8f - 4, iNameBoxWidth, NameBoxHeight);
 		}
 		//Check game over
 		if (m_iLife <= 0)
@@ -372,9 +406,12 @@ void Play::InGame()
 			bGameOverState = false;
 			BG_GRAY_TEXT_RED
 			m_pDrawManager.DrawMidText("¢Í Game Over ¢Í", MAP_WIDTH, MAP_HEIGHT * 0.5f);
+			//Save player info
+			SaveRank();
 			Sleep(2000);
 		}
 	}
+
 }
 
 void Play::StartGame()
@@ -394,13 +431,49 @@ void Play::StartGame()
 	//In game
 	InGame();
 	ORIGINAL
-
 }
-
+void Play::LoadRank()
+{
+	ifstream fLoadRank;
+	fLoadRank.open("Rank.txt");
+	if (fLoadRank.is_open())
+	{
+		PlayerInfo stPlayerInfo;
+		while (!fLoadRank.eof())
+		{
+			fLoadRank >> stPlayerInfo.strName;
+			fLoadRank >> stPlayerInfo.iStage;
+			fLoadRank >> stPlayerInfo.iScore;
+			m_vPList.push_back(stPlayerInfo);
+		}
+		fLoadRank.close();
+	}
+}
+void Play::DispRankScreen()
+{
+	BG_GRAY_TEXT_PURPLE
+	system("cls");
+	int iNameBoxWidth = 19;
+	int NameBoxHeight = 5;
+	string strTemp;
+	BG_GRAY_TEXT_BLUE_GREEN
+	m_pDrawManager.BoxDraw(0, 0, MAP_WIDTH, MAP_HEIGHT);
+	BG_GRAY_TEXT_PURPLE
+	m_pDrawManager.BoxDraw(MAP_WIDTH, MAP_HEIGHT * 0.2f - 4, iNameBoxWidth, NameBoxHeight);
+	m_pDrawManager.DrawMidText("Ranking", MAP_WIDTH, MAP_HEIGHT * 0.2f - 2);
+	for (int i = 0;i < 2*(MAP_WIDTH - 2);i++)
+		strTemp += "=";
+	m_pDrawManager.DrawMidText(strTemp, MAP_WIDTH, MAP_HEIGHT * 0.2f+1);
+	//Load rank info
+	LoadRank();
+	
+	getch();
+}
 void Play::GameOn()
 {
+	BG_GRAY_TEXT_PURPLE
+	SetConsoleWindow(MAP_WIDTH, MAP_HEIGHT);
 	int iSelector;
-	SetConsoleWindow(MAP_WIDTH,MAP_HEIGHT);
 	srand(time(NULL));
 	while (1)
 	{
@@ -419,10 +492,12 @@ void Play::GameOn()
 			break;
 		case 2:
 			//Display ranking
+			DispRankScreen();
 			break;
 		case 3:
 			return;
 		}
+		BG_GRAY_TEXT_PURPLE
 		system("cls");
 	}
 }

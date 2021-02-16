@@ -32,9 +32,16 @@
 #define TIME_WORD_CREATE 1500
 #define TIME_WORD_MOVING 500
 #define MAX_WORD_LEN 20
-#define SCORE_PLUS 100
+#define SCORE_RATE 30
 
 using namespace std;
+
+typedef struct PlayerInfo
+{
+	string strName;
+	int iStage;
+	int iScore;
+}PlayerInfo;
 
 class Play
 {
@@ -43,12 +50,15 @@ private:
 	int m_iLife;
 	int m_iScore;
 	int m_iStage;
+	int m_iWordMoveRate;
+	int m_iWordCreateRate;
 	string m_strName;
 	list<string> m_listStoryText;
 	vector<string> m_vStoryText;
 	DrawManager m_pDrawManager;
 	vector<Word> m_vWordClass;
 	vector<Word> m_vPlayingWordClass;
+	vector<PlayerInfo> m_vPList;
 	int m_iWordCount;
 
 public:
@@ -74,6 +84,10 @@ public:
 	void MoveWord();
 	bool CheckWordBoxPos(int index);
 	bool CheckWordFailed(string str);
+	void StageUp();
+	void SaveRank();
+	void DispRankScreen();
+	void LoadRank();
 	inline void gotoxy(int x, int y)
 	{
 		COORD Pos = { x, y };
