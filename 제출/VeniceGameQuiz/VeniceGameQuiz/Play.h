@@ -53,6 +53,7 @@ private:
 
 public:
 	Play();
+	void PlayerInit();
 	void GameOn();
 	void SetConsoleWindow(int width, int height);
 	void DispLoby(int Mode = TEXT_MODE_DRAW);

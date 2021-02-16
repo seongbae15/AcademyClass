@@ -1,11 +1,17 @@
 #include "Play.h"
 Play::Play()
 {
+
+}
+
+void Play:: PlayerInit()
+{
 	m_iLife = INIT_LIFE;
 	m_iScore = INIT_SCORE;
 	m_strName = "? ? ?";
 	m_iStage = 1;
 }
+
 void Play::SetConsoleWindow(int MapWidth, int MapHeight)
 {
 	char buf[256];
@@ -293,7 +299,8 @@ bool Play::CheckWordFailed(string str)
 	{
 		if (str == m_vPlayingWordClass[i].GetWord())
 		{
-			m_vPlayingWordClass[i].EraseWord();
+			if(!CheckWordBoxPos(i))
+				m_vPlayingWordClass[i].EraseWord();
 			m_vPlayingWordClass.erase(m_vPlayingWordClass.begin() + i);
 			return true;
 		}
@@ -314,7 +321,8 @@ void Play::InGame()
 	int iOldCreatTime = clock();
 	int iOldMoveTime = clock();
 	string strTempKeyIn;
-	while (1)
+	bool bGameOverState = true;
+	while (bGameOverState)
 	{
 		BG_GRAY_TEXT_PURPLE
 		//Manage Word
@@ -332,7 +340,7 @@ void Play::InGame()
 			MoveWord();
 			iOldMoveTime = iCurMoveTime;
 		}
-		//Input word
+		//tpying word
 		if (kbhit())
 		{
 			m_pDrawManager.EraseMidText("Failed Compare!!", MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
@@ -344,12 +352,28 @@ void Play::InGame()
 				if (CheckWordFailed(strTempKeyIn))
 					m_iScore += SCORE_PLUS;
 				else
+				{
+					BG_GRAY_TEXT_RED
 					m_pDrawManager.DrawMidText("Failed Compare!!", MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
-				//입력 문자 초기화
+				}
+				//Init typin word
 				strTempKeyIn = "\0";
 			}
 		}
 		DispPlayerInfo();
+		//Check Stage Up
+		if (m_iScore >= 1000*m_iStage)
+		{
+			//
+		}
+		//Check game over
+		if (m_iLife <= 0)
+		{
+			bGameOverState = false;
+			BG_GRAY_TEXT_RED
+			m_pDrawManager.DrawMidText("♨ Game Over ♨", MAP_WIDTH, MAP_HEIGHT * 0.5f);
+			Sleep(2000);
+		}
 	}
 }
 
@@ -362,7 +386,6 @@ void Play::StartGame()
 	m_pDrawManager.DrawMidText("Skip : S", MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
 	//Display stroy
 	DispStory();
-
 	//Input name
 	InputName();
 	InputName(TEXT_MODE_ERASE);
@@ -381,6 +404,8 @@ void Play::GameOn()
 	srand(time(NULL));
 	while (1)
 	{
+		//Init player info
+		PlayerInit();
 		DispLoby();
 		DispPlayerInfo();
 		iSelector = m_pDrawManager.MenuSelectCursor(LOBY_MENU_CNT, LOBY_ADD_COL, MAP_WIDTH/2 - 5, MAP_HEIGHT * 0.4f);
