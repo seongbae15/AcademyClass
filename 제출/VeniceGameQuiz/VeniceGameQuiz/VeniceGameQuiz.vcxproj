@@ -142,6 +142,7 @@
     <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Play.cpp" />
+    <ClCompile Include="Story.cpp" />
     <ClCompile Include="VeniceGameMain.cpp" />
     <ClCompile Include="Word.cpp" />
   </ItemGroup>
@@ -150,6 +151,7 @@
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Lib.h" />
     <ClInclude Include="Play.h" />
+    <ClInclude Include="Story.h" />
     <ClInclude Include="Word.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -10,10 +10,6 @@ void Play:: PlayerInit()
 	m_stP.iScore = INIT_SCORE;
 	m_stP.strName = "? ? ?";
 	m_stP.iStage = 1;
-	//m_iLife = INIT_LIFE;
-	//m_iScore = INIT_SCORE;
-	//m_strName = "? ? ?";
-	//m_iStage = 1;
 	m_iWordMoveRate = TIME_WORD_MOVING;
 	m_iWordCreateRate = TIME_WORD_CREATE;
 }
@@ -85,24 +81,64 @@ void Play::ScrollText(int posX, int posY)
 }
 
 //Template 사용?? : StoryText Class추가???
-void Play::TextScroll(string str, int posX, int posY)
+void Play::TextScroll(vector<Story>* vectorClass,int max_size)
 {
-	//Erase
-	
-	//Draw or Delete
-
+	for (int i = 0; i < max_size; i++)
+	{
+		bool bCheckWordPos1 = CheckWordBoxPos((*vectorClass)[i].GetWord(), (*vectorClass)[i].GetWordPosX(), (*vectorClass)[i].GetWordPosY());
+		if (bCheckWordPos1 == true);
+		else
+			(*vectorClass)[i].EraseWord();
+	}
+	//Move & Draw
+	for (int i = 0; i < (*vectorClass).size();)
+	{
+		(*vectorClass)[i].UpadatePosY();
+		if (i < max_size)
+		{
+			bool bCheckWordPos2 = CheckWordBoxPos((*vectorClass)[i].GetWord(), (*vectorClass)[i].GetWordPosX(), (*vectorClass)[i].GetWordPosY());
+			if (bCheckWordPos2 == true)
+				i++;
+			else
+			{
+				int iCurPosY = (*vectorClass)[i].GetWordPosY();
+				int iCurPosX = (*vectorClass)[i].GetWordPosX();
+				string strCurWord = (*vectorClass)[i].GetWord();
+				if (iCurPosY == MAP_HEIGHT * 0.2f)
+				{
+					(*vectorClass).erase((*vectorClass).begin() + i);
+				}
+				else
+				{
+					(*vectorClass)[i].DrawWord();
+					i++;
+				}
+			}
+		}
+		else
+			i++;
+	}
 }
 void Play::LoadStory()
 {
+	string strStory;
+	Story tmpStoryClass;
+	string strTmpStory;
 	ifstream fStoryLoad;
 	fStoryLoad.open("베네치아_스토리.txt");
-	string strStory;
+	
 	int iStoryLine;
+	int iColCount = 0;;
 	fStoryLoad >> iStoryLine;
 	while (fStoryLoad.is_open() && !fStoryLoad.eof())
 	{
-		getline(fStoryLoad, strStory);
-		m_listStoryText.push_back(strStory);
+		//getline(fStoryLoad, strStory);
+		//m_listStoryText.push_back(strStory);
+		
+		getline(fStoryLoad, strTmpStory);
+		tmpStoryClass.SetWord(strTmpStory, iColCount);
+		m_vStoryClass.push_back(tmpStoryClass);
+		iColCount++;
 	}
 	fStoryLoad.close();
 }
@@ -131,22 +167,38 @@ void Play::DispStory()
 		{
 			if (iLineCount < TEXT_LINE_COUNT)
 			{
-				auto iter = m_listStoryText.begin();
-				for (int i = 0; i < iLineCount; i++)
-					iter++;
-				m_pDrawManager.DrawMidText(*iter, MAP_WIDTH, StroyTextFirstLine + iLineCount);				
+				//auto iter = m_listStoryText.begin();
+				//for (int i = 0; i < iLineCount; i++)
+				//	iter++;
+				//m_pDrawManager.DrawMidText(*iter, MAP_WIDTH, StroyTextFirstLine + iLineCount);				
+				//iLineCount++;
+				m_vStoryClass[iLineCount].DrawWord();
 				iLineCount++;
 			}
 			else
 			{
-				//Scroll text
-				ScrollText(MAP_WIDTH, StroyTextFirstLine);
+				//
+				TextScroll(&m_vStoryClass, TEXT_LINE_COUNT);
+				//
+				////Scroll text
+				//ScrollText(MAP_WIDTH, StroyTextFirstLine);
+				////Escape
+				//if (m_listStoryText.size() == TEXT_LINE_COUNT)
+				//{
+				//	Sleep(1000);
+				//	//Erase all text line
+				//	DispLineText(MAP_WIDTH, StroyTextFirstLine, TEXT_LINE_COUNT, TEXT_MODE_ERASE);
+				//	break;
+				//}
 				//Escape
-				if (m_listStoryText.size() == TEXT_LINE_COUNT)
+				if (m_vStoryClass.size() == TEXT_LINE_COUNT)
 				{
 					Sleep(1000);
 					//Erase all text line
-					DispLineText(MAP_WIDTH, StroyTextFirstLine, TEXT_LINE_COUNT, TEXT_MODE_ERASE);
+					for (int i = 0;i < m_vStoryClass.size();i++)
+					{
+						m_vStoryClass[i].EraseWord();
+					}
 					break;
 				}
 			}
@@ -303,6 +355,19 @@ bool Play::CheckWordBoxPos(int index)
 	else
 		return false;
 }
+
+bool Play::CheckWordBoxPos(string str, int posX, int posY)
+{
+	if ((posY >= MAP_HEIGHT * 0.8f - 4 && posY <= MAP_HEIGHT * 0.8f)
+		&& ((posX >= MAP_WIDTH - KEY_IN_BOX_WIDTH && posX <= MAP_WIDTH + KEY_IN_BOX_WIDTH)
+			|| (posX + str.size() >= MAP_WIDTH - KEY_IN_BOX_WIDTH
+				&& posX + str.size() <= MAP_WIDTH + KEY_IN_BOX_WIDTH)))
+		return true;
+	else
+		return false;
+}
+
+
 bool Play::CheckWordFailed(string str)
 {
 	for (int i = 0;i < m_vPlayingWordClass.size();i++)
@@ -458,6 +523,8 @@ void Play::LoadRank()
 		}
 		fLoadRank.close();
 	}
+	else
+		m_pDrawManager.DrawMidText("저장된 정보가 없습니다", MAP_WIDTH, MAP_HEIGHT * .5f);
 }
 bool RankSort(PlayerInfo A, PlayerInfo B)
 {

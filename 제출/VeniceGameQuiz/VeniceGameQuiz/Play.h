@@ -10,6 +10,7 @@
 #include "Lib.h"
 #include "DrawManager.h"
 #include "Word.h"
+#include "Story.h"
 
 #define LOBY_MENU_CNT 3
 #define LOBY_ADD_COL 3
@@ -55,11 +56,15 @@ private:
 	int m_iWordMoveRate;
 	int m_iWordCreateRate;
 	PlayerInfo m_stP;
-	list<string> m_listStoryText;
-	vector<string> m_vStoryText;
 	DrawManager m_pDrawManager;
+
+	list<string> m_listStoryText;
+
+	vector<Story> m_vStoryClass;
+
 	vector<Word> m_vWordClass;
 	vector<Word> m_vPlayingWordClass;
+
 	vector<PlayerInfo> m_vPList;
 	int m_iWordCount;
 
@@ -76,7 +81,8 @@ public:
 	void DispLineText(int posX, int posY, int TextLine, int Mode = TEXT_MODE_DRAW);
 	void ScrollText(int posX, int posY);
 
-	void TextScroll(string str, int posX, int posY);
+	//Template 적용<Story><Word> 모두 사용하도록
+	void TextScroll(vector<Story>* vectorClass, int max_size);
 
 	void InputName(int Mode = TEXT_MODE_DRAW);
 	bool KeyboardInput(string* str, int maxLen);
@@ -86,6 +92,7 @@ public:
 	void CreateWord();
 	void MoveWord();
 	bool CheckWordBoxPos(int index);
+	bool CheckWordBoxPos(string str, int posX, int posY);
 	bool CheckWordFailed(string str);
 	void StageUp();
 	void SaveRank();
