@@ -6,7 +6,7 @@
 #include <list>
 #include <time.h>
 #include <stdlib.h>
-
+#include <algorithm>
 #include "Lib.h"
 #include "DrawManager.h"
 #include "Word.h"
@@ -15,6 +15,8 @@
 #define LOBY_ADD_COL 3
 #define INIT_SCORE 0
 #define INIT_LIFE 9
+#define SMALL_BOX_WIDTH 19
+#define SMALL_BOX_HEIGHT 5
 
 #define TEXT_LINE_COUNT 10
 #define TEXT_DELAY 1000
@@ -34,6 +36,8 @@
 #define MAX_WORD_LEN 20
 #define SCORE_RATE 30
 
+#define NUMBER_RANK_MAX 10
+
 using namespace std;
 
 typedef struct PlayerInfo
@@ -41,18 +45,16 @@ typedef struct PlayerInfo
 	string strName;
 	int iStage;
 	int iScore;
+	int iLife;
 }PlayerInfo;
 
 class Play
 {
 private:
 	bool m_bGameState;
-	int m_iLife;
-	int m_iScore;
-	int m_iStage;
 	int m_iWordMoveRate;
 	int m_iWordCreateRate;
-	string m_strName;
+	PlayerInfo m_stP;
 	list<string> m_listStoryText;
 	vector<string> m_vStoryText;
 	DrawManager m_pDrawManager;
@@ -70,6 +72,7 @@ public:
 	void DispPlayerInfo();
 	void StartGame();
 	void DispStory();
+	void LoadStory();
 	void DispLineText(int posX, int posY, int TextLine, int Mode = TEXT_MODE_DRAW);
 	void ScrollText(int posX, int posY);
 
@@ -86,6 +89,8 @@ public:
 	bool CheckWordFailed(string str);
 	void StageUp();
 	void SaveRank();
+
+	//Ok
 	void DispRankScreen();
 	void LoadRank();
 	inline void gotoxy(int x, int y)

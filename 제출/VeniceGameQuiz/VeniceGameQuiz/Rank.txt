@@ -2,3 +2,12 @@ abcdefghij 3 1230
 abc 1 0
 asdfaw 1 780
 abc 1 0
+seong 2 2000
+abc 1 750
+abe 1 0
+agvc 3 2790
+dfjakldf 1 0
+dfadf 4 2550
+abceefd 4 810
+abcdefghij 4 2220
+abc 5 0
