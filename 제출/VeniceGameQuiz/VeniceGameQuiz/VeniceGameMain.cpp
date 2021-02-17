@@ -31,7 +31,7 @@ o 4. 단어 맞추기(점수증가)
 o 5. Stage기능 만들기
 	o > 점수 기준
 		o >> stage 별 통과 점수 상승
-			-> 1000 x stage 점 이상 (1000->2000 ->3000)
+			o -> 1000 x stage 점 이상 (1000->2000 ->3000)
 	o > Reset
 		o >> 점수
 		o >> 단어 정보 리셋
@@ -45,25 +45,27 @@ o 6. Rank시스템 만들기
 		o >> 파일 불러오기
 		o >> 내림차순 정렬(상위 10명만 표시)
 		o >> 파일 없을 때, 표시
-<>. 코드 정리
-	> 스크롤 함수화 해볼것(스토리 텍스트, 단어 Drop 동일 함수로 구현해볼 것)
-		>> 클래스 추가<Story>
-		>> list<Story> List로 Push_back()
-		>> list 주소값 참조하여, Scroll 적용
-		>> Playing Word > list로 변경
-		>> Story Draw -> DrawMidText , Word Draw ->DrawText
+o <>. 코드 정리
+	o > 스크롤 함수화 해볼것(스토리 텍스트, 단어 Drop 동일 함수로 구현해볼 것)
+		o >> 클래스 추가<Story>
+		o >> vector<Story> vector로 Push_back()
+		o >> vector 주소값 참조하여, Scroll 적용
+		o >> Story Draw -> DrawMidText , Word Draw ->DrawText
+		o>> template 사용하여 vector<Story> vector<Word> 모두 적용
 7. 아이템기능 추가
 	> 1.워드속도 증가
 	> 2.워드속도 감소
 	> 3.워드일시정지
 	> 4.화면클리어
 	> 5.워드가리기(1.5초)
+		>> 단어 그리기에서 매개변수 추가(아이템 적용여부)
 8. 추가 할 일
 	> 맵 관리 기능 클래스 분리하기(배경 관리).
 	o > 단어별 점수 기준 재정립.(단어 길이별? 점수)
 	> define 정리
 	> Stage up 속도 증가 제한, 단어 갯수 증가 제한 둘 것.
-	> 게임 오버 시, 워드 리스트 지우기.
+	o > 게임 오버 시, 워드 리스트 지우기.
+	>> Text 상속??
 
 <조건>
 1. player 이름 10글자 이내

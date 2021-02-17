@@ -1,7 +1,6 @@
 #include "Play.h"
 Play::Play()
 {
-
 }
 
 void Play:: PlayerInit()
@@ -80,14 +79,17 @@ void Play::ScrollText(int posX, int posY)
 	DispLineText(posX, posY, TEXT_LINE_COUNT);
 }
 
-//Template 사용?? : StoryText Class추가???
-void Play::TextScroll(vector<Story>* vectorClass,int max_size)
+
+template <typename t>
+void Play::TextScroll(vector<t>* vectorClass,int max_size,int limit_y, int Mode)
 {
 	for (int i = 0; i < max_size; i++)
 	{
-		bool bCheckWordPos1 = CheckWordBoxPos((*vectorClass)[i].GetWord(), (*vectorClass)[i].GetWordPosX(), (*vectorClass)[i].GetWordPosY());
+		bool bCheckWordPos1 = false;
+		if (Mode == SCROLL_MODE_WORD)
+			bCheckWordPos1 = CheckWordBoxPos((*vectorClass)[i].GetWord(), (*vectorClass)[i].GetWordPosX(), (*vectorClass)[i].GetWordPosY());
 		if (bCheckWordPos1 == true);
-		else
+		else 
 			(*vectorClass)[i].EraseWord();
 	}
 	//Move & Draw
@@ -96,7 +98,9 @@ void Play::TextScroll(vector<Story>* vectorClass,int max_size)
 		(*vectorClass)[i].UpadatePosY();
 		if (i < max_size)
 		{
-			bool bCheckWordPos2 = CheckWordBoxPos((*vectorClass)[i].GetWord(), (*vectorClass)[i].GetWordPosX(), (*vectorClass)[i].GetWordPosY());
+			bool bCheckWordPos2 = false;
+			if (Mode == SCROLL_MODE_WORD)
+				bCheckWordPos2 = CheckWordBoxPos((*vectorClass)[i].GetWord(), (*vectorClass)[i].GetWordPosX(), (*vectorClass)[i].GetWordPosY());
 			if (bCheckWordPos2 == true)
 				i++;
 			else
@@ -104,15 +108,15 @@ void Play::TextScroll(vector<Story>* vectorClass,int max_size)
 				int iCurPosY = (*vectorClass)[i].GetWordPosY();
 				int iCurPosX = (*vectorClass)[i].GetWordPosX();
 				string strCurWord = (*vectorClass)[i].GetWord();
-				if (iCurPosY == MAP_HEIGHT * 0.2f)
+				if (iCurPosY == limit_y)
 				{
 					(*vectorClass).erase((*vectorClass).begin() + i);
+					//Word Class 일 때만 적용
+					if(Mode == SCROLL_MODE_WORD)
+						m_bLifeState = false;
 				}
 				else
-				{
-					(*vectorClass)[i].DrawWord();
-					i++;
-				}
+					(*vectorClass)[i++].DrawWord();
 			}
 		}
 		else
@@ -132,9 +136,6 @@ void Play::LoadStory()
 	fStoryLoad >> iStoryLine;
 	while (fStoryLoad.is_open() && !fStoryLoad.eof())
 	{
-		//getline(fStoryLoad, strStory);
-		//m_listStoryText.push_back(strStory);
-		
 		getline(fStoryLoad, strTmpStory);
 		tmpStoryClass.SetWord(strTmpStory, iColCount);
 		m_vStoryClass.push_back(tmpStoryClass);
@@ -159,7 +160,8 @@ void Play::DispStory()
 			if (chKeyIn == KEY_SKIP_s || chKeyIn == KEY_SKIP_S)
 			{
 				//Erase all text line
-				DispLineText(MAP_WIDTH, StroyTextFirstLine, TEXT_LINE_COUNT, TEXT_MODE_ERASE);
+				for (int i = 0; i < TEXT_LINE_COUNT; i++)
+					m_vStoryClass[i].EraseWord();
 				break;
 			}
 		}
@@ -167,38 +169,19 @@ void Play::DispStory()
 		{
 			if (iLineCount < TEXT_LINE_COUNT)
 			{
-				//auto iter = m_listStoryText.begin();
-				//for (int i = 0; i < iLineCount; i++)
-				//	iter++;
-				//m_pDrawManager.DrawMidText(*iter, MAP_WIDTH, StroyTextFirstLine + iLineCount);				
-				//iLineCount++;
 				m_vStoryClass[iLineCount].DrawWord();
 				iLineCount++;
 			}
 			else
 			{
-				//
-				TextScroll(&m_vStoryClass, TEXT_LINE_COUNT);
-				//
-				////Scroll text
-				//ScrollText(MAP_WIDTH, StroyTextFirstLine);
-				////Escape
-				//if (m_listStoryText.size() == TEXT_LINE_COUNT)
-				//{
-				//	Sleep(1000);
-				//	//Erase all text line
-				//	DispLineText(MAP_WIDTH, StroyTextFirstLine, TEXT_LINE_COUNT, TEXT_MODE_ERASE);
-				//	break;
-				//}
+				TextScroll(&m_vStoryClass, TEXT_LINE_COUNT, MAP_HEIGHT * 0.2f, SCROLL_MODE_STORY);
 				//Escape
 				if (m_vStoryClass.size() == TEXT_LINE_COUNT)
 				{
 					Sleep(1000);
 					//Erase all text line
 					for (int i = 0;i < m_vStoryClass.size();i++)
-					{
 						m_vStoryClass[i].EraseWord();
-					}
 					break;
 				}
 			}
@@ -263,7 +246,6 @@ void Play::InputName(int Mode)
 	}
 }
 
-
 void Play::LoadWord()
 {
 	ifstream fLoadWord;
@@ -296,7 +278,7 @@ void Play::CreateWord()
 {
 	//Random word index
 	int iRindex = rand() % m_iWordCount;	//0~74
-	//Random position X	//
+	//Random position X
 	int iRposX = rand() % (MAP_WIDTH * 2 - (m_vWordClass[iRindex].GetWord().size()+3)) + 2;
 	m_vWordClass[iRindex].SetWordPos(iRposX, 1);
 	m_vPlayingWordClass.push_back(m_vWordClass[iRindex]);
@@ -366,7 +348,6 @@ bool Play::CheckWordBoxPos(string str, int posX, int posY)
 	else
 		return false;
 }
-
 
 bool Play::CheckWordFailed(string str)
 {
@@ -439,7 +420,16 @@ void Play::InGame()
 		//Move word
 		if (iCurMoveTime - iOldMoveTime >= m_iWordMoveRate)
 		{
-			MoveWord();
+			//MoveWord();
+			m_bLifeState = true;
+			TextScroll(&m_vPlayingWordClass, m_vPlayingWordClass.size(),MAP_HEIGHT-1, SCROLL_MODE_WORD);
+			if (m_bLifeState == false)
+			{
+				if (m_stP.iLife > 0)
+					m_stP.iLife--;
+				else
+					m_stP.iLife = 0;
+			}
 			iOldMoveTime = iCurMoveTime;
 		}
 		//tpying word

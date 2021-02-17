@@ -29,6 +29,10 @@
 #define KEY_ENTER 13
 #define MAX_NAME_LEN 10
 
+#define SCROLL_MODE_STORY 0
+#define SCROLL_MODE_WORD 1
+
+
 #define KEY_IN_BOX_WIDTH 19
 #define KEY_IN_BOX_HEIGHT 5
 
@@ -53,6 +57,7 @@ class Play
 {
 private:
 	bool m_bGameState;
+	bool m_bLifeState;
 	int m_iWordMoveRate;
 	int m_iWordCreateRate;
 	PlayerInfo m_stP;
@@ -82,7 +87,8 @@ public:
 	void ScrollText(int posX, int posY);
 
 	//Template 적용<Story><Word> 모두 사용하도록
-	void TextScroll(vector<Story>* vectorClass, int max_size);
+	template <typename t>
+	void TextScroll(vector<t>* vectorClass, int max_size,int limit_y,int Mode);
 
 	void InputName(int Mode = TEXT_MODE_DRAW);
 	bool KeyboardInput(string* str, int maxLen);

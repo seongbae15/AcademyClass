@@ -11,3 +11,6 @@ dfadf 4 2550
 abceefd 4 810
 abcdefghij 4 2220
 abc 5 0
+abc 5 210
+def 4 1470
+asdfasdf 2 1800
