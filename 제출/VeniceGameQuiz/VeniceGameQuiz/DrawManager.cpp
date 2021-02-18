@@ -110,6 +110,7 @@ int DrawManager::MenuSelectCursor(int MenuLen, int AddCol, int x, int y)
 	{
 		switch (getch())
 		{
+		case UP_CAP:
 		case UP:
 			if (Select - 1 >= 1)
 			{
@@ -118,6 +119,7 @@ int DrawManager::MenuSelectCursor(int MenuLen, int AddCol, int x, int y)
 				Select--;
 			}
 			break;
+		case DOWN_CAP:
 		case DOWN:
 			if (Select + 1 <= MenuLen)
 			{

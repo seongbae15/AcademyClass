@@ -13,7 +13,9 @@ private:
 public:
 	void DrawWord(bool hide_state = false);
 	void EraseWord();
-	void SetWord(string str, int AddCol=0);
+	void SetWord(string str, int posX, int posY);
+
+	//void SetWordPos(int posX, int posY);
 	void UpadatePosY();
 	inline string GetWord()
 	{

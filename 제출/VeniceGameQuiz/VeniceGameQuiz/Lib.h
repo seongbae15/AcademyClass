@@ -23,3 +23,4 @@
 //////////////////////////////////////////////////////
 #define MAP_WIDTH 65
 #define MAP_HEIGHT 35
+#define MAX_NAME_LEN 10
