@@ -11,7 +11,7 @@ private:
 	int m_iY;
 	DrawManager m_stroyDrawManager;
 public:
-	void DrawWord();
+	void DrawWord(bool hide_state = false);
 	void EraseWord();
 	void SetWord(string str, int AddCol=0);
 	void UpadatePosY();

@@ -14,3 +14,4 @@ abc 5 0
 abc 5 210
 def 4 1470
 asdfasdf 2 1800
+fawe 2 1200

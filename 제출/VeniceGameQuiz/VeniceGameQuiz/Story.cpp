@@ -1,6 +1,6 @@
 #include "Story.h"
 
-void Story::DrawWord()
+void Story::DrawWord(bool hide_state)
 {
 	m_stroyDrawManager.DrawMidText(m_strStoryLine, m_iX, m_iY);
 }

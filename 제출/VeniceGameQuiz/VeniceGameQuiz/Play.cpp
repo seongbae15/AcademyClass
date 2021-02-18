@@ -11,6 +11,8 @@ void Play:: PlayerInit()
 	m_stP.iStage = 1;
 	m_iWordMoveRate = TIME_WORD_MOVING;
 	m_iWordCreateRate = TIME_WORD_CREATE;
+	m_bWordPauseItemState = false;
+	m_bWordHideItemState = false;
 }
 
 void Play::SetConsoleWindow(int MapWidth, int MapHeight)
@@ -57,28 +59,6 @@ void Play::DispPlayerInfo()
 	cout << m_stP.strName + strTemp;
 	ORIGINAL
 }
-void Play::DispLineText(int posX, int posY, int TextLine, int Mode)
-{
-	int iCol = 0;
-	for (auto iter = m_listStoryText.begin(); iCol < TextLine; iter++, iCol++)
-	{
-		if(Mode == TEXT_MODE_DRAW)
-			m_pDrawManager.DrawMidText(*iter, posX, posY + iCol);
-		else if(Mode == TEXT_MODE_ERASE)
-			m_pDrawManager.EraseMidText(*iter, posX, posY + iCol);
-	}
-}
-
-void Play::ScrollText(int posX, int posY)
-{
-	//Erase
-	DispLineText(posX, posY, TEXT_LINE_COUNT, TEXT_MODE_ERASE);
-	//Pop first line Text
-	m_listStoryText.pop_front();
-	//Draw
-	DispLineText(posX, posY, TEXT_LINE_COUNT);
-}
-
 
 template <typename t>
 void Play::TextScroll(vector<t>* vectorClass,int max_size,int limit_y, int Mode)
@@ -116,7 +96,9 @@ void Play::TextScroll(vector<t>* vectorClass,int max_size,int limit_y, int Mode)
 						m_bLifeState = false;
 				}
 				else
-					(*vectorClass)[i++].DrawWord();
+				{
+					(*vectorClass)[i++].DrawWord(m_bWordHideItemState);
+				}
 			}
 		}
 		else
@@ -145,8 +127,6 @@ void Play::LoadStory()
 }
 void Play::DispStory()
 {
-	//File Load
-	LoadStory();
 	int StroyTextFirstLine = 8;
 	int iLineCount = 0;
 	int iLineCount1 = 0;
@@ -281,9 +261,17 @@ void Play::CreateWord()
 	//Random position X
 	int iRposX = rand() % (MAP_WIDTH * 2 - (m_vWordClass[iRindex].GetWord().size()+3)) + 2;
 	m_vWordClass[iRindex].SetWordPos(iRposX, 1);
+	//Item set or not
+	//int iRitem = rand() % 50 + 1;
+	int iRitem = rand() % 1 + 5;
+	if (iRitem >= ITEM_LIST_START && iRitem <= ITEM_LIST_END)
+		m_vWordClass[iRindex].SetItem(iRitem);
+	else
+		m_vWordClass[iRindex].SetItem();
+
 	m_vPlayingWordClass.push_back(m_vWordClass[iRindex]);
 	//Draw
-	m_vPlayingWordClass.back().DrawWord();
+	m_vPlayingWordClass.back().DrawWord(m_bWordHideItemState);
 }
 void Play::MoveWord()
 {
@@ -349,13 +337,69 @@ bool Play::CheckWordBoxPos(string str, int posX, int posY)
 		return false;
 }
 
+void Play::SpeedUpWord()
+{
+	if(m_iWordMoveRate > 200)
+		m_iWordMoveRate -= 100;
+}
+void Play::SpeedDownWord()
+{
+	m_iWordMoveRate += 100;
+}
+void Play::PauseWord()
+{
+	//단어 Y축 위치 업데이트 비활성화
+	m_bWordPauseItemState = true;
+}
+void Play::ClearWord()
+{
+	//단어 정보 삭제
+	m_vPlayingWordClass.clear();
+}
+void Play::HideWord()
+{
+	//단어 지우기
+	m_bWordHideItemState = true;
+}
+
+void Play::ActivateItem(int item_number)
+{
+	switch ((ITEM_LIST)item_number)
+	{
+	case ITEM_LIST_NONE:
+		break;
+	case ITEM_LIST_SPEED_UP:
+		SpeedUpWord();
+		break;
+	case ITEM_LIST_SPEED_DOWN:
+		SpeedDownWord();
+		break;
+	case ITEM_LIST_PAUSE:
+		PauseWord();
+		break;
+	case ITEM_LIST_CLEAR:
+		ClearWord();
+		break;
+	case ITEM_LIST_HIDE:
+		HideWord();
+		break;
+	default:
+		break;
+	}
+}
+
 bool Play::CheckWordFailed(string str)
 {
 	for (int i = 0;i < m_vPlayingWordClass.size();i++)
 	{
 		if (str == m_vPlayingWordClass[i].GetWord())
 		{
-			if(!CheckWordBoxPos(i))
+			int iTmpItemNumber = m_vPlayingWordClass[i].GetItemNumber();
+			if(iTmpItemNumber != ITEM_LIST_NONE)
+			{
+				ActivateItem(iTmpItemNumber);
+			}
+			if (!CheckWordBoxPos(i))
 				m_vPlayingWordClass[i].EraseWord();
 			m_vPlayingWordClass.erase(m_vPlayingWordClass.begin() + i);
 			return true;
@@ -372,9 +416,9 @@ void Play::StageUp()
 	//Clear word info
 	m_vPlayingWordClass.clear();
 	//Speed up
-	m_iWordMoveRate -= 100;
+	SpeedUpWord();
 	//increase to create word rate
-	m_iWordCreateRate -= 20;
+	m_iWordCreateRate -= 100;
 	DispStage();
 }
 
@@ -403,6 +447,8 @@ void Play::InGame()
 	m_pDrawManager.BoxDraw(MAP_WIDTH, MAP_HEIGHT * 0.8f - 4, iNameBoxWidth, NameBoxHeight);
 	int iOldCreatTime = clock();
 	int iOldMoveTime = clock();
+	int iOldPauseTime = clock();
+	int iOldHideTime = clock();
 	string strTempKeyIn;
 	bool bGameOverState = true;
 	while (bGameOverState)
@@ -411,26 +457,45 @@ void Play::InGame()
 		//Manage Word
 		int iCurCreatTime = clock();
 		int iCurMoveTime = clock();
-		//Create word
-		if (iCurCreatTime - iOldCreatTime >= m_iWordCreateRate)
+		int iCurPauseTime = clock();
+		int iCurHideTime = clock();
+		if (m_bWordPauseItemState == false)
 		{
-			CreateWord();
-			iOldCreatTime = iCurCreatTime;
-		}
-		//Move word
-		if (iCurMoveTime - iOldMoveTime >= m_iWordMoveRate)
-		{
-			//MoveWord();
-			m_bLifeState = true;
-			TextScroll(&m_vPlayingWordClass, m_vPlayingWordClass.size(),MAP_HEIGHT-1, SCROLL_MODE_WORD);
-			if (m_bLifeState == false)
+			if (iCurHideTime - iOldHideTime >= 3000)
 			{
-				if (m_stP.iLife > 0)
-					m_stP.iLife--;
-				else
-					m_stP.iLife = 0;
+				if (m_bWordHideItemState == true)
+					m_bWordHideItemState = false;
+				iOldHideTime = iCurHideTime;
 			}
-			iOldMoveTime = iCurMoveTime;
+			//Create word
+			if (iCurCreatTime - iOldCreatTime >= m_iWordCreateRate)
+			{
+				CreateWord();
+				iOldCreatTime = iCurCreatTime;
+			}
+			//Move word
+			if (iCurMoveTime - iOldMoveTime >= m_iWordMoveRate)
+			{
+				//MoveWord();
+				m_bLifeState = true;
+				TextScroll(&m_vPlayingWordClass, m_vPlayingWordClass.size(), MAP_HEIGHT - 1, SCROLL_MODE_WORD);
+				if (m_bLifeState == false)
+				{
+					if (m_stP.iLife > 0)
+						m_stP.iLife--;
+					else
+						m_stP.iLife = 0;
+				}
+				iOldMoveTime = iCurMoveTime;
+			}
+		}
+		else
+		{
+			if (iCurPauseTime - iOldPauseTime >= 2000)
+			{
+				m_bWordPauseItemState = false;
+				iOldPauseTime = iCurPauseTime;
+			}
 		}
 		//tpying word
 		if (kbhit())
@@ -442,7 +507,9 @@ void Play::InGame()
 				m_pDrawManager.EraseMidText(strTempKeyIn, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
 				//Word 맞추기
 				if (CheckWordFailed(strTempKeyIn))
-					m_stP.iScore += strTempKeyIn.size()* SCORE_RATE;
+				{
+					m_stP.iScore += strTempKeyIn.size() * SCORE_RATE;
+				}
 				else
 				{
 					BG_GRAY_TEXT_RED
@@ -479,12 +546,14 @@ void Play::StartGame()
 	BG_GRAY_TEXT_PURPLE
 	m_pDrawManager.BoxDraw(MAP_WIDTH, MAP_HEIGHT*0.8f-4, SMALL_BOX_WIDTH, SMALL_BOX_HEIGHT);
 	m_pDrawManager.DrawMidText("Skip : S", MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
+	//Load story
+	LoadStory();
 	//Display stroy
 	DispStory();
 	//Input name
 	InputName();
 	InputName(TEXT_MODE_ERASE);
-	//Word 불러오기
+	//load word
 	LoadWord();
 	//In game
 	InGame();
@@ -594,6 +663,5 @@ void Play::GameOn()
 		case 3:
 			return;
 		}
-		
 	}
 }

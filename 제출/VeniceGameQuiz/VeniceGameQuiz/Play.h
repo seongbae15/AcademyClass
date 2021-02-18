@@ -36,8 +36,8 @@
 #define KEY_IN_BOX_WIDTH 19
 #define KEY_IN_BOX_HEIGHT 5
 
-#define TIME_WORD_CREATE 1500
-#define TIME_WORD_MOVING 500
+#define TIME_WORD_CREATE 1200
+#define TIME_WORD_MOVING 800
 #define MAX_WORD_LEN 20
 #define SCORE_RATE 30
 
@@ -53,6 +53,18 @@ typedef struct PlayerInfo
 	int iLife;
 }PlayerInfo;
 
+//enum ITEM_LIST
+//{
+//	ITEM_LIST_NONE = 0,
+//	ITEM_LIST_START = 1,
+//	ITEM_LIST_SPEED_UP = 1,
+//	ITEM_LIST_SPEED_DOWN,
+//	ITEM_LIST_PAUSE,
+//	ITEM_LIST_CLEAR,
+//	ITEM_LIST_HIDE,
+//	ITEM_LIST_END = 5,
+//};
+
 class Play
 {
 private:
@@ -60,21 +72,19 @@ private:
 	bool m_bLifeState;
 	int m_iWordMoveRate;
 	int m_iWordCreateRate;
+	bool m_bWordPauseItemState;
+	bool m_bWordHideItemState;
 	PlayerInfo m_stP;
 	DrawManager m_pDrawManager;
-
-	list<string> m_listStoryText;
-
 	vector<Story> m_vStoryClass;
-
 	vector<Word> m_vWordClass;
 	vector<Word> m_vPlayingWordClass;
-
 	vector<PlayerInfo> m_vPList;
 	int m_iWordCount;
 
 public:
 	Play();
+	//Chekcing
 	void PlayerInit();
 	void GameOn();
 	void SetConsoleWindow(int width, int height);
@@ -83,13 +93,7 @@ public:
 	void StartGame();
 	void DispStory();
 	void LoadStory();
-	void DispLineText(int posX, int posY, int TextLine, int Mode = TEXT_MODE_DRAW);
-	void ScrollText(int posX, int posY);
-
-	//Template 적용<Story><Word> 모두 사용하도록
-	template <typename t>
-	void TextScroll(vector<t>* vectorClass, int max_size,int limit_y,int Mode);
-
+	//Chekcing
 	void InputName(int Mode = TEXT_MODE_DRAW);
 	bool KeyboardInput(string* str, int maxLen);
 	void InGame();
@@ -102,10 +106,23 @@ public:
 	bool CheckWordFailed(string str);
 	void StageUp();
 	void SaveRank();
+	//Item Checking....
+	void ActivateItem(int item_number);
+	void SpeedUpWord();
+	void SpeedDownWord();
+	void PauseWord();
+	void ClearWord();
+	void HideWord();
 
 	//Ok
+	template <typename t>
+	void TextScroll(vector<t>* vectorClass, int max_size, int limit_y, int Mode);
+
 	void DispRankScreen();
 	void LoadRank();
+
+
+
 	inline void gotoxy(int x, int y)
 	{
 		COORD Pos = { x, y };
