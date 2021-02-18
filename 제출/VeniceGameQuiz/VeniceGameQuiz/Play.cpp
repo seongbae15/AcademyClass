@@ -13,6 +13,7 @@ void Play:: PlayerInit()
 	m_iWordCreateRate = TIME_WORD_CREATE;
 	m_bWordPauseItemState = false;
 	m_bWordHideItemState = false;
+	m_bWordSpeedChangeState = false;
 }
 
 void Play::SetConsoleWindow(int MapWidth, int MapHeight)
@@ -217,7 +218,6 @@ void Play::InputName(int Mode)
 				break;
 			}
 		}
-
 	}
 	else if (Mode == TEXT_MODE_ERASE)
 	{
@@ -263,7 +263,7 @@ void Play::CreateWord()
 	m_vWordClass[iRindex].SetWordPos(iRposX, 1);
 	//Item set or not
 	//int iRitem = rand() % 50 + 1;
-	int iRitem = rand() % 1 + 5;
+	int iRitem = rand() % 6;
 	if (iRitem >= ITEM_LIST_START && iRitem <= ITEM_LIST_END)
 		m_vWordClass[iRindex].SetItem(iRitem);
 	else
@@ -273,45 +273,7 @@ void Play::CreateWord()
 	//Draw
 	m_vPlayingWordClass.back().DrawWord(m_bWordHideItemState);
 }
-void Play::MoveWord()
-{
-	//Erase
-	for (int i = 0; i < m_vPlayingWordClass.size(); i++)
-	{
-		bool bCheckWordPos1 = CheckWordBoxPos(i);
-		if (bCheckWordPos1 == true);
-		else
-			m_vPlayingWordClass[i].EraseWord();
-	}
-	//Move & Draw
-	for (int i = 0; i < m_vPlayingWordClass.size();)
-	{
-		m_vPlayingWordClass[i].UpadatePosY();
-		bool bCheckWordPos2 = CheckWordBoxPos(i);
-		if (bCheckWordPos2 == true)
-			i++;
-		else
-		{
-			int iCurPosY = m_vPlayingWordClass[i].GetWordPosY();
-			int iCurPosX = m_vPlayingWordClass[i].GetWordPosX();
-			string strCurWord = m_vPlayingWordClass[i].GetWord();
-			if (iCurPosY == MAP_HEIGHT - 1)
-			{
-				m_vPlayingWordClass.erase(m_vPlayingWordClass.begin() + i);
-				//Life Down
-				if (m_stP.iLife > 0)
-					m_stP.iLife--;
-				else
-					m_stP.iLife = 0;
-			}
-			else
-			{
-				m_vPlayingWordClass[i].DrawWord();
-				i++;
-			}
-		}
-	}
-}
+
 bool Play::CheckWordBoxPos(int index)
 {
 	int iPosY = m_vPlayingWordClass[index].GetWordPosY();
@@ -337,29 +299,18 @@ bool Play::CheckWordBoxPos(string str, int posX, int posY)
 		return false;
 }
 
-void Play::SpeedUpWord()
-{
-	if(m_iWordMoveRate > 200)
-		m_iWordMoveRate -= 100;
-}
-void Play::SpeedDownWord()
-{
-	m_iWordMoveRate += 100;
-}
-void Play::PauseWord()
-{
-	//단어 Y축 위치 업데이트 비활성화
-	m_bWordPauseItemState = true;
-}
 void Play::ClearWord()
 {
 	//단어 정보 삭제
+	for (int i = 0; i < m_vPlayingWordClass.size(); i++)
+	{
+		bool bCheckWordPos1 = false;
+		bCheckWordPos1 = CheckWordBoxPos(m_vPlayingWordClass[i].GetWord(), m_vPlayingWordClass[i].GetWordPosX(), m_vPlayingWordClass[i].GetWordPosY());
+		if (bCheckWordPos1 == true);
+		else
+			m_vPlayingWordClass[i].EraseWord();
+	}
 	m_vPlayingWordClass.clear();
-}
-void Play::HideWord()
-{
-	//단어 지우기
-	m_bWordHideItemState = true;
 }
 
 void Play::ActivateItem(int item_number)
@@ -369,19 +320,21 @@ void Play::ActivateItem(int item_number)
 	case ITEM_LIST_NONE:
 		break;
 	case ITEM_LIST_SPEED_UP:
-		SpeedUpWord();
+		m_bWordSpeedChangeState = true;
+		m_iWordMoveRateChange = m_iWordMoveRate/2;
 		break;
 	case ITEM_LIST_SPEED_DOWN:
-		SpeedDownWord();
+		m_bWordSpeedChangeState = true;
+		m_iWordMoveRateChange = m_iWordMoveRate *2;
 		break;
 	case ITEM_LIST_PAUSE:
-		PauseWord();
+		m_bWordPauseItemState = true;
 		break;
 	case ITEM_LIST_CLEAR:
 		ClearWord();
 		break;
 	case ITEM_LIST_HIDE:
-		HideWord();
+		m_bWordHideItemState = true;
 		break;
 	default:
 		break;
@@ -396,10 +349,11 @@ bool Play::CheckWordFailed(string str)
 		{
 			int iTmpItemNumber = m_vPlayingWordClass[i].GetItemNumber();
 			if(iTmpItemNumber != ITEM_LIST_NONE)
-			{
 				ActivateItem(iTmpItemNumber);
-			}
-			if (!CheckWordBoxPos(i))
+			//clear 시, size = 0
+			if (m_vPlayingWordClass.size() == 0)
+				return true;
+			else if (!CheckWordBoxPos(i))
 				m_vPlayingWordClass[i].EraseWord();
 			m_vPlayingWordClass.erase(m_vPlayingWordClass.begin() + i);
 			return true;
@@ -416,9 +370,9 @@ void Play::StageUp()
 	//Clear word info
 	m_vPlayingWordClass.clear();
 	//Speed up
-	SpeedUpWord();
+	m_iWordMoveRate -= WORD_CHANGE_RATE;
 	//increase to create word rate
-	m_iWordCreateRate -= 100;
+	m_iWordCreateRate -= WORD_CHANGE_RATE;
 	DispStage();
 }
 
@@ -449,6 +403,7 @@ void Play::InGame()
 	int iOldMoveTime = clock();
 	int iOldPauseTime = clock();
 	int iOldHideTime = clock();
+	int iOldSpeedTime = clock();
 	string strTempKeyIn;
 	bool bGameOverState = true;
 	while (bGameOverState)
@@ -457,16 +412,9 @@ void Play::InGame()
 		//Manage Word
 		int iCurCreatTime = clock();
 		int iCurMoveTime = clock();
-		int iCurPauseTime = clock();
-		int iCurHideTime = clock();
+		
 		if (m_bWordPauseItemState == false)
 		{
-			if (iCurHideTime - iOldHideTime >= 3000)
-			{
-				if (m_bWordHideItemState == true)
-					m_bWordHideItemState = false;
-				iOldHideTime = iCurHideTime;
-			}
 			//Create word
 			if (iCurCreatTime - iOldCreatTime >= m_iWordCreateRate)
 			{
@@ -474,7 +422,8 @@ void Play::InGame()
 				iOldCreatTime = iCurCreatTime;
 			}
 			//Move word
-			if (iCurMoveTime - iOldMoveTime >= m_iWordMoveRate)
+			if ((m_bWordSpeedChangeState == false) && (iCurMoveTime - iOldMoveTime >= m_iWordMoveRate)
+				|| (m_bWordSpeedChangeState == true) && (iCurMoveTime - iOldMoveTime >= m_iWordMoveRateChange))
 			{
 				//MoveWord();
 				m_bLifeState = true;
@@ -489,15 +438,31 @@ void Play::InGame()
 				iOldMoveTime = iCurMoveTime;
 			}
 		}
-		else
+		//Speed Item Time
+		int iCurSpeedTime = clock();
+		if (iCurSpeedTime - iOldSpeedTime >= 7000)
 		{
-			if (iCurPauseTime - iOldPauseTime >= 2000)
-			{
-				m_bWordPauseItemState = false;
-				iOldPauseTime = iCurPauseTime;
-			}
+			if (m_bWordSpeedChangeState == true)
+				m_bWordSpeedChangeState = false;
+			iOldSpeedTime = iCurSpeedTime;
 		}
-		//tpying word
+		//Pause Item Time
+		int iCurPauseTime = clock();
+		if (iCurPauseTime - iOldPauseTime >= 7000)
+		{
+			if (m_bWordPauseItemState == true)
+				m_bWordPauseItemState = false;
+			iOldPauseTime = iCurPauseTime;
+		}
+		//Hide Item Time
+		int iCurHideTime = clock();
+		if (iCurHideTime - iOldHideTime >= 3000)
+		{
+			if (m_bWordHideItemState == true)
+				m_bWordHideItemState = false;
+			iOldHideTime = iCurHideTime;
+		}
+		//typing word
 		if (kbhit())
 		{
 			m_pDrawManager.EraseMidText("Failed Compare!!", MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
@@ -507,9 +472,7 @@ void Play::InGame()
 				m_pDrawManager.EraseMidText(strTempKeyIn, MAP_WIDTH, MAP_HEIGHT * 0.8f - 2);
 				//Word 맞추기
 				if (CheckWordFailed(strTempKeyIn))
-				{
 					m_stP.iScore += strTempKeyIn.size() * SCORE_RATE;
-				}
 				else
 				{
 					BG_GRAY_TEXT_RED
@@ -519,6 +482,7 @@ void Play::InGame()
 				strTempKeyIn = "\0";
 			}
 		}
+
 		DispPlayerInfo();
 		//Check Stage Up
 		if (m_stP.iScore >= 1000* m_stP.iStage)

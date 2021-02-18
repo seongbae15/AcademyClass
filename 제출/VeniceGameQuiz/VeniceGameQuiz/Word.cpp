@@ -15,6 +15,7 @@ void Word::SetWordPos(int posX, int posY)
 void Word::SetItem(int item_number)
 {
 	m_iItemNumber = item_number;
+
 }
 
 
