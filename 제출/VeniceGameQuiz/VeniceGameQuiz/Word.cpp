@@ -11,7 +11,7 @@ void Word::DrawTexts(bool hide_state)
 		BLACK
 	else
 	{
-		////Text ¿ë
+		////Test ¿ë
 		//switch ((ITEM_LIST)m_iItemNumber)
 		//{
 		//case ITEM_LIST_SPEED_UP:
