@@ -1,11 +1,8 @@
 #pragma once
-#include <iostream>
-#include <string>
 #include <fstream>
 #include <vector>
 #include <list>
 #include <time.h>
-#include <stdlib.h>
 #include <algorithm>
 #include "Lib.h"
 #include "Interface.h"
@@ -18,15 +15,14 @@
 
 #define TEXT_LINE_COUNT 10
 #define STORY_TEXT_DELAY 1000
+#define MAX_NAME_LEN 10
 
 #define KEY_SKIP_s 115
 #define KEY_SKIP_S 83
 #define KEY_BS 8
 #define KEY_ENTER 13
-
 #define SCROLL_MODE_STORY 0
 #define SCROLL_MODE_WORD 1
-
 #define TIME_WORD_CREATE 1000
 #define TIME_WORD_MOVING 500
 #define WORD_CHANGE_RATE 50
@@ -34,13 +30,8 @@
 #define ITEM_TIME_SPEED 7000
 #define ITEM_TIME_PAUSE 5000
 #define ITEM_TIME_HIDE 5000
-
-
 #define SCORE_RATE 30
-
 #define NUMBER_RANK_MAX 10
-
-using namespace std;
 
 typedef struct PlayerInfo
 {
@@ -99,7 +90,10 @@ public:
 	void TextScroll(vector<t>* vectorClass, int max_size, int limit_y, int Mode);
 	bool CheckWordBoxPos(string str, int posX, int posY);
 	void CreateWord();
-
+	bool CheckWordFailed(string str);
+	void ActivateItem(int item_number);
+	void SaveRank();
+	void ClearWord();
 
 	inline void gotoxy(int x, int y)
 	{
@@ -113,15 +107,11 @@ public:
 	void InputName(int Mode = TEXT_MODE_DRAW);
 	void DispStage();
 	//bool CheckWordBoxPos(int index);
-
-
-
-	bool CheckWordFailed(string str);
 	void StageUp();
-	void SaveRank();
-	void ActivateItem(int item_number);
-	void ClearWord();
-	void DispRankScreen();
+
+
+
+	void InRankSys();
 	void LoadRank();
 
 };

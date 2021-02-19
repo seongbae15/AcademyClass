@@ -330,8 +330,6 @@ void Play::ActivateItem(int item_number)
 {
 	switch ((ITEM_LIST)item_number)
 	{
-	case ITEM_LIST_NONE:
-		break;
 	case ITEM_LIST_SPEED_UP:
 		m_bWordSpeedChangeState = true;
 		m_iWordMoveRateChange = m_iWordMoveRate/2;
@@ -361,12 +359,14 @@ bool Play::CheckWordFailed(string str)
 		if (str == m_vPlayingWordClass[i].GetWord())
 		{
 			int iTmpItemNumber = m_vPlayingWordClass[i].GetItemNumber();
-			if(iTmpItemNumber != ITEM_LIST_NONE)
+			if (iTmpItemNumber != ITEM_LIST_NONE)
+			{
 				ActivateItem(iTmpItemNumber);
-			//clear 시, size = 0
-			if (m_vPlayingWordClass.size() == 0)
-				return true;
-			else if (!CheckWordBoxPos(m_vPlayingWordClass[i].GetWord(), m_vPlayingWordClass[i].GetWordPosX(), m_vPlayingWordClass[i].GetWordPosY()))
+				//clear 시, size = 0
+				if (iTmpItemNumber == int(ITEM_LIST_CLEAR))
+					return true;
+			}
+			if (!CheckWordBoxPos(m_vPlayingWordClass[i].GetWord(), m_vPlayingWordClass[i].GetWordPosX(), m_vPlayingWordClass[i].GetWordPosY()))
 				m_vPlayingWordClass[i].EraseWord();
 			m_vPlayingWordClass.erase(m_vPlayingWordClass.begin() + i);
 			return true;
@@ -378,15 +378,22 @@ bool Play::CheckWordFailed(string str)
 void Play::StageUp()
 {
 	BG_GRAY_TEXT_ORIGINAL
+	//Player info update
 	m_stP.iStage++;
 	m_stP.iScore = 0;
+	//Item info reset
+	m_bWordPauseItemState = false;
+	m_bWordHideItemState = false;
+	m_bWordSpeedChangeState = false;
 	//Clear word info
 	m_vPlayingWordClass.clear();
 	//Speed up
 	m_iWordMoveRate -= WORD_CHANGE_RATE;
 	//increase to create word rate
 	m_iWordCreateRate -= WORD_CHANGE_RATE;
-	DispStage();
+	m_pInterface.DispStageNumber(m_stP.iStage);
+
+	//DispStage();
 }
 
 void Play::SaveRank()
@@ -490,6 +497,7 @@ void Play::InGame()
 				//Word 맞추기
 				if (CheckWordFailed(strTempKeyIn))
 				{
+					//Score up
 					m_stP.iScore += strTempKeyIn.size() * SCORE_RATE;
 					DispPlayerInfo();
 				}
@@ -513,8 +521,9 @@ void Play::InGame()
 		if (m_stP.iLife <= 0)
 		{
 			bGameOverState = true;
-			BG_GRAY_TEXT_RED
-			m_pDrawManager.DrawMidText("♨ Game Over ♨", MAP_WIDTH, MAP_HEIGHT * 0.5f);
+			m_pInterface.DispGameOverScreen();
+			//BG_GRAY_TEXT_RED
+			//m_pDrawManager.DrawMidText("♨ Game Over ♨", MAP_WIDTH, MAP_HEIGHT * 0.5f);
 			m_vPlayingWordClass.clear();
 			//Save player info
 			SaveRank();
@@ -590,12 +599,11 @@ bool RankSort(PlayerInfo A, PlayerInfo B)
 	else
 		return A.iStage > B.iStage;
 }
-void Play::DispRankScreen()
+void Play::InRankSys()
 {
-	BG_GRAY_TEXT_PURPLE
-	system("cls");
 	string strTemp;
 	vector<PlayerInfo> vTempList;
+
 	//Load rank info
 	LoadRank();
 	sort(m_vPList.begin(), m_vPList.end(), RankSort);
@@ -607,24 +615,34 @@ void Play::DispRankScreen()
 			vTempList.push_back(m_vPList[i]);
 	}
 
-	BG_GRAY_TEXT_BLUE_GREEN
-	m_pDrawManager.BoxDraw(0, 0, MAP_WIDTH, MAP_HEIGHT);
+	m_pInterface.DispRankScreen();
+	//BG_GRAY_TEXT_PURPLE
+	//	system("cls");
+	//BG_GRAY_TEXT_BLUE_GREEN
+	//m_pDrawManager.BoxDraw(0, 0, MAP_WIDTH, MAP_HEIGHT);
+	//BG_GRAY_TEXT_PURPLE
+	//m_pDrawManager.BoxDraw(MAP_WIDTH, MAP_HEIGHT * 0.2f - 4, SMALL_BOX_WIDTH, SMALL_BOX_HEIGHT);
+	//m_pDrawManager.DrawMidText("Ranking", MAP_WIDTH, MAP_HEIGHT * 0.2f - 2);
+	//for (int i = 0;i < 2*(MAP_WIDTH - 2);i++)
+	//	strTemp += "=";
+	//BG_GRAY_TEXT_BLUE_GREEN
+	//m_pDrawManager.DrawMidText(strTemp, MAP_WIDTH, MAP_HEIGHT * 0.2f+1);
+
+	gotoxy(MAP_WIDTH - 25, MAP_HEIGHT * 0.2f + 3);
+	cout << "Name";
+	gotoxy(MAP_WIDTH, MAP_HEIGHT * 0.2f + 3);
+	cout << "Stage";
+	gotoxy(MAP_WIDTH + 25, MAP_HEIGHT * 0.2f + 3);
+	cout <<"Score";
 	BG_GRAY_TEXT_PURPLE
-	m_pDrawManager.BoxDraw(MAP_WIDTH, MAP_HEIGHT * 0.2f - 4, SMALL_BOX_WIDTH, SMALL_BOX_HEIGHT);
-	m_pDrawManager.DrawMidText("Ranking", MAP_WIDTH, MAP_HEIGHT * 0.2f - 2);
-	for (int i = 0;i < 2*(MAP_WIDTH - 2);i++)
-		strTemp += "=";
-	BG_GRAY_TEXT_BLUE_GREEN
-	m_pDrawManager.DrawMidText(strTemp, MAP_WIDTH, MAP_HEIGHT * 0.2f+1);
-	BG_GRAY_TEXT_PURPLE
-	gotoxy(MAP_WIDTH - 20, MAP_HEIGHT * 0.2f + 3);
-	cout << "Name\t\tStage\t\tScore";
 	for (int i = 0; i < vTempList.size(); i++)
 	{
-		gotoxy(MAP_WIDTH - 20, MAP_HEIGHT * 0.2f + 4+2*i);
+		gotoxy(MAP_WIDTH - 25, MAP_HEIGHT * 0.2f + 4 + 2 * i);
 		cout << vTempList[i].strName;
-		cout << "\t\t" << vTempList[i].iStage;
-		cout << "\t\t" << vTempList[i].iScore;
+		gotoxy(MAP_WIDTH, MAP_HEIGHT * 0.2f + 4 + 2 * i);
+		cout << vTempList[i].iStage;
+		gotoxy(MAP_WIDTH + 25, MAP_HEIGHT * 0.2f + 4 + 2 * i);
+		cout << vTempList[i].iScore;
 	}
 	m_vPList.clear();
 	vTempList.clear();
@@ -655,15 +673,14 @@ void Play::GameOn()
 		case 1:
 			//Text Erase
 			m_pInterface.DispLobyScreen(TEXT_MODE_ERASE);
-			
+
 			//DispLoby(TEXT_MODE_ERASE);
 			//Start Game
-			
 			StartGame();
 			break;
 		case 2:
 			//Display ranking
-			DispRankScreen();
+			InRankSys();
 			break;
 		case 3:
 			return;

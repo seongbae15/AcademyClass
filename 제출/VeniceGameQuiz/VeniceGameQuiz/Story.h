@@ -1,8 +1,7 @@
 #pragma once
-#include <iostream>
-#include <string>
+#include "Lib.h"
 #include "DrawManager.h"
-using namespace std;
+
 class Story
 {
 private:

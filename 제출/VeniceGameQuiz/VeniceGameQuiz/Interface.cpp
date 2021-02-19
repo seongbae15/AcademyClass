@@ -60,3 +60,24 @@ void Interface::DispPlayBox()
 {
 	m_ifDrawManager.BoxDraw(MAP_WIDTH, MAP_HEIGHT * 0.8f - 4, SMALL_BOX_WIDTH, SMALL_BOX_HEIGHT);
 }
+void Interface::DispGameOverScreen()
+{
+	BG_GRAY_TEXT_RED
+	m_ifDrawManager.DrawMidText("ขอ Game Over ขอ", MAP_WIDTH, MAP_HEIGHT * 0.5f);
+}
+void Interface::DispRankScreen()
+{
+	string strTemp;
+	for (int i = 0; i < 2 * (MAP_WIDTH - 2); i++)
+		strTemp += "=";
+	BG_GRAY_TEXT_PURPLE
+		system("cls");
+	BG_GRAY_TEXT_BLUE_GREEN
+	m_ifDrawManager.BoxDraw(0, 0, MAP_WIDTH, MAP_HEIGHT);
+	m_ifDrawManager.DrawMidText(strTemp, MAP_WIDTH, MAP_HEIGHT * 0.2f + 1);
+	m_ifDrawManager.BoxDraw(MAP_WIDTH, MAP_HEIGHT * 0.2f - 4, SMALL_BOX_WIDTH, SMALL_BOX_HEIGHT);
+	m_ifDrawManager.DrawMidText("Ranking", MAP_WIDTH, MAP_HEIGHT * 0.2f - 2);
+}
+
+
+		

@@ -1,6 +1,14 @@
-﻿  Interface.cpp
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(30,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(30,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+﻿  DrawManager.cpp
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(27,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(27,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.cpp(25,8): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.cpp(34,18): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.cpp(38,8): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.cpp(53,19): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.cpp(111,11): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  Interface.cpp
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(27,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(27,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Interface.cpp(10,89): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Interface.cpp(11,71): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Interface.cpp(12,72): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
@@ -18,11 +26,15 @@ H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Interface.cpp(44,6
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Interface.cpp(54,62): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Interface.cpp(56,63): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Interface.cpp(61,55): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Interface.cpp(66,73): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Interface.cpp(77,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Interface.cpp(78,55): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Interface.cpp(79,70): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Play.cpp
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(30,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(30,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.h(106,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.h(106,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(27,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(27,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.h(107,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.h(107,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(24,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(32,87): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(33,69): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
@@ -53,32 +65,38 @@ H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(237,75): 
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(263,61): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(265,62): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(318,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(359,19): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(485,72): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(489,76): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(499,73): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(510,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(517,74): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(482,7): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(521,4): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(584,88): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(602,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(613,54): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(614,69): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(618,66): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(620,43): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(622,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(624,47): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(631,2): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(637,12): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(652,104): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(357,19): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(492,72): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(496,76): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(507,73): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(518,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(489,7): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(530,4): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(593,88): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(610,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(631,43): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(633,38): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(635,43): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(638,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(640,48): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(642,43): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(644,48): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(649,2): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(655,12): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(670,104): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(79,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
 H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.cpp(157): message : 컴파일되는 함수 템플릿 인스턴스화 'void Play::TextScroll<Story>(std::vector<Story,std::allocator<Story>> *,int,int,int)'에 대한 참조를 확인하세요.
+  Story.cpp
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(27,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(27,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   VeniceGameMain.cpp
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(30,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(30,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.h(106,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.h(106,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\VeniceGameMain.cpp(106,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(27,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(27,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.h(107,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\Play.h(107,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\VeniceGameMain.cpp(109,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+  Word.cpp
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(27,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\VeniceGameQuiz\VeniceGameQuiz\DrawManager.h(27,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   코드를 생성하고 있습니다...
   VeniceGameQuiz.vcxproj -> H:\academyA\AcademyClass\제출\VeniceGameQuiz\Debug\VeniceGameQuiz.exe

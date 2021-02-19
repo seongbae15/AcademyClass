@@ -1,4 +1,13 @@
 #pragma once
+#include <iostream>
+#include <string>
+#include <Windows.h>
+#include <conio.h>
+using namespace std;
+///////////////////////////////////////////////////////
+#define MAP_WIDTH 65
+#define MAP_HEIGHT 35
+#define MAX_NAME_LEN 10
 //////////////////////////////////////////////////////
 #define col GetStdHandle(STD_OUTPUT_HANDLE) 
 #define BLACK SetConsoleTextAttribute( col,0x0000 );
@@ -23,4 +32,3 @@
 //////////////////////////////////////////////////////
 #define MAP_WIDTH 65
 #define MAP_HEIGHT 35
-#define MAX_NAME_LEN 10

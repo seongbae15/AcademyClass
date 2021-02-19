@@ -19,5 +19,7 @@ public:
 	void DispNameInputScreen(int Mode = TEXT_MODE_DRAW);
 	void DispStageNumber(int stage_number);
 	void DispPlayBox();
+	void DispGameOverScreen();
+	void DispRankScreen();
 };
 
