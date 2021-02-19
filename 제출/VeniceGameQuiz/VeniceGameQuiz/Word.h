@@ -1,10 +1,10 @@
 #pragma once
 #include "Lib.h"
 #include "DrawManager.h"
+#include "Text.h"
 
 enum ITEM_LIST
 {
-	ITEM_LIST_NONE = 0,
 	ITEM_LIST_START = 1,
 	ITEM_LIST_SPEED_UP = 1,
 	ITEM_LIST_SPEED_DOWN,
@@ -14,35 +14,15 @@ enum ITEM_LIST
 	ITEM_LIST_END = 5,
 };
 
-using namespace std;
-class Word
+class Word:public Text
 {
 private:
-	string m_strWord;
-	int m_iX;
-	int m_iY;
 	bool m_bVisionState;
 	int m_iItemNumber;
-	DrawManager m_wordDrawManager;
 public:
-	void SetWord(string str);
-	void SetWordPos(int posX, int posY);
-	void UpadatePosY();
-	void DrawWord(bool hide_state =false);
-	void EraseWord();
+	void DrawTexts(bool hide_state = false);
+	void EraseText();
 	void SetItem(int item_number=0);
-	inline string GetWord()
-	{
-		return m_strWord;
-	}
-	inline int GetWordPosY()
-	{
-		return m_iY;
-	}
-	inline int GetWordPosX()
-	{
-		return m_iX;
-	}
 	inline bool GetVisionState()
 	{
 		return m_bVisionState;

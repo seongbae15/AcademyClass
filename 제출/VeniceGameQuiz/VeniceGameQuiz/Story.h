@@ -1,32 +1,13 @@
 #pragma once
 #include "Lib.h"
 #include "DrawManager.h"
+#include "Text.h"
 
-class Story
+class Story :public Text
 {
 private:
-	string m_strStoryLine;
-	int m_iX;
-	int m_iY;
-	DrawManager m_stroyDrawManager;
 public:
-	void DrawWord(bool hide_state = false);
-	void EraseWord();
-	void SetWord(string str, int posX, int posY);
-
-	//void SetWordPos(int posX, int posY);
-	void UpadatePosY();
-	inline string GetWord()
-	{
-		return m_strStoryLine;
-	}
-	inline int GetWordPosY()
-	{
-		return m_iY;
-	}
-	inline int GetWordPosX()
-	{
-		return m_iX;
-	}
+	void DrawTexts(bool hide_state = false);
+	void EraseText();
 };
 

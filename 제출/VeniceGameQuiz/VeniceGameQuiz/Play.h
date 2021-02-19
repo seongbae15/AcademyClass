@@ -1,22 +1,20 @@
 #pragma once
+#include "Interface.h"
+#include "DrawManager.h"
+#include "Word.h"
+#include "Story.h"
+#include "Lib.h"
 #include <fstream>
 #include <vector>
 #include <list>
 #include <time.h>
 #include <algorithm>
-#include "Lib.h"
-#include "Interface.h"
-#include "DrawManager.h"
-#include "Word.h"
-#include "Story.h"
 
 #define INIT_SCORE 0
 #define INIT_LIFE 9
-
 #define TEXT_LINE_COUNT 10
 #define STORY_TEXT_DELAY 1000
 #define MAX_NAME_LEN 10
-
 #define KEY_SKIP_s 115
 #define KEY_SKIP_S 83
 #define KEY_BS 8
@@ -40,18 +38,6 @@ typedef struct PlayerInfo
 	int iScore;
 	int iLife;
 }PlayerInfo;
-
-//enum ITEM_LIST
-//{
-//	ITEM_LIST_NONE = 0,
-//	ITEM_LIST_START = 1,
-//	ITEM_LIST_SPEED_UP = 1,
-//	ITEM_LIST_SPEED_DOWN,
-//	ITEM_LIST_PAUSE,
-//	ITEM_LIST_CLEAR,
-//	ITEM_LIST_HIDE,
-//	ITEM_LIST_END = 5,
-//};
 
 class Play
 {
@@ -87,32 +73,21 @@ public:
 	void LoadWord();
 	void InGame();
 	template <typename t>
-	void TextScroll(vector<t>* vectorClass, int max_size, int limit_y, int Mode);
+	void TextScroll(vector<t>* vectorClass, int max_size, int limit_y, int Mode, int Scoll_dir);
 	bool CheckWordBoxPos(string str, int posX, int posY);
 	void CreateWord();
 	bool CheckWordFailed(string str);
 	void ActivateItem(int item_number);
+	void StageUp();
 	void SaveRank();
 	void ClearWord();
-
+	void InRankSys();
+	void LoadRank();
 	inline void gotoxy(int x, int y)
 	{
 		COORD Pos = { x, y };
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 	}
-
-	//Delete
-	void DispLoby(int Mode = TEXT_MODE_DRAW);
-	//Delete
-	void InputName(int Mode = TEXT_MODE_DRAW);
-	void DispStage();
-	//bool CheckWordBoxPos(int index);
-	void StageUp();
-
-
-
-	void InRankSys();
-	void LoadRank();
 
 };
 

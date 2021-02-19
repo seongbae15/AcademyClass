@@ -28,3 +28,6 @@ abcdefghij 6 2910
 nfeljka 5 2370
 xz 4 2700
 navme 3 570
+d 5 3330
+awenbrjka 3 2790
+park 3 720
