@@ -3,7 +3,7 @@
 
 void main()
 {
-	student_manager std_Manager;
+	//student_manager std_Manager;
 	int iSelection;
 	while (1)
 	{
@@ -19,15 +19,28 @@ void main()
 		switch (iSelection)
 		{
 		case 1:
+			student_manager::GetInstance()->RegisterStudent();
+			break;
 		case 2:
+			student_manager::GetInstance()->ShowStInfo();
+			break;
 		case 3:
+			student_manager::GetInstance()->FindNum();
+			break;
 		case 4:
+			student_manager::GetInstance()->FindName();
+			break;
 		case 5:
+			student_manager::GetInstance()->FindGrade();
+			break;
 		case 0:
+			student_manager::GetInstance()->ReleaseInstance();
 			return;
-		default:cout << "잘못 입력 " << endl;
-
+		default:
+			cout << "잘못 입력 " << endl;
+			break;
 		}
-		system("pause"); system("cls");
+		system("pause");
+		system("cls");
 	}
 }
