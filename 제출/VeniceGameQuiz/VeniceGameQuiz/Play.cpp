@@ -100,7 +100,6 @@ void Play::LoadStory()
 	{
 		getline(fStoryLoad, strTmpStory);
 		tmpStoryClass.SetText(strTmpStory, MAP_WIDTH, MAP_HEIGHT * 0.2f + 1 + iColCount);
-		//tmpStoryClass.SetWord(strTmpStory, MAP_WIDTH, MAP_HEIGHT * 0.2f + 1 + iColCount);
 		m_vStoryClass.push_back(tmpStoryClass);
 		iColCount++;
 	}
@@ -315,8 +314,6 @@ void Play::StageUp()
 	//increase to create word rate
 	m_iWordCreateRate -= WORD_CHANGE_RATE;
 	m_pInterface.DispStageNumber(m_stP.iStage);
-
-	//DispStage();
 }
 
 void Play::SaveRank()
@@ -340,7 +337,6 @@ void Play::InGame()
 	//Display stage
 	m_pInterface.DispStageNumber(m_stP.iStage);
 	BG_GRAY_TEXT_PURPLE
-	//DispStage();
 	m_pInterface.DispPlayBox();
 	
 	int iOldCreatTime = clock();
@@ -370,7 +366,6 @@ void Play::InGame()
 			if ((m_bWordSpeedChangeState == false) && (iCurMoveTime - iOldMoveTime >= m_iWordMoveRate)
 				|| (m_bWordSpeedChangeState == true) && (iCurMoveTime - iOldMoveTime >= m_iWordMoveRateChange))
 			{
-				//MoveWord();
 				m_bLifeDecCheck = true;
 				TextScroll(&m_vPlayingWordClass, m_vPlayingWordClass.size(), MAP_HEIGHT - 1, SCROLL_MODE_WORD, Y_DOWN);
 				if (m_bLifeDecCheck == false)
