@@ -528,7 +528,15 @@ void GameManager::LoadWeapon()
 void GameManager::SetWeaponShopCompositeVer()
 {
 	//Shop 구성
-	//Main Shop
+	//Main Shop : WeaponBox
+	m_gmShop = new Box("WeaponBox");
+	//Box 메모리 할당
+	Shop* BowBox = new Box("Bow");
+	Shop* DaggerBox = new Box("Dagger");
+	Shop* GunBox = new Box("Gun");
+	Shop* SwordBox = new Box("Sword");
+	Shop* WandBox = new Box("Wand");
+	Shop* HammerBox = new Box("Hammer");
 
 	ifstream fLoad_weapon_list;
 	fLoad_weapon_list.open("WeaponList.txt");
@@ -540,7 +548,6 @@ void GameManager::SetWeaponShopCompositeVer()
 			string strTmpName;
 			int iTmpCost;
 			int iTmpAttack;
-			//Box 구성
 			//vector 사이즈 == 0 이면 box 구성
 			//!=0이면 Type 비교 -> 다른 Type이면 새 Box 구성
 				//Item 구성
@@ -549,9 +556,29 @@ void GameManager::SetWeaponShopCompositeVer()
 			fLoad_weapon_list >> strTmpName;
 			fLoad_weapon_list >> iTmpCost;
 			fLoad_weapon_list >> iTmpAttack;
-
+			Shop* tmpItem = new Item(strTmpType, strTmpName, iTmpCost, iTmpAttack);
+			if (strTmpType == "Bow")
+				BowBox->AddShop(tmpItem);
+			else if (strTmpType == "Dagger")
+				DaggerBox->AddShop(tmpItem);
+			else if (strTmpType == "Gun")
+				GunBox->AddShop(tmpItem);
+			else if (strTmpType == "Sword")
+				SwordBox->AddShop(tmpItem);
+			else if (strTmpType == "Wand")
+				WandBox->AddShop(tmpItem);
+			else if (strTmpType == "Hammer")
+				HammerBox->AddShop(tmpItem);
 		}
+		m_gmShop->AddShop(BowBox);
+		m_gmShop->AddShop(DaggerBox);
+		m_gmShop->AddShop(GunBox);
+		m_gmShop->AddShop(SwordBox);
+		m_gmShop->AddShop(WandBox);
+		m_gmShop->AddShop(HammerBox);
+		fLoad_weapon_list.close();
 	}
+	//Test View 만들기 + 파일 나누기(Box 클래스, Item 클래스 파일 분리해볼것)
 }
 
 
