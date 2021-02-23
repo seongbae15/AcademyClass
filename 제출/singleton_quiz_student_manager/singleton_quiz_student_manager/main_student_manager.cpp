@@ -3,7 +3,6 @@
 
 void main()
 {
-	//student_manager std_Manager;
 	int iSelection;
 	while (1)
 	{
