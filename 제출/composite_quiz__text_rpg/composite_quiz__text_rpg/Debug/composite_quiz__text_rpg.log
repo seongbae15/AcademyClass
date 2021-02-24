@@ -1,84 +1,104 @@
-﻿  GameManager.cpp
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(8,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(17,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(18,53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(19,53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(20,53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(53,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(72,62): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(73,58): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(74,62): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(75,63): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(76,62): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(77,55): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(78,55): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(95,2): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(101,71): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(107,63): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(109,67): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(117,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(118,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(124,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(125,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(131,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(132,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(142,67): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(143,149): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(147,54): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(146,3): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(156,3): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(163,3): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(179,88): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(180,94): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(181,93): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(191,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(199,50): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(200,77): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(207,98): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(206,16): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(236,2): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(252,4): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(275,50): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(278,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(279,77): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(280,70): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(281,76): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(292,19): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(314,65): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(315,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(316,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(317,61): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(319,82): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(374,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(376,67): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(377,59): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(378,59): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(379,59): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(380,59): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(381,59): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(382,59): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(383,63): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(406,15): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(408,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(409,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(410,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(411,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(412,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(413,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(414,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(415,64): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(437,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(488,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(506,120): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(508,85): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(520,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(553,58): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(554,5): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(683,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(689,75): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(701,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(702,3): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(722,15): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  composite_quiz__text_rpg.vcxproj -> D:\academyA\AcademyClass\제출\composite_quiz__text_rpg\Debug\composite_quiz__text_rpg.exe
+﻿  Character.cpp
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Character.cpp(25,58): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GameManager.cpp
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(8,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(17,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(18,53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(19,53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(20,53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(53,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(72,62): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(73,58): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(74,62): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(75,63): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(76,62): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(77,55): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(78,55): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(95,2): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(101,71): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(107,63): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(109,67): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(117,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(118,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(124,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(125,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(131,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(132,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(142,67): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(143,149): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(147,54): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(146,3): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(156,3): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(163,3): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(179,88): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(180,94): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(181,93): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(191,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(199,50): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(200,77): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(207,98): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(206,16): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(236,2): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(252,4): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(281,50): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(283,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(284,84): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(285,77): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(286,82): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(403,15): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(405,68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(406,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(407,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(408,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(409,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(410,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(411,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(412,64): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(434,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(485,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(503,120): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(505,85): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(517,14): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(549,58): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(550,5): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(679,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(685,75): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(697,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(698,3): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\GameManager.cpp(718,15): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  main_composite_quiz.cpp
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\main_composite_quiz.cpp(4,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+  Monster.cpp
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Monster.cpp(15,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Monster.cpp(16,65): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Monster.cpp(18,65): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Monster.cpp(20,65): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Monster.cpp(22,62): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Monster.cpp(24,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Player.cpp
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Player.cpp(17,57): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Player.cpp(18,65): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Player.cpp(20,65): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Player.cpp(22,65): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Player.cpp(24,62): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Player.cpp(26,60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Player.cpp(31,211): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Player.cpp(60,104): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Player.cpp(65,100): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Player.cpp(70,97): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\Player.cpp(83,70): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Shop.cpp
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\composite_quiz__text_rpg\MapDraw.h(19,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  코드를 생성하고 있습니다...
+  composite_quiz__text_rpg.vcxproj -> H:\academyA\AcademyClass\제출\composite_quiz__text_rpg\Debug\composite_quiz__text_rpg.exe

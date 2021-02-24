@@ -2,6 +2,7 @@
 #include "Lib.h"
 #include "MapDraw.h"
 #include "Weapon.h"
+#include "Shop.h"
 
 enum RPS
 {

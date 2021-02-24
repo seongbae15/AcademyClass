@@ -61,7 +61,7 @@ class GameManager
 private:
 	MapDraw m_gmMapDraw;
 	Character* m_gmCharacter[MAX_CHARACTER] = { NULL };
-	vector<Weapon> m_vWeaponList;
+	//vector<Weapon> m_vWeaponList;
 
 	Shop* m_gmShop;
 
@@ -73,7 +73,7 @@ private:
 
 public:
 	void RunGame();
-	void LoadWeapon();
+	//void LoadWeapon();
 	void DispLoby();
 	void NewGameSet();
 	void SetMonster();
@@ -97,7 +97,6 @@ public:
 	void DeleteInfo();
 
 	void SetWeaponShopCompositeVer();
-	void DispWeaponShopCompositeVer();
 	void DispWeaponBoxCompositeVer(string w_type);
 };
 
