@@ -253,6 +253,24 @@ void GameManager::StartBattle(int MonsterSelection)
 		}
 	}
 }
+
+void GameManager::DispWeaponBoxCompositeVer(string w_type)
+{
+	int iDispCount;
+	int iSelector;
+	int iPage = 0;
+	Shop* tmpWShop = new Box("TmpPlayingBox");
+	
+	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
+	m_gmMapDraw.DrawMidText(m_gmCharacter[PLAYER]->GetName() + " Gold : " + to_string(m_gmCharacter[PLAYER]->GetGold()), WIDTH, 2);
+	m_gmMapDraw.DrawMidText(w_type + " Shop", WIDTH, 4);
+	//
+	m_gmShop->ShowWeaponInfo(w_type);
+	//
+	//iSelector = m_gmMapDraw.MenuSelectCursor(iDispCount + 3, 3, WIDTH - 26, HEIGHT * 0.2f);
+
+}
+
 void GameManager::DispDetailinfo(string str)
 {
 	int iDispCount;
@@ -333,7 +351,39 @@ void GameManager::DispWeaponList(int weaponSelection)
 		strType = "Hammer";
 		break;
 	}
-	DispDetailinfo(strType);
+	//DispDetailinfo(strType);
+	DispWeaponBoxCompositeVer(strType);
+}
+
+void GameManager::DispWeaponShopCompositeVer()
+{
+	int iSelector;
+	int iCusorX = (WIDTH - 8) / 2;
+	int iCusorY = HEIGHT * 0.3f + 2;
+	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
+	m_gmMapDraw.DrawMidText("♧ ♣ S H O P ♣ ♧", WIDTH, HEIGHT * 0.3f);
+	m_gmMapDraw.DrawMidText("♧ ♣ S H O P ♣ ♧", WIDTH, HEIGHT * 0.3f);
+	m_gmMapDraw.DrawMidText("Dagger  ", WIDTH, HEIGHT * 0.3f + 2);
+	m_gmMapDraw.DrawMidText("Gun     ", WIDTH, HEIGHT * 0.3f + 4);
+	m_gmMapDraw.DrawMidText("Sword   ", WIDTH, HEIGHT * 0.3f + 6);
+	m_gmMapDraw.DrawMidText("Wand    ", WIDTH, HEIGHT * 0.3f + 8);
+	m_gmMapDraw.DrawMidText("Bow     ", WIDTH, HEIGHT * 0.3f + 10);
+	m_gmMapDraw.DrawMidText("Hammer  ", WIDTH, HEIGHT * 0.3f + 12);
+	m_gmMapDraw.DrawMidText("돌아가기", WIDTH, HEIGHT * 0.3f + 14);
+	iSelector = m_gmMapDraw.MenuSelectCursor(NUMBER_WEAPON_TYPE + 1, 2, iCusorX, iCusorY);
+	switch ((WEAPON_TYPE)iSelector)
+	{
+	case WEAPON_TYPE_DAGGER:
+	case WEAPON_TYPE_GUN:
+	case WEAPON_TYPE_SWORD:
+	case WEAPON_TYPE_WAND:
+	case WEAPON_TYPE_BOW:
+	case WEAPON_TYPE_HAMMER:
+		DispWeaponList(iSelector);
+		break;
+	case WEAPON_TYPE_END:
+		return;
+	}
 }
 
 void GameManager::DispShop()
@@ -480,7 +530,8 @@ void GameManager::StartGame()
 			DispInfo(iSelector);
 			break;
 		case PLAY_MENU_WEAPONG_SHOP:
-			DispShop();
+			//DispShop();
+			DispWeaponShopCompositeVer();
 			break;
 		case PLAY_MENU_SAVE:
 			iSlotSelector = DispSaveSlot();
@@ -557,6 +608,7 @@ void GameManager::SetWeaponShopCompositeVer()
 			fLoad_weapon_list >> iTmpCost;
 			fLoad_weapon_list >> iTmpAttack;
 			Shop* tmpItem = new Item(strTmpType, strTmpName, iTmpCost, iTmpAttack);
+			//Type별 Box 분할
 			if (strTmpType == "Bow")
 				BowBox->AddShop(tmpItem);
 			else if (strTmpType == "Dagger")
@@ -578,7 +630,7 @@ void GameManager::SetWeaponShopCompositeVer()
 		m_gmShop->AddShop(HammerBox);
 		fLoad_weapon_list.close();
 	}
-	//Test View 만들기 + 파일 나누기(Box 클래스, Item 클래스 파일 분리해볼것)
+	//Test
 }
 
 
@@ -664,6 +716,11 @@ void GameManager::RunGame()
 	srand((unsigned)time(NULL));
 	//Load Weapon Info
 	LoadWeapon();
+
+	SetWeaponShopCompositeVer();
+	//Test Viewer
+	m_gmShop->Show();
+
 	while (1)
 	{
 		int iSelect;

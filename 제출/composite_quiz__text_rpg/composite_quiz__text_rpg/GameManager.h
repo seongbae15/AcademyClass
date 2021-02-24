@@ -74,9 +74,6 @@ private:
 public:
 	void RunGame();
 	void LoadWeapon();
-
-	void SetWeaponShopCompositeVer();
-
 	void DispLoby();
 	void NewGameSet();
 	void SetMonster();
@@ -98,5 +95,9 @@ public:
 	bool DispLoad();
 	void LoadSlotInfo(int selector);
 	void DeleteInfo();
+
+	void SetWeaponShopCompositeVer();
+	void DispWeaponShopCompositeVer();
+	void DispWeaponBoxCompositeVer(string w_type);
 };
 
