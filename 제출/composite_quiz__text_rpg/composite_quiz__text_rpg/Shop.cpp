@@ -78,20 +78,35 @@ void Box::ShowList(int posX, int posY)
 	}
 }
 
-void Box::ShowWeaponInfo(string w_type)
+void Box::ShowWeaponInfo(string w_type, int posX, int posY)
 {
 	auto iterBegin = m_vecShopList.begin();
 	auto iterEnd = m_vecShopList.end();
+	int iPage = 0;
+	int iCount=0;
+	int iDispCount=0;
 	int iAdd_cols = 0;
+	if ((*iterBegin)->GetLevel() == 2)
+	{
+		if (m_vecShopList.size() >= 5)
+		{
+			if (iPage == 0)
+				iDispCount = 5;
+			else if (iPage == 1)
+				iDispCount = m_vecShopList.size() - 5 * iPage;
+		}
+		else
+			iDispCount = m_vecShopList.size();
+	}
 	while (iterBegin != iterEnd)
 	{
 		if ((*iterBegin)->GetType()== w_type)
 		{
-			//
-			//Level Down
-			(*iterBegin)->ShowList(WIDTH, HEIGHT * 0.2f + 3* iAdd_cols);
+			(*(iterBegin+iPage*5))->ShowWeaponInfo(w_type,posX,posY+iAdd_cols);
 			iAdd_cols += 3;
-			//
+			iCount++;
+			if (iCount >= iDispCount)
+				break;
 		}
 		iterBegin++;
 	}
@@ -118,10 +133,19 @@ void Item::Show()
 void Item::ShowList(int posX, int posY)
 {
 	YELLOW
-	m_shopDrawMG.TextDraw("가격 : " + to_string(this->m_iWeapon_cost), posX - 16, posY);
-	m_shopDrawMG.TextDraw("무기 타입 : " + this->m_strWeapon_type, posX, posY);
-	m_shopDrawMG.TextDraw("무기 이름 : " + this->m_strWepaon_name, posX - 18, posY + 1);
-	m_shopDrawMG.TextDraw("공격력 : " + to_string(this->m_iWeapon_attack), posX + 8, posY + 1);
+	m_shopDrawMG.TextDraw("가격 : " + to_string(m_iWeapon_cost), posX - 16, posY);
+	m_shopDrawMG.TextDraw("무기 타입 : " + GetType(), posX, posY);
+	m_shopDrawMG.TextDraw("무기 이름 : " + m_strWepaon_name, posX - 18, posY + 1);
+	m_shopDrawMG.TextDraw("공격력 : " + to_string(m_iWeapon_attack), posX + 8, posY + 1);
 	ORIGINAL
+}
 
+void Item::ShowWeaponInfo(string w_type, int posX, int posY)
+{
+	YELLOW
+	m_shopDrawMG.TextDraw("가격 : " + to_string(m_iWeapon_cost), posX - 16, posY);
+	m_shopDrawMG.TextDraw("무기 타입 : " + w_type, posX, posY);
+	m_shopDrawMG.TextDraw("무기 이름 : " + m_strWepaon_name, posX - 18, posY + 1);
+	m_shopDrawMG.TextDraw("공격력 : " + to_string(m_iWeapon_attack), posX + 8, posY + 1);
+	ORIGINAL
 }

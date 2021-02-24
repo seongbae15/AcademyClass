@@ -22,7 +22,7 @@ public:
 	virtual void AddShop(Shop* shop)=0;
 	virtual void Show() = 0;
 	virtual void ShowList(int posX, int posY) = 0;
-	virtual void ShowWeaponInfo(string w_type) = 0;
+	virtual void ShowWeaponInfo(string w_type, int posX, int posY) = 0;
 	int GetLevel();
 	Shop* GetParent();
 	string GetType();
@@ -38,13 +38,13 @@ public:
 	void AddShop(Shop* shop);
 	void Show();
 	void ShowList(int posX, int posY);
-	void ShowWeaponInfo(string w_type);
+	void ShowWeaponInfo(string w_type, int posX, int posY);
 
 };
 
 class Item : public Shop
 {
-	string m_strWeapon_type;
+	//string m_strWeapon_type;
 	string m_strWepaon_name;
 	int m_iWeapon_cost;
 	int m_iWeapon_attack;
@@ -54,7 +54,7 @@ public:
 	void AddShop(Shop* shop) {};
 	void Show();
 	void ShowList(int posX, int posY);
-	void ShowWeaponInfo(string w_type) {};
+	void ShowWeaponInfo(string w_type, int posX, int posY);
 
 };
 

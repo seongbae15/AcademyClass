@@ -256,19 +256,30 @@ void GameManager::StartBattle(int MonsterSelection)
 
 void GameManager::DispWeaponBoxCompositeVer(string w_type)
 {
-	int iDispCount;
+	int iDispCount=0;
 	int iSelector;
 	int iPage = 0;
 	Shop* tmpWShop = new Box("TmpPlayingBox");
-	
-	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
-	m_gmMapDraw.DrawMidText(m_gmCharacter[PLAYER]->GetName() + " Gold : " + to_string(m_gmCharacter[PLAYER]->GetGold()), WIDTH, 2);
-	m_gmMapDraw.DrawMidText(w_type + " Shop", WIDTH, 4);
-	//
-	m_gmShop->ShowWeaponInfo(w_type);
-	//
-	//iSelector = m_gmMapDraw.MenuSelectCursor(iDispCount + 3, 3, WIDTH - 26, HEIGHT * 0.2f);
+	int iCol = 5;
+	while (1)
+	{
+		//Size 선정(page참조, 벡터 사이즈 리턴)
 
+
+		//
+		m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
+		m_gmMapDraw.DrawMidText(m_gmCharacter[PLAYER]->GetName() + " Gold : " + to_string(m_gmCharacter[PLAYER]->GetGold()), WIDTH, 2);
+		m_gmMapDraw.DrawMidText(w_type + " Shop", WIDTH, 4);
+		m_gmShop->ShowWeaponInfo(w_type, WIDTH, HEIGHT * 0.2f);
+		m_gmMapDraw.DrawMidText("이전 페이지", WIDTH, HEIGHT * 0.2f + 3*iCol);
+		m_gmMapDraw.DrawMidText("다음 페이지", WIDTH, HEIGHT * 0.2f + 3*iCol +3);
+		m_gmMapDraw.DrawMidText("나가기", WIDTH, HEIGHT * 0.2f + 3*iCol +6);
+		iSelector = m_gmMapDraw.MenuSelectCursor(iCol + 3, 3, WIDTH - 26, HEIGHT * 0.2f);
+		//구매하기
+
+		//
+		//코드 정리
+	}
 }
 
 void GameManager::DispDetailinfo(string str)
@@ -361,7 +372,6 @@ void GameManager::DispWeaponShopCompositeVer()
 	int iCusorX = (WIDTH - 8) / 2;
 	int iCusorY = HEIGHT * 0.3f + 2;
 	m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
-	m_gmMapDraw.DrawMidText("♧ ♣ S H O P ♣ ♧", WIDTH, HEIGHT * 0.3f);
 	m_gmMapDraw.DrawMidText("♧ ♣ S H O P ♣ ♧", WIDTH, HEIGHT * 0.3f);
 	m_gmMapDraw.DrawMidText("Dagger  ", WIDTH, HEIGHT * 0.3f + 2);
 	m_gmMapDraw.DrawMidText("Gun     ", WIDTH, HEIGHT * 0.3f + 4);
