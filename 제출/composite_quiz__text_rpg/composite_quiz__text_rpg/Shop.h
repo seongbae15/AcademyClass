@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include <iomanip>
-
 #include "MapDraw.h"
 
 using namespace std;
@@ -52,7 +51,6 @@ public:
 	virtual int GetAttack() = 0;
 };
 
-
 class Box : public Shop
 {
 	vector<Shop*> m_vecShopList;
@@ -64,7 +62,7 @@ public:
 	void ShowWeaponInfo(string w_type, int posX, int posY, int page);
 	int GetSizeLevel(int level, string w_type);
 	WEAPON GetBuyWeaponInfo(string w_type, int number);
-	string GetName() 
+	string GetName()
 	{
 		return "";
 	};
@@ -72,11 +70,10 @@ public:
 	{
 		return -1;
 	};
-	int GetAttack() 
+	int GetAttack()
 	{
 		return -1;
 	};
-
 };
 
 class Item : public Shop

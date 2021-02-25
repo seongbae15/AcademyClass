@@ -259,10 +259,7 @@ void GameManager::DispWeaponBoxCompositeVer(string w_type)
 	int iDispCount=0;
 	int iSelector;
 	int iPage = 0;
-	Shop* tmpWShop = new Box("TmpPlayingBox");
-	//LevelSize 선정(page참조, 벡터 사이즈 리턴)
 	int iSize = m_gmShop->GetSizeLevel(2, w_type);
-	//
 	while (1)
 	{
 		if (iSize >= 5)
@@ -305,67 +302,9 @@ void GameManager::DispWeaponBoxCompositeVer(string w_type)
 		}
 		else
 			break;
-
-		//
-		//코드 정리
 	}
 }
 
-//void GameManager::DispDetailinfo(string str)
-//{
-//	int iDispCount;
-//	int iSelector;
-//	int iPage = 0;
-//	vector<Weapon> tmpWeaponList;
-//	for (int i = 0;i < m_vWeaponList.size();i++)
-//	{
-//		if (str == m_vWeaponList[i].GetWeaponType())
-//			tmpWeaponList.push_back(m_vWeaponList[i]);
-//	}
-//	while (1)
-//	{
-//		int j;
-//		if (tmpWeaponList.size() >= 5)
-//		{
-//			if (iPage == 0)
-//				iDispCount = 5;
-//			else
-//				iDispCount = tmpWeaponList.size() - 5 * iPage;
-//		}
-//		else
-//			iDispCount = tmpWeaponList.size();
-//		//Disp
-//		m_gmMapDraw.BoxErase(WIDTH, HEIGHT);
-//		m_gmMapDraw.DrawMidText(m_gmCharacter[PLAYER]->GetName() + " Gold : " + to_string(m_gmCharacter[PLAYER]->GetGold()), WIDTH, 2);
-//		m_gmMapDraw.DrawMidText(str + " Shop", WIDTH, 4);
-//		for (j = 0; j < iDispCount; j++)
-//			tmpWeaponList[j + iPage * 5].ShowWeapon(WIDTH, HEIGHT * 0.2f + 3 * j);
-//		m_gmMapDraw.DrawMidText("이전 페이지", WIDTH, HEIGHT * 0.2f + 3 * j++);
-//		m_gmMapDraw.DrawMidText("다음 페이지", WIDTH, HEIGHT * 0.2f + 3 * j++);
-//		m_gmMapDraw.DrawMidText("나가기", WIDTH, HEIGHT * 0.2f + 3 * j++);
-//		m_gmMapDraw.DrawMidText(to_string(iPage + 1) + "Page", WIDTH, HEIGHT - 2);
-//		iSelector = m_gmMapDraw.MenuSelectCursor(iDispCount + 3, 3, WIDTH - 26, HEIGHT * 0.2f);
-//		if (iSelector <= iDispCount)
-//		{
-//			//Buy Item
-//			m_gmCharacter[PLAYER]->BuyWeapon(tmpWeaponList[iSelector - 1 + iPage * 5].getWeaponInfo());
-//		}
-//		else if (iSelector == iDispCount + 1)
-//		{
-//			//Previous Page
-//			if (iPage != 0)
-//				iPage--;
-//		}
-//		else if (iSelector == iDispCount + 2)
-//		{
-//			//Next Page
-//			if (iPage != (tmpWeaponList.size() - 1) / 5)
-//				iPage++;
-//		}
-//		else
-//			break;
-//	}
-//}
 void GameManager::DispWeaponList(int weaponSelection)
 {
 	string strType;
@@ -390,7 +329,6 @@ void GameManager::DispWeaponList(int weaponSelection)
 		strType = "Hammer";
 		break;
 	}
-	//DispDetailinfo(strType);
 	DispWeaponBoxCompositeVer(strType);
 }
 
@@ -721,14 +659,10 @@ void GameManager::RunGame()
 	//Set Console Window
 	SetConsoleWindow(WIDTH, HEIGHT);
 	srand((unsigned)time(NULL));
-	//Load Weapon Info
-	//LoadWeapon();
-
 	//Composite 사용
 	SetWeaponShopCompositeVer();
 	//Test Viewer
 	m_gmShop->Show();
-
 	while (1)
 	{
 		int iSelect;
@@ -749,7 +683,7 @@ void GameManager::RunGame()
 			break;
 		case LOBY_MENU_EXIT:
 			//Clear Weapon List
-			//m_vWeaponList.clear();
+			delete m_gmShop;
 			return;
 		}
 	}

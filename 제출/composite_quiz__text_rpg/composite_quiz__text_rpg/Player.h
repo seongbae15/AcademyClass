@@ -1,7 +1,6 @@
 #pragma once
 #include "Character.h"
 
-
 class Player :public Character
 {
 private:
@@ -20,7 +19,5 @@ public:
 	{
 		return m_iTotalAttack;
 	}
-
-
 };
 

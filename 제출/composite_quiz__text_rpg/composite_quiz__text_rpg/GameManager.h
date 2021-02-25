@@ -4,10 +4,7 @@
 #include "Character.h"
 #include "Player.h"
 #include "Monster.h"
-#include "Weapon.h"
-
 #include "Shop.h"
-
 #include <vector>
 
 
@@ -89,13 +86,11 @@ public:
 	void DispLevelUp();
 	void DispShop();
 	void DispWeaponList(int weaponSelection);
-	void DispDetailinfo(string str);
 	int DispSaveSlot();
 	void SaveSlotInfo(int selector);
 	bool DispLoad();
 	void LoadSlotInfo(int selector);
 	void DeleteInfo();
-
 	void SetWeaponShopCompositeVer();
 	void DispWeaponBoxCompositeVer(string w_type);
 };

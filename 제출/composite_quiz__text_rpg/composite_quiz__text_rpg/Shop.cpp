@@ -9,11 +9,6 @@ Shop::~Shop()
 
 }
 
-Box::Box(string type) : Shop(type)
-{
-
-}
-
 void Shop::SetParent(Shop* Parent)
 {
 	m_pParent = Parent;
@@ -41,6 +36,10 @@ int Shop::GetSize()
 	return m_strWeapon_type.size() + GetLevel() * 2;
 }
 
+Box::Box(string type) : Shop(type)
+{
+
+}
 void Box::AddShop(Shop* shop)
 {
 	shop->SetParent(this);
@@ -66,8 +65,8 @@ void Box::ShowWeaponInfo(string w_type, int posX, int posY, int page)
 {
 	auto iterBegin = m_vecShopList.begin();
 	auto iterEnd = m_vecShopList.end();
-	int iCount=0;
-	int iDispCount=0;
+	int iCount = 0;
+	int iDispCount = 0;
 	int iAdd_cols = 0;
 	if ((*iterBegin)->GetLevel() == 2)
 	{
@@ -83,7 +82,7 @@ void Box::ShowWeaponInfo(string w_type, int posX, int posY, int page)
 	}
 	while (iterBegin != iterEnd)
 	{
-		if ((*iterBegin)->GetType()== w_type)
+		if ((*iterBegin)->GetType() == w_type)
 		{
 			if ((*iterBegin)->GetLevel() == 1)
 			{
@@ -129,7 +128,7 @@ WEAPON Box::GetBuyWeaponInfo(string w_type, int number)
 		{
 			if ((*iterBegin)->GetLevel() == 2)
 			{
-				return (*(iterBegin+number))->GetBuyWeaponInfo(w_type, number);
+				return (*(iterBegin + number))->GetBuyWeaponInfo(w_type, number);
 			}
 			else
 				return (*iterBegin)->GetBuyWeaponInfo(w_type, number);
