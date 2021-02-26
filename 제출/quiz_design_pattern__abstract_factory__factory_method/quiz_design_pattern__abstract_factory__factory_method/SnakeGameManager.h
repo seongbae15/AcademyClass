@@ -5,10 +5,11 @@
 #include <time.h>
 #include "LibGame.h"
 #include "DrawManager.h"
-
+#include "Snake.h"
 #include "GameFM.h"
 
-#define MOVE_TIME_DEFAULT 400
+
+
 #define MOVE_TIME_MIN 80
 #define MOVE_TIME_SPEED_UP 10
 #define SPACE_BAR 32
@@ -22,12 +23,13 @@ private:
 	GameFM* m_gmPlayInfo;
 	GameFM* m_gmBlock_stone;
 	GameFM* m_gmBlock_food;
+
 	int m_iMapWidth;
 	int m_iMapHeight;
 	int m_iScore;
 	int m_iMoveTime;
 	DrawManager m_gmDrawManager;
-	//Snake m_gmSnake;
+	Snake m_gmSnake;
 	//Stone m_gmStone;
 	//Food m_gmFood;
 
@@ -35,11 +37,8 @@ public:
 	SnakeGameManager();
 	void SetConsoleWindow();
 	void GameRun();
-	void DispMainLoby();
-
-
-	//void GameInit();
-	//void GameStart();
+	void GameInit();
+	void GameStart();
 	//void KeyboardInput();
 	//void CreateFood();
 	//void UpdateGameInfo();

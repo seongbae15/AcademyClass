@@ -144,6 +144,7 @@
     <ClCompile Include="GameFM.cpp" />
     <ClCompile Include="main_factory.cpp" />
     <ClCompile Include="PlayView.cpp" />
+    <ClCompile Include="Snake.cpp" />
     <ClCompile Include="SnakeGameManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +153,7 @@
     <ClInclude Include="GameFM.h" />
     <ClInclude Include="LibGame.h" />
     <ClInclude Include="PlayView.h" />
+    <ClInclude Include="Snake.h" />
     <ClInclude Include="SnakeGameManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

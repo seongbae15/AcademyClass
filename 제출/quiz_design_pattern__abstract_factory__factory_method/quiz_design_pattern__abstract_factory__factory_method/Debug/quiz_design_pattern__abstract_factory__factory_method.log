@@ -1,19 +1,13 @@
-﻿  GameFM.cpp
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\DrawManager.h(17,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\DrawManager.h(17,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\GameFM.cpp(12,82): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\GameFM.cpp(13,64): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\GameFM.cpp(14,64): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\GameFM.cpp(15,57): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  SnakeGameManager.cpp
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\DrawManager.h(17,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\DrawManager.h(17,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.h(61,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.h(61,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.cpp(18,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.cpp(27,91): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.cpp(28,73): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.cpp(29,73): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.cpp(30,66): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  코드를 생성하고 있습니다...
-  quiz_design_pattern__abstract_factory__factory_method.vcxproj -> H:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\Debug\quiz_design_pattern__abstract_factory__factory_method.exe
+﻿  SnakeGameManager.cpp
+D:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\DrawManager.h(17,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+D:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\DrawManager.h(17,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+D:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.h(62,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+D:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.h(62,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+D:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.cpp(20,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.cpp(233,2): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+D:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.cpp(176,6): warning C4101: 'iOldMoveClock' :참조되지 않은 지역 변수입니다.
+D:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.cpp(176,21): warning C4101: 'iCurMoveClock' :참조되지 않은 지역 변수입니다.
+D:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.cpp(179,7): warning C4101: 'bEatState' :참조되지 않은 지역 변수입니다.
+D:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.cpp(177,21): warning C4101: 'iCurFoodClock' :참조되지 않은 지역 변수입니다.
+D:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\quiz_design_pattern__abstract_factory__factory_method\SnakeGameManager.cpp(177,6): warning C4101: 'iOldFoodClock' :참조되지 않은 지역 변수입니다.
+  quiz_design_pattern__abstract_factory__factory_method.vcxproj -> D:\academyA\AcademyClass\제출\quiz_design_pattern__abstract_factory__factory_method\Debug\quiz_design_pattern__abstract_factory__factory_method.exe

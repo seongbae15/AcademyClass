@@ -8,6 +8,8 @@ SnakeGameManager::SnakeGameManager()
 	SetConsoleWindow();
 	m_gmLobyView = new LobyView;
 	m_gmPlayInfo = new PlayInfo;
+	m_gmBlock_stone = new BlockFactory;
+	m_gmBlock_food = new BlockFactory;
 }
 
 void SnakeGameManager::SetConsoleWindow()
@@ -17,17 +19,6 @@ void SnakeGameManager::SetConsoleWindow()
 	int height = m_iMapHeight + 3;
 	sprintf(buf, "mode con: lines=%d cols=%d", height, width);
 	system(buf);
-}
-
-void SnakeGameManager::DispMainLoby()
-{
-	m_gmDrawManager.DrawBaseMap(m_iMapWidth, m_iMapHeight);
-	m_gmDrawManager.DispText("Score : ", m_iMapWidth, m_iMapHeight + 2);
-	cout << m_iScore;
-	m_gmDrawManager.DispText("★ ☆ ★ Sanke Game ★ ☆ ★", m_iMapWidth, m_iMapHeight * 0.2f);
-	m_gmDrawManager.DispText("1. 게임 시작", m_iMapWidth, m_iMapHeight * 0.3f);
-	m_gmDrawManager.DispText("2. 게임 종료", m_iMapWidth, m_iMapHeight * 0.4f);
-	m_gmDrawManager.DispText("선택 : ", m_iMapWidth, m_iMapHeight * 0.5f);
 }
 
 //void SnakeGameManager::KeyboardInput()
@@ -180,102 +171,94 @@ void SnakeGameManager::DispMainLoby()
 //}
 //
 //
-//void SnakeGameManager::GameStart()
-//{
-//	int iOldMoveClock, iCurMoveClock;
-//	int iOldFoodClock, iCurFoodClock;
-//	bool bGameOverState = false;
-//	bool bEatState;
-//	//Draw Map & Text
-//	m_gmDrawManager.DrawBaseMap(m_iMapWidth, m_iMapHeight);
-//	m_gmDrawManager.DispText("Score : ", m_iMapWidth, m_iMapHeight + 2);
-//	cout << m_iScore;
-//	//Display Stone
-//	m_gmStone.DrawStone();
-//	//Display Snake
-//	m_gmSnake.DrawSnake();
-//	iOldMoveClock = clock();
-//	iOldFoodClock = clock();
-//	srand((unsigned)time(NULL));
-//	while (!bGameOverState)
-//	{
-//		//Draw Food
-//		iCurFoodClock = clock();
-//		if (iCurFoodClock - iOldFoodClock >= 1000)
-//		{
-//			if (m_gmFood.getFoodCount() < MAX_FOOD_COUNT)
-//				CreateFood();
-//			iOldFoodClock = iCurFoodClock;
-//		}
-//		//Input Keyboard & Start Move & Change direction
-//		KeyboardInput();
-//		iCurMoveClock = clock();
-//		if (iCurMoveClock - iOldMoveClock >= m_iMoveTime)
-//		{
-//			//Move Snake
-//			m_gmSnake.MoveSnake();
-//			//Check Eating
-//			SnakePos stTempHeadPos = m_gmSnake.GetHeadPos();
-//			bEatState = CheckEat(stTempHeadPos.m_iX, stTempHeadPos.m_iY);
-//			//Check Game Over
-//			bGameOverState = CheckGameOver(stTempHeadPos.m_iX, stTempHeadPos.m_iY);
-//			if (!bGameOverState)
-//			{
-//				if (bEatState == true)
-//				{
-//					//Create Tail
-//					m_gmSnake.CreateTail();
-//					//Update Info(Score)
-//					UpdateGameInfo();
-//				}
-//				//Update Snake
-//				m_gmSnake.DrawSnake();
-//			}
-//			else
-//			{
-//				DispGameOver();
-//				return;
-//			}
-//			iOldMoveClock = iCurMoveClock;
-//		}
-//	}
-//}
-//
-//void SnakeGameManager::GameInit()
-//{
-//	//Init Stone Position
-//	m_gmStone.InitStonePosition(m_iMapWidth, m_iMapHeight);
-//	//Init Snake Position
-//	m_gmSnake.InitSnake(m_iMapWidth, m_iMapHeight);
-//	//Init Food Position
-//	m_gmFood.InitFood();
-//	//Init Score
-//	m_iScore = 0;
-//	m_iMoveTime = MOVE_TIME_DEFAULT;
-//}
+void SnakeGameManager::GameStart()
+{
+	int iOldMoveClock, iCurMoveClock;
+	int iOldFoodClock, iCurFoodClock;
+	bool bGameOverState = false;
+	bool bEatState;
+	//Draw Map & Text
+	m_gmDrawManager.DrawBaseMap(m_iMapWidth, m_iMapHeight);
+	//
+	m_gmPlayInfo->Update();
+	//Display Stone
+	m_gmBlock_stone->Update();
+	//Display Snake
+	m_gmSnake.DrawSnake();
+	iOldMoveClock = clock();
+	iOldFoodClock = clock();
+	while (!bGameOverState)
+	{
+		//Draw Food
+		iCurFoodClock = clock();
+		if (iCurFoodClock - iOldFoodClock >= 1000)
+		{
+			m_gmBlock_food->Update();
+			iOldFoodClock = iCurFoodClock;
+		}
+		////Input Keyboard & Start Move & Change direction
+		//KeyboardInput();
+		//iCurMoveClock = clock();
+		//if (iCurMoveClock - iOldMoveClock >= m_iMoveTime)
+		//{
+		//	//Move Snake
+		//	m_gmSnake.MoveSnake();
+		//	//Check Eating
+		//	SnakePos stTempHeadPos = m_gmSnake.GetHeadPos();
+		//	bEatState = CheckEat(stTempHeadPos.m_iX, stTempHeadPos.m_iY);
+		//	//Check Game Over
+		//	bGameOverState = CheckGameOver(stTempHeadPos.m_iX, stTempHeadPos.m_iY);
+		//	if (!bGameOverState)
+		//	{
+		//		if (bEatState == true)
+		//		{
+		//			//Create Tail
+		//			m_gmSnake.CreateTail();
+		//			//Update Info(Score)
+		//			UpdateGameInfo();
+		//		}
+		//		//Update Snake
+		//		m_gmSnake.DrawSnake();
+		//	}
+		//	else
+		//	{
+		//		DispGameOver();
+		//		return;
+		//	}
+		//	iOldMoveClock = iCurMoveClock;
+		//}
+	}
+	getch();
+}
+
+void SnakeGameManager::GameInit()
+{
+	//Init Snake Position
+	m_gmSnake.InitSnake(m_iMapWidth, m_iMapHeight);
+	m_gmBlock_stone->Initialize(STONE);
+	m_gmBlock_food->Initialize(FOOD);
+}
 
 void SnakeGameManager::GameRun()
 {
+	srand((unsigned)time(NULL));
 	while (1)
 	{
-		m_gmBlock_stone = new BlockFactory;
-		m_gmBlock_food = new BlockFactory;
-
-		m_gmLobyView->Initialize();
+		system("cls");
 		m_gmPlayInfo->Initialize();
+		m_gmLobyView->Initialize();
 		int iSelect;
 		cin >> iSelect;
-		//Init Game Info
-		//GameInit();
-		//Display Main loby screen
-		//DispMainLoby();
-		cin >> iSelect;
+		system("cls");
 		switch (iSelect)
 		{
 		case 1:
+			//Block init
+			//Init Game Info
+			GameInit();
+
 			//Start Game
-			system("cls");
-			//GameStart();
+			GameStart();
 			break;
 		case 2:
 			return;

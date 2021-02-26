@@ -28,6 +28,7 @@ class PlayInfo : public GameFM
 {
 private:
 	int m_iPlay_score;
+	int m_iPlay_time;
 	DrawManager m_piDraw;
 public:
 	void Initialize(int type = 0);
@@ -37,11 +38,10 @@ public:
 
 class BlockFactory :public GameFM
 {
-private:
 	Block* m_BlockFactory;
 public:
 	void Initialize(int type=0);
-	void Update() {};
+	void Update();
 	Block* CreateBlock(int type);
 	inline Block* getBlockFactory()
 	{

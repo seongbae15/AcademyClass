@@ -2,7 +2,6 @@
 
 void LobyView::Initialize(int type)
 {
-	system("cls");
 	DrawView();
 }
 
@@ -17,9 +16,11 @@ void LobyView::DrawView()
 
 void PlayInfo::Initialize(int type)
 {
+	m_iPlay_time = MOVE_TIME_DEFAULT;
 	m_iPlay_score = 0;
 	m_piDraw.DispText("Score : ", MAP_WIDTH, MAP_HEIGHT + 2);
 	cout << m_iPlay_score;
+
 }
 
 void PlayInfo::Update()
@@ -48,4 +49,9 @@ Block* BlockFactory::CreateBlock(int type)
 	default:
 		break;
 	}
+}
+
+void BlockFactory::Update()
+{
+	m_BlockFactory->DrawBlock();
 }
