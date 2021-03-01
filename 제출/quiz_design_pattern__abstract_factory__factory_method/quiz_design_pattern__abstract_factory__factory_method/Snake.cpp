@@ -1,52 +1,38 @@
 #include "Snake.h"
 
-void Snake::SetSnakeMoveArrange(int Width, int Height)
+Snake::Snake()
 {
-	m_iMinX = 0;
-	m_iMinY = 0;
-	m_iMaxX = Width - 1;
-	m_iMaxY = Height - 1;
+
 }
 
-void Snake::InitSnake(int Width, int Height)
+void Snake::CreateBlock()
 {
-	SetSnakeMoveArrange(Width, Height);
-	if (!m_listSnake.empty())
-		m_listSnake.clear();
-	m_stSnake.m_iX = Width / 2;
-	m_stSnake.m_iY = Height / 2;
-	m_listSnake.push_back(m_stSnake);
-	//m_stSnake.m_iY = START_Y + 1;
-	//m_listSnake.push_back(m_stSnake);
-	//m_stSnake.m_iY = START_Y + 2;
-	//m_listSnake.push_back(m_stSnake);
-	//m_stSnake.m_iY = START_Y + 3;
-	//m_listSnake.push_back(m_stSnake);
-	//m_stSnake.m_iY = START_Y + 4;
-	//m_listSnake.push_back(m_stSnake);
-	m_bMoveState = false;
-	m_strSnakeHead = "▲";
-	m_strSnakeTail = "◇";
+	BlockPos stTempPos;
+	m_strHead = "▲";
+	m_strTail = "◇";
 	m_eDirection = SNAKE_DIRECTION_STOP;
 	m_eLastDirection = m_eDirection;
+	//Init Position Set
+	stTempPos.iX = MAP_WIDTH / 2;
+	stTempPos.iY = MAP_HEIGHT / 2;
+	m_vecBlockPos.push_back(stTempPos);
 }
 
-void Snake::DrawSnake()
+void Snake::DrawBlock()
 {
-	for (auto iter = m_listSnake.begin(); iter != m_listSnake.end(); iter++)
+	for (int i = 0; i < m_vecBlockPos.size(); i++)
 	{
-		if (iter == m_listSnake.begin())
-			snakeDrawManager.DrawObject(m_strSnakeHead, iter->m_iX, iter->m_iY);
+		if (i == 0)
+			m_blockDrawManager.DrawObject(m_strHead, m_vecBlockPos[i].iX, m_vecBlockPos[i].iY);
 		else
-			snakeDrawManager.DrawObject(m_strSnakeTail, iter->m_iX, iter->m_iY);
+			m_blockDrawManager.DrawObject(m_strTail, m_vecBlockPos[i].iX,m_vecBlockPos[i].iY);
 	}
 }
 
-void Snake::SetDirection(int keyInput)
+void Snake::SetSnakeDirection(int keyboard_input)
 {
-	//enum 사용 재확인
 	SNAKE_DIRECTION eTempDirection;
-	eTempDirection = (SNAKE_DIRECTION)keyInput;
+	eTempDirection = (SNAKE_DIRECTION)keyboard_input;
 	switch (eTempDirection)
 	{
 	case SNAKE_DIRECTION_UP:
@@ -80,83 +66,49 @@ void Snake::SetDirection(int keyInput)
 	default:
 		break;
 	}
-	//m_eDirection = (SNAKE_DIRECTION)keyInput;
-	//switch (m_eDirection)
-	//{
-	//case SNAKE_DIRECTION_UP:
-	//	if (m_eLastDirection == SNAKE_DIRECTION_DOWN)
-	//		m_eDirection = m_eLastDirection;
-	//	else
-	//		m_strSnakeHead = "▲";
-	//	m_bMoveState = true;
-	//	break;
-	//case SNAKE_DIRECTION_DOWN:
-	//	if (m_eLastDirection == SNAKE_DIRECTION_UP)
-	//		m_eDirection = m_eLastDirection;
-	//	else
-	//		m_strSnakeHead = "▼";
-	//	m_bMoveState = true;
-	//	break;
-	//case SNAKE_DIRECTION_LEFT:
-	//	if (m_eLastDirection == SNAKE_DIRECTION_RIGHT)
-	//		m_eDirection = m_eLastDirection;
-	//	else
-	//		m_strSnakeHead = "◀";
-	//	m_bMoveState = true;
-	//	break;
-	//case SNAKE_DIRECTION_RIGHT:
-	//	if (m_eLastDirection == SNAKE_DIRECTION_LEFT)
-	//		m_eDirection = m_eLastDirection;
-	//	else
-	//		m_strSnakeHead = "▶";
-	//	m_bMoveState = true;
-	//	break;
-	//default:
-	//	break;
-	//}
 }
 
 void Snake::MoveSnake()
 {
 	if (m_bMoveState == true)
 	{
-		auto iter = m_listSnake.begin();
-		auto iterEnd = m_listSnake.rbegin();
-		snakeDrawManager.EraseObject(iterEnd->m_iX, iterEnd->m_iY);
+		auto iter = m_vecBlockPos.begin();
+		auto iterEnd = m_vecBlockPos.rbegin();
+		m_blockDrawManager.EraseObject(iterEnd->iX, iterEnd->iY);
 		//Temp Var for Data Moving
 		int iTempX1, iTempY1;
 		int iTempX2, iTempY2;
-		iTempX1 = iter->m_iX;
-		iTempY1 = iter->m_iY;
+		iTempX1 = iter->iX;
+		iTempY1 = iter->iY;
 		//Move Head
 		switch (m_eDirection)
 		{
 		case SNAKE_DIRECTION_UP:
-			if (iter->m_iY > m_iMinY)
+			if (iter->iY > 0)
 			{
-				m_strSnakeHead = "▲";
-				iter->m_iY--;
+				m_strHead = "▲";
+				iter->iY--;
 			}
 			break;
 		case SNAKE_DIRECTION_DOWN:
-			if (iter->m_iY < m_iMaxY)
+			if (iter->iY < MOVE_MAX_Y)
 			{
-				m_strSnakeHead = "▼";
-				iter->m_iY++;
+				m_strHead = "▼";
+				iter->iY++;
 			}
 			break;
 		case SNAKE_DIRECTION_LEFT:
-			if (iter->m_iX > m_iMinX)
+			if (iter->iX > 0)
 			{
-				m_strSnakeHead = "◀";
-				iter->m_iX--;
+				m_strHead = "◀";
+				iter->iX--;
 			}
 			break;
 		case SNAKE_DIRECTION_RIGHT:
-			if (iter->m_iX < m_iMaxX)
+			if (iter->iX < MOVE_MAX_X)
 			{
-				m_strSnakeHead = "▶";
-				iter->m_iX++;
+				m_strHead = "▶";
+				iter->iX++;
 			}
 			break;
 		default:
@@ -164,12 +116,12 @@ void Snake::MoveSnake()
 		}
 		//Move Body & Tail
 		iter++;
-		for (iter; iter != m_listSnake.end(); iter++)
+		for (iter; iter != m_vecBlockPos.end(); iter++)
 		{
-			iTempX2 = iter->m_iX;
-			iTempY2 = iter->m_iY;
-			iter->m_iX = iTempX1;
-			iter->m_iY = iTempY1;
+			iTempX2 = iter->iX;
+			iTempY2 = iter->iY;
+			iter->iX = iTempX1;
+			iter->iY = iTempY1;
 			iTempX1 = iTempX2;
 			iTempY1 = iTempY2;
 		}
@@ -180,52 +132,53 @@ void Snake::MoveSnake()
 		return;
 }
 
-void Snake::CreateTail()
+void Snake::UpdateSnake()
 {
 	SNAKE_DIRECTION eTempTailDirection;
-	auto iter = m_listSnake.rbegin();
+	auto iter = m_vecBlockPos.rbegin();
 	auto lastIter = iter++;
 	//Decide tail direction
-	if (m_listSnake.size() == 1)
+	if (m_vecBlockPos.size() == 1)
 		eTempTailDirection = m_eDirection;
 	else
 	{
-		lastIter->m_iX;
-		lastIter->m_iY;
-		if ((lastIter->m_iX - iter->m_iX) == 1 && (lastIter->m_iY - iter->m_iY) == 0)
+		lastIter->iX;
+		lastIter->iY;
+		if ((lastIter->iX - iter->iX) == 1 && (lastIter->iY - iter->iY) == 0)
 			eTempTailDirection = SNAKE_DIRECTION_LEFT;
-		else if ((lastIter->m_iX - iter->m_iX) == -1 && (lastIter->m_iY - iter->m_iY) == 0)
+		else if ((lastIter->iX - iter->iX) == -1 && (lastIter->iY - iter->iY) == 0)
 			eTempTailDirection = SNAKE_DIRECTION_RIGHT;
-		else if ((lastIter->m_iX - iter->m_iX) == 0 && (lastIter->m_iY - iter->m_iY) == 1)
+		else if ((lastIter->iX - iter->iX) == 0 && (lastIter->iY - iter->iY) == 1)
 			eTempTailDirection = SNAKE_DIRECTION_UP;
-		else if ((lastIter->m_iX - iter->m_iX) == 0 && (lastIter->m_iY - iter->m_iY) == -1)
+		else if ((lastIter->iX - iter->iX) == 0 && (lastIter->iY - iter->iY) == -1)
 			eTempTailDirection = SNAKE_DIRECTION_DOWN;
 		else
 			eTempTailDirection = SNAKE_DIRECTION_STOP;
 	}
+	BlockPos stTempTailPos;
 	switch (eTempTailDirection)
 	{
 	case SNAKE_DIRECTION_STOP:
 		break;
 	case SNAKE_DIRECTION_UP:
-		m_stSnake.m_iX = lastIter->m_iX;
-		m_stSnake.m_iY = lastIter->m_iY + 1;
+		stTempTailPos.iX = lastIter->iX;
+		stTempTailPos.iY = lastIter->iY + 1;
 		break;
 	case SNAKE_DIRECTION_DOWN:
-		m_stSnake.m_iX = lastIter->m_iX;
-		m_stSnake.m_iY = lastIter->m_iY - 1;
+		stTempTailPos.iX = lastIter->iX;
+		stTempTailPos.iY = lastIter->iY - 1;
 		break;
 	case SNAKE_DIRECTION_LEFT:
-		m_stSnake.m_iX = lastIter->m_iX + 1;
-		m_stSnake.m_iY = lastIter->m_iY;
+		stTempTailPos.iX = lastIter->iX + 1;
+		stTempTailPos.iY = lastIter->iY;
 		break;
 	case SNAKE_DIRECTION_RIGHT:
-		m_stSnake.m_iX = lastIter->m_iX - 1;
-		m_stSnake.m_iY = lastIter->m_iY;
+		stTempTailPos.iX = lastIter->iX - 1;
+		stTempTailPos.iY = lastIter->iY;
 		break;
 	default:
 		break;
 	}
-	m_listSnake.push_back(m_stSnake);
-	snakeDrawManager.DrawObject(m_strSnakeTail, m_stSnake.m_iX, m_stSnake.m_iY);
+	m_vecBlockPos.push_back(stTempTailPos);
+	m_blockDrawManager.DrawObject(m_strTail, stTempTailPos.iX, stTempTailPos.iY);
 }

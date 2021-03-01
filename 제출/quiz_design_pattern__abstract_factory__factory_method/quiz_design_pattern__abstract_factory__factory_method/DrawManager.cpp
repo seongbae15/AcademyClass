@@ -38,6 +38,3 @@ void DrawManager::EraseObject(int posX, int posY)
 	gotoxy(2 * posX, posY);
 	cout << "  ";
 }
-
-
-

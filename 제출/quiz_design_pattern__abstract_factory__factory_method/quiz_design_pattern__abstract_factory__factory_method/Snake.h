@@ -1,8 +1,8 @@
 #pragma once
-#include <conio.h>
-#include <list>
+#include "Block.h"
 
-#include "DrawManager.h"
+#define MOVE_MAX_X MAP_WIDTH-1
+#define MOVE_MAX_Y MAP_HEIGHT-1
 
 enum SNAKE_DIRECTION
 {
@@ -13,42 +13,21 @@ enum SNAKE_DIRECTION
 	SNAKE_DIRECTION_RIGHT = 100,
 };
 
-typedef struct SnakePos
+class Snake : public Block
 {
-	int m_iX;
-	int m_iY;
-}SnakePos;
-
-class Snake
-{
-private:
-	SnakePos m_stSnake;
-	list<SnakePos> m_listSnake;
-	int m_iMinX, m_iMinY;
-	int m_iMaxX, m_iMaxY;
-	string m_strSnakeHead;
-	string m_strSnakeTail;
-	bool m_bMoveState;
-
+	string m_strHead;
+	string m_strTail;
 	SNAKE_DIRECTION m_eDirection;
 	SNAKE_DIRECTION m_eLastDirection;
-
-	DrawManager snakeDrawManager;
+	bool m_bMoveState;
 public:
-	void SetSnakeMoveArrange(int Width, int Height);
-	void InitSnake(int Width, int Height);
-	void DrawSnake();
-	void SetDirection(int keyInput);
+	Snake();
+	void CreateBlock();
+	void EraseBlock(int i) {};
+	void DrawBlock();
+
+	void SetSnakeDirection(int keyboard_input);
 	void MoveSnake();
-	void CreateTail();
-	inline SnakePos GetHeadPos()
-	{
-		auto iter = m_listSnake.begin();
-		return *iter;
-	}
-	inline list<SnakePos> GetSnakePos()
-	{
-		return m_listSnake;
-	}
+	void UpdateSnake();
 };
 

@@ -1,7 +1,9 @@
 #pragma once
-class PlayView
+#include "ViewFactoryMethod.h"
+
+class PlayView : public ViewFactoryMethod
 {
 public:
-	void DrawView() {};
+	void DrawView();
 };
 

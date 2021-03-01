@@ -18,6 +18,32 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="DrawManager.cpp" />
+    <ClCompile Include="Food.cpp" />
+    <ClCompile Include="GameOverView.cpp" />
+    <ClCompile Include="LobyView.cpp" />
+    <ClCompile Include="main_snake_game.cpp" />
+    <ClCompile Include="PlayView.cpp" />
+    <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="SnakeGameManager.cpp" />
+    <ClCompile Include="Stone.cpp" />
+    <ClCompile Include="ViewFactoryMethod.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="DrawManager.h" />
+    <ClInclude Include="Food.h" />
+    <ClInclude Include="GameOverView.h" />
+    <ClInclude Include="LobyView.h" />
+    <ClInclude Include="PlayLib.h" />
+    <ClInclude Include="PlayView.h" />
+    <ClInclude Include="Snake.h" />
+    <ClInclude Include="SnakeGameManager.h" />
+    <ClInclude Include="Stone.h" />
+    <ClInclude Include="ViewFactoryMethod.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{FC319187-7A48-423F-BFEE-21C2BF89A232}</ProjectGuid>
@@ -138,24 +164,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Block.cpp" />
-    <ClCompile Include="DrawManager.cpp" />
-    <ClCompile Include="GameFM.cpp" />
-    <ClCompile Include="main_factory.cpp" />
-    <ClCompile Include="PlayView.cpp" />
-    <ClCompile Include="Snake.cpp" />
-    <ClCompile Include="SnakeGameManager.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Block.h" />
-    <ClInclude Include="DrawManager.h" />
-    <ClInclude Include="GameFM.h" />
-    <ClInclude Include="LibGame.h" />
-    <ClInclude Include="PlayView.h" />
-    <ClInclude Include="Snake.h" />
-    <ClInclude Include="SnakeGameManager.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

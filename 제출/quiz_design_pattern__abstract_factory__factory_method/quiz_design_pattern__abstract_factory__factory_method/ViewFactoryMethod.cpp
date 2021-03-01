@@ -1,0 +1,1 @@
+#include "ViewFactoryMethod.h"

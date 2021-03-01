@@ -1,43 +1,43 @@
 #pragma once
-#include "LibGame.h"
+#include "PlayLib.h"
 #include "DrawManager.h"
 #include <vector>
 
-
-typedef struct BlockPosition
+typedef struct BlockPos
 {
-	int m_iX;
-	int m_iY;
-}BlockPosition;
+	int iX;
+	int iY;
+};
 
 class Block
 {
 protected:
 	string m_strBlock;
-	vector<BlockPosition> m_vecPosList;
+	vector<BlockPos> m_vecBlockPos;
 	DrawManager m_blockDrawManager;
 public:
+	virtual void CreateBlock()=0;
 	virtual void DrawBlock() = 0;
-	inline int GetCount()
+	virtual void EraseBlock(int i=0) = 0;
+	void ClearBlock();
+
+	virtual void SetSnakeDirection(int keyboard_input) = 0;
+	virtual void MoveSnake() = 0;
+	virtual void UpdateSnake() = 0;
+	
+	BlockPos getPosition(int i)
 	{
-		return m_vecPosList.size();
+		return m_vecBlockPos[i];
 	}
-};
-
-class Stone : public Block
-{
-public:
-	Stone();
-	void DrawBlock();
-private:
-};
-
-class Food : public Block
-{
-public:
-	Food();
-	void DrawBlock();
-private:
+	BlockPos getLastPostion()
+	{
+		auto iter = m_vecBlockPos.rbegin();
+		return (*iter);
+	}
+	int getSizeVector()
+	{
+		return m_vecBlockPos.size();
+	}
 
 };
 
