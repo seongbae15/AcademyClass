@@ -1,17 +1,8 @@
-﻿  DrawManager.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.cpp(25,37): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  GameManager.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\GameManager.cpp(8,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  Main_observer.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\Main_observer.cpp(25,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
-  Map.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+﻿  MapFirst.cpp
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  MapSecond.cpp
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   코드를 생성하고 있습니다...
-  quiz_design_parttern__observer.vcxproj -> D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\x64\Debug\quiz_design_parttern__observer.exe
+  quiz_design_parttern__observer.vcxproj -> H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\x64\Debug\quiz_design_parttern__observer.exe

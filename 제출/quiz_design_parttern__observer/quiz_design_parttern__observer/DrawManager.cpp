@@ -13,7 +13,7 @@ void DrawManager::DrawBaseMap(int width, int height, int start_x, int start_y)
 		else
 		{
 			cout << "¢Ë";
-			gotoxy(2 * (width - 1), y);
+			gotoxy(2 * (start_x + width - 1), start_y + y);
 			cout << "¢Ë";
 		}
 	}

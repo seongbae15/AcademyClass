@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "conio.h"
 
 #define UP_1P 'w'
 #define DOWN_1P 's'
@@ -12,11 +13,16 @@
 #define LEFT_2P 'j'
 #define RIGHT_2P 'l'
 
-#define MAP_WIDTH 20
-#define MAP_HEIGHT 20
+#define MAP_WIDTH 11
+#define MAP_HEIGHT 11
 #define WINDOW_WIDTH MAP_WIDTH
-#define WINDOW_HEIGHT 2*MAP_HEIGHT +10
+#define WINDOW_HEIGHT 2*MAP_HEIGHT +7
 
+typedef struct Pos
+{
+	int iX;
+	int iY;
+}Pos;
 
 using namespace std;
 

@@ -4,9 +4,12 @@
 
 class Map
 {
-private:
+protected:
+	string m_strDoor;
 	DrawManager m_mapDrawManager;
+	Pos m_stMapPos;
 public:
-	void DrawMap();
+	virtual void InitMap() = 0;
+	virtual void DrawMap() = 0;
 };
 
