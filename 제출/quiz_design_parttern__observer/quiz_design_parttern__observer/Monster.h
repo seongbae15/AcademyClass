@@ -14,6 +14,7 @@ private:
 public:
 	void InitCharacter(int num);
 	void DrawCharacter();
-	void MoveCharacter() {};
+	void EraseCharacter() {};
+	void MoveCharacter(char keyIn) {};
 };
 

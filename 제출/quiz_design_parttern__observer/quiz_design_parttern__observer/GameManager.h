@@ -25,6 +25,7 @@ public:
 	void SetConsoleWin();
 	void InitGame();
 	void DrawTowerMap();
+	void MovePlayer();
 
 };
 

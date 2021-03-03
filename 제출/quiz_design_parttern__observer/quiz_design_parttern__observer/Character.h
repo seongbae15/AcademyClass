@@ -14,6 +14,7 @@ protected:
 public:
 	virtual void InitCharacter(int num) = 0;
 	virtual void DrawCharacter()=0;
-	virtual void MoveCharacter()=0;
+	virtual void EraseCharacter() = 0;
+	virtual void MoveCharacter(char keyIn)=0;
 };
 

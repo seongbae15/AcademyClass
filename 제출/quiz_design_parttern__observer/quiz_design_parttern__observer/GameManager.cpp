@@ -41,7 +41,32 @@ void GameManager::InitGame()
 	m_gmM1->DrawCharacter();
 	m_gmM2->InitCharacter(2);
 	m_gmM2->DrawCharacter();
-	
+}
+
+void GameManager::MovePlayer()
+{
+	char chKeyIn = getch();
+	{
+		//Player1 Move
+		switch ((MOVE)chKeyIn)
+		{
+		case MOVE_UP_1:
+		case MOVE_DOWN_1:
+		case MOVE_LEFT_1:
+		case MOVE_RIGHT_1:
+			m_gmP1->MoveCharacter(chKeyIn);
+			break;
+		case MOVE_UP_2:
+		case MOVE_DOWN_2:
+		case MOVE_LEFT_2:
+		case MOVE_RIGHT_2:
+			m_gmP2->MoveCharacter(chKeyIn);
+			break;
+		default:
+			break;
+		}
+		//Recovery 만들기
+	}
 }
 
 void GameManager::StartGame()
@@ -50,6 +75,19 @@ void GameManager::StartGame()
 	SetConsoleWin();
 	//게임초기화
 	InitGame();
+	//Game Start
+	while (1)
+	{
+		if (kbhit())
+			MovePlayer();
+
+		//도어 이동(1층->2층) : 이동 체크
+
+		//버튼 활성화
+		//알림
+
+
+	}
 
 
 	getch();

@@ -7,17 +7,11 @@ void Monster::InitCharacter(int num)
 	m_iStage = num;
 	//위치
 	if (num == 1)
-	{
 		m_strCharacter = "▲";
-		m_stPos.iX = MAP_WIDTH/2;
-		m_stPos.iY = 2;
-	}
 	else if (num == 2)
-	{
 		m_strCharacter = "♨";
-		m_stPos.iX = MAP_WIDTH / 2;
-		m_stPos.iY = MAP_HEIGHT-3;
-	}
+	m_stPos.iX = MAP_WIDTH / 2;
+	m_stPos.iY = 2;
 	//상태
 	m_eM_state = MONSTER_STATE_SLEEP;
 }
