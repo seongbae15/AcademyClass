@@ -21,10 +21,22 @@ void DrawManager::DrawBaseMap(int width, int height, int start_x, int start_y)
 
 void DrawManager::DispText(string str, int posX, int posY)
 {
-	int iTempPosX;
-	iTempPosX = posX - (str.size() / 2);
-	gotoxy(iTempPosX, posY);
+
+	gotoxy(posX, posY);
 	cout << str;
+}
+
+void DrawManager::EraseText(int posX, int posY)
+{
+	gotoxy(posX, posY);
+	cout << "                  ";
+	gotoxy(posX, posY+1);
+	cout << "                  ";
+	gotoxy(posX, posY+2);
+	cout << "                  ";
+	gotoxy(posX, posY+3);
+	cout << "                  ";
+
 }
 
 void DrawManager::DrawObject(string str, int posX, int posY)

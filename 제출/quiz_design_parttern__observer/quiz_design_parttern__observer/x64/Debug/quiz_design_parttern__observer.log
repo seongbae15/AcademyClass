@@ -1,34 +1,46 @@
 ﻿  Button.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\Button.cpp(8,6): warning C4101: 'stTmpButtonPos' :참조되지 않은 지역 변수입니다.
+  Character.cpp
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   Door.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  DrawManager.cpp
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   GameManager.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\GameManager.cpp(18,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\GameManager.cpp(48,17): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\GameManager.cpp(81,7): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\GameManager.cpp(93,2): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\GameManager.cpp(18,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\GameManager.cpp(53,17): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\GameManager.cpp(297,7): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
   Main_observer.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\Main_observer.cpp(33,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\Main_observer.cpp(43,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
   Map.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   MapFirst.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   MapSecond.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  Monster.cpp
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   Object_map.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  Player.cpp
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   Wall.cpp
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(14,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   코드를 생성하고 있습니다...
-  quiz_design_parttern__observer.vcxproj -> D:\academyA\AcademyClass\제출\quiz_design_parttern__observer\x64\Debug\quiz_design_parttern__observer.exe
+  quiz_design_parttern__observer.vcxproj -> H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\x64\Debug\quiz_design_parttern__observer.exe

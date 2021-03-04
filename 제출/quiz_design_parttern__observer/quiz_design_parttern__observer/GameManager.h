@@ -17,8 +17,10 @@ private:
 	Map* m_gmMapSecond;
 	Character* m_gmP1;
 	Character* m_gmP2;
+	Character* m_gmArrPlayer[2];
 	Character* m_gmM1;
 	Character* m_gmM2;
+	DrawManager m_gmDraw;
 public:
 	GameManager();
 	void StartGame();
@@ -26,6 +28,8 @@ public:
 	void InitGame();
 	void DrawTowerMap();
 	void MovePlayer();
+	void CheckStageUp();
+	void CheckButton();
 
 };
 

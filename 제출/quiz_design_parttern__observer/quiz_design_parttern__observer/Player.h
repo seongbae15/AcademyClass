@@ -1,5 +1,6 @@
 #pragma once
 #include "Character.h"
+#include "Monster.h"
 
 enum PLAYER_STATE
 {
@@ -24,10 +25,23 @@ class Player : public Character
 private:
 	PLAYER_STATE m_eP_state;
 	int m_iNum;
+	Character* m_playerMonsterAlarm;
+	bool m_bAlarm_state1;
+	bool m_bAlarm_state2;
+
 public:
 	void InitCharacter(int num);
 	void DrawCharacter();
 	void MoveCharacter(char keyIn);
 	void EraseCharacter();
+	void StageUpCharacter(Pos next_pos);
+	void BackCharacter(char keyIn);
+	void SetAlarm(Character* monster, bool alarm);
+	void AddAlarmPlayer(Character* player) {};
+	void ChangeMonsterState(BUTTON_STATE button_state, Character* player) {};
+	void ChangePlayerState();
+	void Notify() {};
+	void Notified(string notification, int stage);
+	void AttackPlayer(Character* player) {};
 };
 

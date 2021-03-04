@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <time.h>
 #include "conio.h"
 
 #define UP_1P 'w'
@@ -18,13 +19,20 @@
 #define WINDOW_WIDTH MAP_WIDTH
 #define WINDOW_HEIGHT 2*MAP_HEIGHT +7
 
+using namespace std;
+
 typedef struct Pos
 {
 	int iX;
 	int iY;
 }Pos;
 
-using namespace std;
+enum BUTTON_STATE
+{
+	BUTTON_STATE_PASS = 0,
+	BUTTON_STATE_WAKE,
+	BUTTON_STATE_SLEEP,
+};
 
 ///////////////////////////////////////////////////////////////////////
 #define col GetStdHandle(STD_OUTPUT_HANDLE) 

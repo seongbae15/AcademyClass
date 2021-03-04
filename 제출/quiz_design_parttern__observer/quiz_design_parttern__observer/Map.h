@@ -20,5 +20,17 @@ protected:
 public:
 	virtual void InitMap() = 0;
 	virtual void DrawMap() = 0;
+	Object_map* GetDoorPointer()
+	{
+		return m_mapDoor;
+	}
+	Object_map* GetButtonPointer()
+	{
+		return m_mapButton;
+	}
+	Object_map* GetWallPointer()
+	{
+		return m_mapWall;
+	}
 };
 
