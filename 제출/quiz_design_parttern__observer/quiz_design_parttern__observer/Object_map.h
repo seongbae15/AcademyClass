@@ -15,4 +15,3 @@ public:
 	virtual Pos GetObjectPos(int index = 0) = 0;
 	virtual BUTTON_STATE GetButtonState(int index = 0) = 0;
 };
-

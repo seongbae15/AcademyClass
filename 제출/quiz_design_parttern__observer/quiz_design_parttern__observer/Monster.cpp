@@ -6,10 +6,8 @@ void Monster::InitMonster(int num)
 	//Stage
 	m_iMonsterStage = num;
 	//위치
-	if (num == 1)
-		m_strMonster = "▲";
-	else if (num == 2)
-		m_strMonster = "♨";
+	m_strMonster = "♣";
+	m_strMonsterAround = "♨";
 	m_stMonsterPos.iX = MAP_WIDTH / 2;
 	m_stMonsterPos.iY = 2;
 	//상태
@@ -62,6 +60,57 @@ void Monster::AttackPlayer(Character* player)
 	player->ChangePlayerState();
 }
 
+void Monster::DrawMonsterAround()
+{
+	RED
+		if (m_iMonsterStage == 1)
+		{
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX - 1, m_stMonsterPos.iY - 1 + (MAP_HEIGHT + 5));
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX - 1, m_stMonsterPos.iY + (MAP_HEIGHT + 5));
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX - 1, m_stMonsterPos.iY + 1 + (MAP_HEIGHT + 5));
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX, m_stMonsterPos.iY + 1 + (MAP_HEIGHT + 5));
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX + 1, m_stMonsterPos.iY + 1 + (MAP_HEIGHT + 5));
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX + 1, m_stMonsterPos.iY + (MAP_HEIGHT + 5));
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX + 1, m_stMonsterPos.iY - 1 + (MAP_HEIGHT + 5));
+		}
+		else if (m_iMonsterStage == 2)
+		{
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX - 1, m_stMonsterPos.iY - 1);
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX - 1, m_stMonsterPos.iY);
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX - 1, m_stMonsterPos.iY + 1);
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX, m_stMonsterPos.iY + 1);
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX + 1, m_stMonsterPos.iY + 1);
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX + 1, m_stMonsterPos.iY);
+			m_monDrawManager.DrawObject(m_strMonsterAround, m_stMonsterPos.iX + 1, m_stMonsterPos.iY - 1);
+		}
+	ORIGINAL
+	
+}
+
+void Monster::EraseMonsterAround()
+{
+	if (m_iMonsterStage == 1)
+	{
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX - 1, m_stMonsterPos.iY - 1 + (MAP_HEIGHT + 5));
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX - 1, m_stMonsterPos.iY + (MAP_HEIGHT + 5));
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX - 1, m_stMonsterPos.iY + 1 + (MAP_HEIGHT + 5));
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX, m_stMonsterPos.iY + 1 + (MAP_HEIGHT + 5));
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX + 1, m_stMonsterPos.iY + 1 + (MAP_HEIGHT + 5));
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX + 1, m_stMonsterPos.iY + (MAP_HEIGHT + 5));
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX + 1, m_stMonsterPos.iY - 1 + (MAP_HEIGHT + 5));
+	}
+	else if (m_iMonsterStage == 2)
+	{
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX - 1, m_stMonsterPos.iY - 1);
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX - 1, m_stMonsterPos.iY);
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX - 1, m_stMonsterPos.iY + 1);
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX, m_stMonsterPos.iY + 1);
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX + 1, m_stMonsterPos.iY + 1);
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX + 1, m_stMonsterPos.iY);
+		m_monDrawManager.DrawObject("  ", m_stMonsterPos.iX + 1, m_stMonsterPos.iY - 1);
+	}
+}
+
 void Monster::ChangeMonsterState(BUTTON_STATE button_state, Character* player)
 {
 	switch (button_state)
@@ -72,28 +121,37 @@ void Monster::ChangeMonsterState(BUTTON_STATE button_state, Character* player)
 		if (m_eM_state == MONSTER_STATE_SLEEP)
 		{
 			m_eM_state = MONSTER_STATE_AWAKE;
+			DrawMonsterAround();
 			//알림
 			Notify();
 		}
 		else if (m_eM_state == MONSTER_STATE_AWAKE)
 		{
 			m_eM_state = MONSTER_STATE_ATTACK;
-			//플레이어 공격 알림
+			//알림
 			Notify();
 			AttackPlayer(player);
 		}
 		break;
-	case BUTTON_STATE_SLEEP:
-		//Awake 상태이면 알림 발생
+	case BUTTON_STATE_SLEEP_OR_WAKE:
 		if (m_eM_state == MONSTER_STATE_AWAKE)
 		{
 			m_eM_state = MONSTER_STATE_SLEEP;
+			EraseMonsterAround();
 			//알림
 			Notify();
 		}
 		else if (m_eM_state == MONSTER_STATE_ATTACK)
 		{
 			m_eM_state = MONSTER_STATE_AWAKE;
+			
+			//알림
+			Notify();
+		}
+		else if (m_eM_state == MONSTER_STATE_SLEEP)
+		{
+			m_eM_state = MONSTER_STATE_AWAKE;
+			DrawMonsterAround();
 			//알림
 			Notify();
 		}

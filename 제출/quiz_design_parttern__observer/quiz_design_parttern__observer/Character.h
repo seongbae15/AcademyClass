@@ -5,6 +5,12 @@
 
 class Monster;
 
+enum PLAYER_STATE
+{
+	PLAYER_STATE_LIVE = 0,
+	PLAYER_STATE_DEAD,
+};
+
 class Character
 {
 protected:
@@ -22,12 +28,8 @@ public:
 	virtual void StageUpCharacter(Pos next_pos)=0;
 	virtual void BackCharacter(char keyIn) = 0;
 	virtual void SetAlarm(Monster* monster, bool alarm = true)=0;
-	////virtual void AddAlarmPlayer(Character* player)=0;
-	//virtual void ChangeMonsterState(BUTTON_STATE button_state, Character* player)=0;
 	virtual void ChangePlayerState() = 0;
-	//virtual void Notify() = 0;
 	virtual void Notified(string notification, int stage) = 0;
-	//virtual void AttackPlayer(Character* player) = 0;
 	virtual PLAYER_STATE GetPlayerState() = 0;
 	Pos GetCharacterPos()
 	{
@@ -39,4 +41,3 @@ public:
 	}
 
 };
-

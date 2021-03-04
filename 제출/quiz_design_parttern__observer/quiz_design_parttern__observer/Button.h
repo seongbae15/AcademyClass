@@ -27,4 +27,3 @@ public:
 		return m_vecButtonInfo[index].eButton_state;
 	}
 };
-

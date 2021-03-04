@@ -31,13 +31,7 @@ enum BUTTON_STATE
 {
 	BUTTON_STATE_PASS = 0,
 	BUTTON_STATE_WAKE,
-	BUTTON_STATE_SLEEP,
-};
-
-enum PLAYER_STATE
-{
-	PLAYER_STATE_LIVE = 0,
-	PLAYER_STATE_DEAD,
+	BUTTON_STATE_SLEEP_OR_WAKE,
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -58,5 +52,3 @@ enum PLAYER_STATE
 #define PLUM SetConsoleTextAttribute( col,0x000d );
 #define YELLOW SetConsoleTextAttribute( col,0x000e );
 ///////////////////////////////////////////////////////////////////////
-
-

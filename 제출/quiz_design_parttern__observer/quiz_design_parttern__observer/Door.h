@@ -16,4 +16,3 @@ public:
 		return BUTTON_STATE_PASS;
 	}
 };
-

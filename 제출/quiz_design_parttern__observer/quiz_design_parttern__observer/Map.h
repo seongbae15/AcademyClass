@@ -1,7 +1,6 @@
 #pragma once
 #include "Playlib.h"
 #include "DrawManager.h"
-
 #include "Object_map.h"
 #include "Door.h"
 #include "Button.h"
@@ -16,7 +15,6 @@ protected:
 	Object_map* m_mapDoor;
 	Object_map* m_mapButton;
 	Object_map* m_mapWall;
-
 	string m_strGoal;
 	Pos m_stGoalPos;
 
@@ -38,4 +36,3 @@ public:
 		return m_mapWall;
 	}
 };
-

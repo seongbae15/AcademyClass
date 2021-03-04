@@ -18,20 +18,13 @@
 class GameManager
 {
 private:
-	//Map* m_gmMapFirst;
-	//Map* m_gmMapSecond;
-
 	Map* m_gmMapArr[2];
-	//Character* m_gmP1;
-	//Character* m_gmP2;
+	//Character* m_gmArrPlayer;
+	//Monster* m_gmArrMonster;
 	Character* m_gmArrPlayer[2];
-
-	//Character* m_gmM1;
-	//Character* m_gmM2;
-
 	Monster* m_gmArrMonster[2];
-
 	DrawManager m_gmDraw;
+	bool m_bGameOverState;
 public:
 	GameManager();
 	void StartGame();
@@ -42,7 +35,6 @@ public:
 	bool CheckPlayerWallPos(int player_number);
 	void CheckStageUp(int player_number);
 	void CheckButton(int player_number);
-	void Releas();
-
+	bool CheckGameOver(int player_number);
+	void CheckPlayerDeadAlive(int player_number);
 };
-

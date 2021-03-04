@@ -30,15 +30,10 @@ public:
 	void StageUpCharacter(Pos next_pos);
 	void BackCharacter(char keyIn);
 	void SetAlarm(Monster* monster, bool alarm);
-	//void AddAlarmPlayer(Character* player) {};
-	//void ChangeMonsterState(BUTTON_STATE button_state, Character* player) {};
 	void ChangePlayerState();
-	//void Notify() {};
 	void Notified(string notification, int stage);
-	//void AttackPlayer(Character* player) {};
 	PLAYER_STATE GetPlayerState()
 	{
 		return m_eP_state;
 	}
 };
-
