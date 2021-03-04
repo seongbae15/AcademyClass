@@ -17,9 +17,14 @@ protected:
 	Object_map* m_mapButton;
 	Object_map* m_mapWall;
 
+	string m_strGoal;
+	Pos m_stGoalPos;
+
 public:
 	virtual void InitMap() = 0;
 	virtual void DrawMap() = 0;
+	virtual Pos GetGoalPos() = 0;
+
 	Object_map* GetDoorPointer()
 	{
 		return m_mapDoor;

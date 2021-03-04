@@ -34,6 +34,12 @@ enum BUTTON_STATE
 	BUTTON_STATE_SLEEP,
 };
 
+enum PLAYER_STATE
+{
+	PLAYER_STATE_LIVE = 0,
+	PLAYER_STATE_DEAD,
+};
+
 ///////////////////////////////////////////////////////////////////////
 #define col GetStdHandle(STD_OUTPUT_HANDLE) 
 #define BLACK SetConsoleTextAttribute( col,0x0000 );

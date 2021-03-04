@@ -107,7 +107,7 @@ void Player::StageUpCharacter(Pos next_pos)
 	DrawCharacter();
 }
 
-void Player::SetAlarm(Character* monster, bool alarm)
+void Player::SetAlarm(Monster* monster, bool alarm)
 {
 	if (m_iStage == 1)
 	{

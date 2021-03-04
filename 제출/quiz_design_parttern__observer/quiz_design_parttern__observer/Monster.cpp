@@ -1,28 +1,28 @@
 #include "Monster.h"
 
-void Monster::InitCharacter(int num)
+void Monster::InitMonster(int num)
 {
-	m_strName = "MONSTER" + to_string(num);
+	m_strMonsterName = "MONSTER" + to_string(num);
 	//Stage
-	m_iStage = num;
+	m_iMonsterStage = num;
 	//위치
 	if (num == 1)
-		m_strCharacter = "▲";
+		m_strMonster = "▲";
 	else if (num == 2)
-		m_strCharacter = "♨";
-	m_stPos.iX = MAP_WIDTH / 2;
-	m_stPos.iY = 2;
+		m_strMonster = "♨";
+	m_stMonsterPos.iX = MAP_WIDTH / 2;
+	m_stMonsterPos.iY = 2;
 	//상태
 	m_eM_state = MONSTER_STATE_SLEEP;
 }
 
-void Monster::DrawCharacter()
+void Monster::DrawMonster()
 {
 	RED
-	if (m_iStage == 1)
-		m_chDrawManager.DrawObject(m_strCharacter, m_stPos.iX, m_stPos.iY + (MAP_HEIGHT + 5));
-	else if(m_iStage == 2)
-		m_chDrawManager.DrawObject(m_strCharacter, m_stPos.iX, m_stPos.iY);
+	if (m_iMonsterStage == 1)
+		m_monDrawManager.DrawObject(m_strMonster, m_stMonsterPos.iX, m_stMonsterPos.iY + (MAP_HEIGHT + 5));
+	else if(m_iMonsterStage == 2)
+		m_monDrawManager.DrawObject(m_strMonster, m_stMonsterPos.iX, m_stMonsterPos.iY);
 	ORIGINAL
 }
 
@@ -37,13 +37,13 @@ void Monster::Notify()
 	switch (m_eM_state)
 	{
 	case MONSTER_STATE_AWAKE:
-		strNoti = m_strName + ": Awake";
+		strNoti = m_strMonsterName + ": Awake";
 		break;
 	case MONSTER_STATE_SLEEP:
-		strNoti = m_strName + ": Sleep";
+		strNoti = m_strMonsterName + ": Sleep";
 		break;
 	case MONSTER_STATE_ATTACK:
-		strNoti = m_strName + ": Attack";
+		strNoti = m_strMonsterName + ": Attack";
 		break;
 	default:
 		break;
@@ -52,7 +52,7 @@ void Monster::Notify()
 	auto iterEnd = m_vecPlayerList.end();
 	while (iterBegin != iterEnd)
 	{
-		(*iterBegin)->Notified(strNoti,m_iStage);
+		(*iterBegin)->Notified(strNoti, m_iMonsterStage);
 		iterBegin++;
 	}
 }

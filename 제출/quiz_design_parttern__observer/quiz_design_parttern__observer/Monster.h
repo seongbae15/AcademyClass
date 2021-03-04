@@ -1,6 +1,9 @@
 #pragma once
+#include "Playlib.h"
 #include "Character.h"
 #include <vector>
+
+class Character;
 
 enum MONSTER_STATE
 {
@@ -9,24 +12,33 @@ enum MONSTER_STATE
 	MONSTER_STATE_ATTACK,
 };
 
-class Monster : public Character
+class Monster
 {
 private:
 	MONSTER_STATE m_eM_state;
 	vector<Character*> m_vecPlayerList;
+	DrawManager m_monDrawManager;
+	string m_strMonster;
+	int m_iMonsterStage;
+	Pos m_stMonsterPos;
+	string m_strMonsterName;
 public:
-	void InitCharacter(int num);
-	void DrawCharacter();
-	void EraseCharacter() {};
-	void MoveCharacter(char keyIn) {};
-	void StageUpCharacter(Pos next_pos) {};
-	void BackCharacter(char keyIn) {};
-	void SetAlarm(Character* monster, bool alarm) {};
+	void InitMonster(int num);
+	void DrawMonster();
+	//void EraseMonster() {};
+	//void MoveMonster(char keyIn) {};
+	//void StageUpMonster(Pos next_pos) {};
+	//void BackMonster(char keyIn) {};
+	//void SetAlarm(Monster* monster, bool alarm) {};
 	void AddAlarmPlayer(Character* player);
 	void ChangeMonsterState(BUTTON_STATE button_state, Character* player);
-	void ChangePlayerState() {};
+	//void ChangePlayerState() {};
 	void Notify();
-	void Notified(string notification, int stage) {};
+	//void Notified(string notification, int stage) {};
 	void AttackPlayer(Character* player);
+	//PLAYER_STATE GetPlayerState()
+	//{
+	//	return PLAYER_STATE_LIVE;
+	//}
 };
 
