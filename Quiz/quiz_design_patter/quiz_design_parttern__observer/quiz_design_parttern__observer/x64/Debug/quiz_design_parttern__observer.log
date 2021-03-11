@@ -1,0 +1,13 @@
+﻿  GameManager.cpp
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\GameManager.cpp(19,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\GameManager.cpp(75,18): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\GameManager.cpp(175,3): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\GameManager.cpp(187,5): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  Main_observer.cpp
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\DrawManager.h(15,20): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\quiz_design_parttern__observer\Main_observer.cpp(28,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+  코드를 생성하고 있습니다...
+  quiz_design_parttern__observer.vcxproj -> H:\academyA\AcademyClass\제출\quiz_design_parttern__observer\x64\Debug\quiz_design_parttern__observer.exe
