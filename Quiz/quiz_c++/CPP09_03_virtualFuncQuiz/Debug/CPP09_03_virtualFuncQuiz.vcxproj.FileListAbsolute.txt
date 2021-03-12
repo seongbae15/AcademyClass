@@ -1,8 +1,0 @@
-C:\Users\A-03\Documents\spark\AcademyClass\CPP09_03_virtualFuncQuiz\Debug\CPP09_03_virtualFuncQuiz.exe
-C:\Users\A-03\Documents\spark\AcademyClass\CPP09_03_virtualFuncQuiz\Debug\CPP09_03_virtualFuncQuiz.pdb
-H:\academyA\AcademyClass\CPP09_03_virtualFuncQuiz\Debug\CPP09_03_virtualFuncQuiz.exe
-H:\academyA\AcademyClass\CPP09_03_virtualFuncQuiz\Debug\CPP09_03_virtualFuncQuiz.pdb
-H:\academyA\AcademyClass\제출\CPP09_03_virtualFuncQuiz\Debug\CPP09_03_virtualFuncQuiz.exe
-H:\academyA\AcademyClass\제출\CPP09_03_virtualFuncQuiz\Debug\CPP09_03_virtualFuncQuiz.pdb
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\Debug\CPP09_03_virtualFuncQuiz.exe
-C:\Users\A-03\Documents\spark\AcademyClass\제출\CPP09_03_virtualFuncQuiz\Debug\CPP09_03_virtualFuncQuiz.pdb
