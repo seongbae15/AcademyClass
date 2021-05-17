@@ -1,0 +1,2 @@
+H:\academyA\AcademyClass\참고코드\디자인패턴\싱글턴패턴\Singleton\Debug\Singleton.exe
+H:\academyA\AcademyClass\참고코드\디자인패턴\싱글턴패턴\Singleton\Debug\Singleton.pdb
